@@ -7,9 +7,53 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\sprite_logo</sprite>
+    <sprite>sprites\spr_playerStub</sprite>
+    <sprite>sprites\sprite_Solid</sprite>
+    <sprite>sprites\sprite_Enemy_Type_1</sprite>
+    <sprite>sprites\spriteHitBoxCircle_1</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\tileTypeOne</background>
+  </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\spawnTile.gml</script>
+    <script>scripts\initializeGame.gml</script>
+  </scripts>
+  <objects name="objects">
+    <objects name="controller">
+      <object>objects\object_Controller</object>
+    </objects>
+    <objects name="characters">
+      <objects name="player">
+        <object>objects\object_Player_1_Stub</object>
+      </objects>
+      <objects name="mob">
+        <object>objects\object_CommonEnemyTraits</object>
+        <object>objects\object_CommonXAxisMovingEnemies</object>
+        <objects name="stationary">
+          <object>objects\object_Enemy_Stationary_Type1</object>
+        </objects>
+      </objects>
+    </objects>
+    <objects name="non_living_objects">
+      <objects name="tiles">
+        <object>objects\object_Solid</object>
+        <objects name="tile_types">
+          <object>objects\object_tile_1</object>
+        </objects>
+      </objects>
+      <objects name="hitbox">
+        <object>objects\object_HitboxCircle_1</object>
+      </objects>
+      <objects name="player_items">
+        <object>objects\object_Torch</object>
+      </objects>
+    </objects>
+  </objects>
+  <rooms name="rooms">
+    <room>rooms\roomTest</room>
+  </rooms>
   <help>
     <rtf>help.rtf</rtf>
   </help>
