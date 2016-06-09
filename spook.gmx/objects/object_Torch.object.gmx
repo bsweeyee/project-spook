@@ -96,6 +96,8 @@ if (mouse_check_button_pressed(mb_left))    {
          instance_create(torch_XPos, torch_YPos, object_HitboxCircle_1);
     }
 }
+//torch_XPos = mouse_x;
+//torch_YPos = mouse_y;
 </string>
           </argument>
         </arguments>
@@ -117,23 +119,37 @@ if (mouse_check_button_pressed(mb_left))    {
           <argument>
             <kind>1</kind>
             <string>///calculate triangle points
+X = object_Player_1_Stub.x;
+Y = object_Player_1_Stub.y;
+dist = point_distance(X,Y, torch_XPos, torch_YPos);
+angle = point_direction(X,Y, torch_XPos, torch_YPos);
+arc = 0;
+if(dist &gt; lightRadius)
+    arc = arcsin(lightRadius/dist);
+dir1 = angle - radtodeg(arc);
+dir2 = angle + radtodeg(arc);
+tangentdist = dist*cos(arc);
 
-triangle_One_XPoints[0] = object_Player_1_Stub.x;
+
+triangle_One_XPoints[0] = X;
 triangle_One_XPoints[1] = torch_XPos;
-triangle_One_XPoints[2] = ((lightRadius)*(object_Player_1_Stub.y- torch_YPos)/sqrt(sqr(object_Player_1_Stub.y-torch_YPos)+sqr(object_Player_1_Stub.x - torch_XPos))) + torch_XPos;
+//triangle_One_XPoints[2] = ((lightRadius)*(Y- torch_YPos)/sqrt(sqr(Y-torch_YPos)+sqr(X - torch_XPos))) + torch_XPos;
+triangle_One_XPoints[2] = X + lengthdir_x(tangentdist, dir1);
 
-triangle_One_YPoints[0] = object_Player_1_Stub.y;
+triangle_One_YPoints[0] = Y;
 triangle_One_YPoints[1] = torch_YPos;
-triangle_One_YPoints[2] = (-(lightRadius)*(object_Player_1_Stub.x- torch_XPos)/sqrt(sqr(object_Player_1_Stub.y-torch_YPos)+sqr(object_Player_1_Stub.x - torch_XPos))) + torch_YPos;
+//triangle_One_YPoints[2] = (-(lightRadius)*(X- torch_XPos)/sqrt(sqr(Y-torch_YPos)+sqr(X - torch_XPos))) + torch_YPos;
+triangle_One_YPoints[2] = Y + lengthdir_y(tangentdist, dir1);
 
-triangle_Two_XPoints[0] = object_Player_1_Stub.x;
+triangle_Two_XPoints[0] = X;
 triangle_Two_XPoints[1] = torch_XPos;
-triangle_Two_XPoints[2] = (-(lightRadius)*(object_Player_1_Stub.y- torch_YPos)/sqrt(sqr(object_Player_1_Stub.y-torch_YPos)+sqr(object_Player_1_Stub.x - torch_XPos))) + torch_XPos;
-    
-triangle_Two_YPoints[0] = object_Player_1_Stub.y;
-triangle_Two_YPoints[1] = torch_YPos;
-triangle_Two_YPoints[2] = ((lightRadius)*(object_Player_1_Stub.x- torch_XPos)/sqrt(sqr(object_Player_1_Stub.y-torch_YPos)+sqr(object_Player_1_Stub.x - torch_XPos))) + torch_YPos;
+//triangle_Two_XPoints[2] = (-(lightRadius)*(Y- torch_YPos)/sqrt(sqr(Y-torch_YPos)+sqr(X - torch_XPos))) + torch_XPos;
+triangle_Two_XPoints[2] = X + lengthdir_x(tangentdist, dir2);
 
+triangle_Two_YPoints[0] = Y;
+triangle_Two_YPoints[1] = torch_YPos;
+//triangle_Two_YPoints[2] = ((lightRadius)*(X- torch_XPos)/sqrt(sqr(Y-torch_YPos)+sqr(X - torch_XPos))) + torch_YPos;
+triangle_Two_YPoints[2] = Y + lengthdir_y(tangentdist, dir2);
 </string>
           </argument>
         </arguments>

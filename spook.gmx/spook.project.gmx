@@ -27,6 +27,7 @@
     <objects name="characters">
       <objects name="player">
         <object>objects\object_Player_1_Stub</object>
+        <object>objects\object_CommonPlayerTraits</object>
       </objects>
       <objects name="mob">
         <object>objects\object_CommonEnemyTraits</object>
