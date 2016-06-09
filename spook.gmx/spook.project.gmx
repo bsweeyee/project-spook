@@ -6,11 +6,22 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\sprite_logo</sprite>
-    <sprite>sprites\spr_playerStub</sprite>
-    <sprite>sprites\sprite_Solid</sprite>
-    <sprite>sprites\sprite_Enemy_Type_1</sprite>
-    <sprite>sprites\spriteHitBoxCircle_1</sprite>
+    <sprites name="sprite_enemy">
+      <sprite>sprites\sprite_Enemy_Type_1</sprite>
+      <sprite>sprites\sprite_Enemy_Wrong_Type_1</sprite>
+    </sprites>
+    <sprites name="sprite_hitbox">
+      <sprite>sprites\spriteHitBoxCircle_1</sprite>
+    </sprites>
+    <sprites name="sprite_player">
+      <sprite>sprites\spr_playerStub</sprite>
+    </sprites>
+    <sprites name="sprite_game_text_art">
+      <sprite>sprites\sprite_logo</sprite>
+    </sprites>
+    <sprites name="sprite_others">
+      <sprite>sprites\sprite_Solid</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\tileTypeOne</background>
@@ -31,9 +42,10 @@
       </objects>
       <objects name="mob">
         <object>objects\object_CommonEnemyTraits</object>
-        <object>objects\object_CommonXAxisMovingEnemies</object>
+        <object>objects\object_CommonWrongEnemyTraits</object>
         <objects name="stationary">
           <object>objects\object_Enemy_Stationary_Type1</object>
+          <object>objects\object_Enemy_Stationary_Wrong_Type1</object>
         </objects>
         <object>objects\object_CommonSpawnerTraits</object>
       </objects>
