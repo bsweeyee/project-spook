@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-5</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,17 +25,23 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///debug messages
-showDebug = true;
-
-playerLifeMessage = "player life: ";
-spawnerTimerMessage = "spawner timer: ";
+            <string>/// initialise parameters
+maxenemies = 5;
+spawnrate = 1;
+timer = spawnrate;
+dt = 0.02;
+isSpawn = false;
+mob = object_Enemy_Stationary_Type1;
+spawnAreaWidth = room_width;
+spawnAreaHeight = 600;
+spawnAreaPosX = 0;
+spawnAreaPosY = 0;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -52,21 +58,37 @@ spawnerTimerMessage = "spawner timer: ";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///draw debug message
-if (showDebug)  {
-    //for all enemies on the field, draw their death timers above them
-    
-    for (var i=0; i &lt; instance_number(object_CommonEnemyTraits); i++)   {
-        draw_set_color(c_white);
-        var inst = instance_find(object_CommonEnemyTraits, i);
-        draw_text(inst.x, inst.y - 50, inst.timeBeforeAttack);
-    }
-    
-    ///draw life of player
-    draw_text(10, 10, playerLifeMessage);
-    draw_text(110, 10, object_Player_1_Stub.life); 
-    draw_text(10, 30, spawnerTimerMessage);
-    draw_text(140, 30, object_CommonSpawnerTraits.timer);
+            <string>///spawn mobs
+X = random(spawnAreaPosX + spawnAreaWidth);
+Y = random(spawnAreaPosY + spawnAreaHeight);
+if(isSpawn &amp;&amp; instance_number(mob) &lt; maxenemies)
+    instance_create(X, Y, mob);
+isSpawn = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///update spawn timer
+timer -= dt;
+if(timer &lt; 0){
+    timer = spawnrate
+    isSpawn = true;
 }
 </string>
           </argument>

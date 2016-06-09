@@ -35,6 +35,7 @@
         <objects name="stationary">
           <object>objects\object_Enemy_Stationary_Type1</object>
         </objects>
+        <object>objects\object_CommonSpawnerTraits</object>
       </objects>
     </objects>
     <objects name="non_living_objects">
