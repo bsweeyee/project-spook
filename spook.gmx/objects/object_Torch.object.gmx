@@ -96,12 +96,11 @@ if (mouse_check_button(mb_left))    {
 } else  {
     isOn = false
 }
-<<<<<<< HEAD
+
 //to make dotted line track mouse constantly
 torch_XPos = mouse_x;
 torch_YPos = mouse_y;
-=======
->>>>>>> origin/master
+
 </string>
           </argument>
         </arguments>

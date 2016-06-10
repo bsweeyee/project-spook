@@ -6,14 +6,12 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-<<<<<<< HEAD
     <sprite>sprites\sprite_logo</sprite>
     <sprite>sprites\spr_playerStub</sprite>
     <sprite>sprites\sprite_Solid</sprite>
     <sprite>sprites\sprite_Enemy_Type_1</sprite>
     <sprite>sprites\spriteHitBoxCircle_1</sprite>
     <sprite>sprites\sprite_DashedCircle</sprite>
-=======
     <sprites name="sprite_enemy">
       <sprite>sprites\sprite_Enemy_Type_1</sprite>
       <sprite>sprites\sprite_Enemy_Wrong_Type_1</sprite>
@@ -30,7 +28,6 @@
     <sprites name="sprite_others">
       <sprite>sprites\sprite_Solid</sprite>
     </sprites>
->>>>>>> origin/master
   </sprites>
   <backgrounds name="background">
     <background>background\tileTypeOne</background>
