@@ -113,8 +113,8 @@ with (other)    {
     /*
      * likely will have to do instance destroy on enemy object due to animation
      */
-    createRandomDrop(other.x, other.y);
-    instance_destroy();
+     
+    isDead = true;
 }
 </string>
           </argument>

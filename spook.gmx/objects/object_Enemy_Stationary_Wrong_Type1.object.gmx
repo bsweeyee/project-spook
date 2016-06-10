@@ -26,8 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>///initialize traits
-timeBeforeAttack = room_speed * 60 * 0.5;
+timeBeforeAttack = room_speed * 5 * 0.5;
 damageToPlayer = 1;
+
+isDead = false;
 </string>
           </argument>
         </arguments>
