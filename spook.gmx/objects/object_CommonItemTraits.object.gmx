@@ -105,7 +105,10 @@ repeat(abs(vsp)) {
     if (!place_meeting(x, y - 64 + sign(vsp), object_Solid))  {
         y += sign(vsp); 
     } else {
-        vsp = 0;
+        if(vsp &lt; 0.1 &amp;&amp; y &gt; ground - 1)
+            vsp = 0;
+        else
+            vsp = -vsp*0.5;
         break;
     }
 }
@@ -130,9 +133,8 @@ repeat(abs(vsp)) {
           <argument>
             <kind>1</kind>
             <string>///grav effect
-if (vsp &lt; 10)   {
+if (vsp &lt; 10)
     vsp += grav;
-}
 </string>
           </argument>
         </arguments>
