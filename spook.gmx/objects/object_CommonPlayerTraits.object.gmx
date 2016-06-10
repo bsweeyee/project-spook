@@ -29,6 +29,7 @@
 
 life = 100;
 playerSpeed = 5;
+isDead = false;
 </string>
           </argument>
         </arguments>
@@ -92,6 +93,12 @@ if (y-1 &lt; 0)    {
 //(cig burns out slowly on its own)
 
 life += -0.01;
+if(life &lt; 0){
+    life = 0;
+    isDead = true;
+}
+if(life &gt; 100)
+    life = 100;
 </string>
           </argument>
         </arguments>

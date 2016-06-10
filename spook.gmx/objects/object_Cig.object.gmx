@@ -3,9 +3,9 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1</depth>
+  <depth>-10</depth>
   <persistent>0</persistent>
-  <parentName>object_CommonPlayerTraits</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,30 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///call parent create event
-event_inherited();
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///create cigarette
-instance_create(self.x, self.y, object_Cig);
+            <string>///initialise parameters
+meter = object_CommonPlayerTraits.life;
+//position relative to player's center
+offsetX = -5;
+offsetY = -8;
+self.x = object_CommonPlayerTraits.x;
+self.y = object_CommonPlayerTraits.y;
 </string>
           </argument>
         </arguments>
@@ -71,8 +54,65 @@ instance_create(self.x, self.y, object_Cig);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// run parent step event
-event_inherited();
+            <string>///update parameters
+//get player health
+meter = object_CommonPlayerTraits.life;
+
+//update position
+self.x = object_CommonPlayerTraits.x + offsetX;
+self.y = object_CommonPlayerTraits.y + offsetY;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///draw cigarette
+
+//surface_set_target(global.light);
+
+//draw_clear_alpha(c_black, 0.85);
+X = self.x;
+Y = self.y;
+radius = meter/2;
+length = meter/100*20;
+
+draw_rectangle_color(X, Y, X+length, Y+5, c_gray, c_red, c_red, c_gray, false);
+draw_set_blend_mode(bm_add);
+
+draw_set_alpha(meter/100*0.03);
+
+rings = 20;
+for(i = 1; i&lt;rings; i++)
+    draw_circle(X+length, Y+2.5, radius*i/rings, false);
+
+draw_set_alpha(1);
+draw_set_blend_mode(bm_normal);
+//surface_reset_target();
+
+//draw_surface(global.light,0,0);
+/*
+if (surface_exists(global.light)) {
+    draw_surface(global.light,0,0);
+} else {
+    global.light=surface_create(room_width,room_height);
+}*/
 </string>
           </argument>
         </arguments>

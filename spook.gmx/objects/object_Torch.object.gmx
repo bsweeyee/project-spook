@@ -32,6 +32,16 @@ isOn = false;
 
 lightRadius = 60;
 lightPrecision = 80;
+torch_XPos = 0;
+torch_YPos = 0;
+
+lightRadius = 80;
+
+triangle_One_XPoints[3] = 0;
+triangle_One_YPoints[3] = 0;
+
+triangle_Two_XPoints[3] = 0;
+triangle_Two_YPoints[3] = 0;
 
 lightArc = 30;
 </string>
@@ -116,6 +126,11 @@ if (mouse_check_button(mb_left))    {
 } else  {
     isOn = false
 }
+
+//to make dotted line track mouse constantly
+torch_XPos = mouse_x;
+torch_YPos = mouse_y;
+
 </string>
           </argument>
         </arguments>
@@ -282,6 +297,9 @@ if (isOn)   {
     
     draw_triangle(triangle_One_XPoints[0], triangle_One_YPoints[0], triangle_One_XPoints[1], triangle_One_YPoints[1], triangle_One_XPoints[2], triangle_One_YPoints[2], false);
     draw_triangle(triangle_Two_XPoints[0], triangle_Two_YPoints[0], triangle_Two_XPoints[1], triangle_Two_YPoints[1], triangle_Two_XPoints[2], triangle_Two_YPoints[2], false);
+}
+else {
+    draw_sprite(sprite_DashedCircle, 0, torch_XPos, torch_YPos);
 }
 
 draw_set_alpha(1);

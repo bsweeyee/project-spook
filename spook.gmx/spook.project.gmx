@@ -12,6 +12,7 @@
     </sprites>
     <sprites name="sprite_hitbox">
       <sprite>sprites\spriteHitBoxCircle_1</sprite>
+      <sprite>sprites\sprite_DashedCircle</sprite>
     </sprites>
     <sprites name="sprite_player">
       <sprite>sprites\spr_playerStub</sprite>
@@ -70,6 +71,7 @@
       </objects>
       <objects name="player_items">
         <object>objects\object_Torch</object>
+        <object>objects\object_Cig</object>
       </objects>
       <objects name="game_items">
         <object>objects\object_CommonItemTraits</object>
