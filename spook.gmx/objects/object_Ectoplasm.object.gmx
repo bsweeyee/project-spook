@@ -50,7 +50,7 @@ grav = 0.2;
           <argument>
             <kind>1</kind>
             <string>///initialise ectoplasm values
-recoverAmount = room_speed  * 1;
+recoverAmount = room_speed  * 3;
 
 vsp = -5;
 </string>

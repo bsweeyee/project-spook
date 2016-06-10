@@ -10,9 +10,10 @@
       <sprite>sprites\sprite_Enemy_Type_1</sprite>
       <sprite>sprites\sprite_Enemy_Wrong_Type_1</sprite>
     </sprites>
-    <sprites name="sprite_hitbox">
+    <sprites name="sprite_hit_objects">
       <sprite>sprites\spriteHitBoxCircle_1</sprite>
       <sprite>sprites\sprite_DashedCircle</sprite>
+      <sprite>sprites\sprite_Projectile_1</sprite>
     </sprites>
     <sprites name="sprite_player">
       <sprite>sprites\spr_playerStub</sprite>
@@ -68,6 +69,7 @@
       </objects>
       <objects name="hitbox">
         <object>objects\object_HitboxCircle_1</object>
+        <object>objects\object_Projectile</object>
       </objects>
       <objects name="player_items">
         <object>objects\object_Torch</object>

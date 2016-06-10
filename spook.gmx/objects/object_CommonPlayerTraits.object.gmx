@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>/// initialise parameters
 
-life = 100;
+life = 200;
 playerSpeed = 5;
 isDead = false;
 </string>
@@ -97,8 +97,8 @@ if(life &lt; 0){
     life = 0;
     isDead = true;
 }
-if(life &gt; 100)
-    life = 100;
+if(life &gt; 200)
+    life = 200;
 </string>
           </argument>
         </arguments>

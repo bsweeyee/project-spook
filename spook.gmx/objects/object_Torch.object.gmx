@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>///torch attributes
 
-torchLife = room_speed * 10;
+torchLife = room_speed * 60;
 isOn = false;
 
 lightRadius = 60;
@@ -97,6 +97,28 @@ triangle_Two_YPoints[3] = 0;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///an instance of hitbox
+lightHitBox = noone;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
@@ -120,8 +142,8 @@ if (mouse_check_button(mb_left) &amp;&amp; torchLife &gt; 0)    {
     isOn = true;
     
     //when isOn is true, assign x and y position of mouse
-    if (isOn &amp;&amp; !instance_exists(object_HitboxCircle_1))   {
-         instance_create(mouse_x, mouse_y, object_HitboxCircle_1);
+    if (isOn &amp;&amp; lightHitBox == noone)   {
+         lightHitBox = instance_create(mouse_x, mouse_y, object_HitboxCircle_1);
     }
 } else  {
     isOn = false
@@ -131,6 +153,31 @@ if (mouse_check_button(mb_left) &amp;&amp; torchLife &gt; 0)    {
 torch_XPos = mouse_x;
 torch_YPos = mouse_y;
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///when there is a lightHitBox
+if (instance_exists(lightHitBox))   {
+     lightHitBox.x = mouse_x;
+     lightHitBox.y = mouse_y;
+}
 </string>
           </argument>
         </arguments>
@@ -202,11 +249,10 @@ triangle_Two_YPoints[2] = Y + lengthdir_y(tangentdist, dir2);
             <kind>1</kind>
             <string>///destroy all instances of hitbox when light is off
 if (!isOn)  {
-    if (instance_exists(object_HitboxCircle_1))  {
-        with (object_HitboxCircle_1)    {
-            instance_destroy();
-        }   
+    with (lightHitBox)    {
+        instance_destroy();
     }
+    lightHitBox = noone;   
 }
 </string>
           </argument>
@@ -301,6 +347,14 @@ if (isOn)   {
 else {
     draw_sprite(sprite_DashedCircle, 0, torch_XPos, torch_YPos);
 }
+
+var cigRadius = object_Cig.meter;
+var length = object_Cig.meter/200*20;
+
+draw_set_alpha((1/object_Cig.meter));
+
+for(var i = 0; i&lt;(object_Cig.meter); i++)
+    draw_circle(object_Cig.x+length, object_Cig.y+2.5, (cigRadius - (cigRadius/object_Cig.meter*i)), false);
 
 draw_set_alpha(1);
 draw_set_blend_mode(bm_normal);
