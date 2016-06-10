@@ -11,6 +11,7 @@
     <sprite>sprites\sprite_Solid</sprite>
     <sprite>sprites\sprite_Enemy_Type_1</sprite>
     <sprite>sprites\spriteHitBoxCircle_1</sprite>
+    <sprite>sprites\sprite_DashedCircle</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\tileTypeOne</background>
@@ -50,6 +51,7 @@
       </objects>
       <objects name="player_items">
         <object>objects\object_Torch</object>
+        <object>objects\object_Cig</object>
       </objects>
     </objects>
   </objects>
