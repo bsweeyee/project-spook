@@ -57,6 +57,7 @@
     <instance objName="object_Enemy_Stationary_Type1" x="768" y="320" name="inst_D2496203" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="object_Enemy_Stationary_Type1" x="864" y="448" name="inst_DB90CC47" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="object_CommonSpawnerTraits" x="0" y="0" name="inst_8FCFE5EB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="object_Enemy_Stationary_Wrong_Type1" x="480" y="416" name="inst_BCA86A66" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

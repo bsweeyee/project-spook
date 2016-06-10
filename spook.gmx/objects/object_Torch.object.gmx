@@ -27,17 +27,13 @@
             <kind>1</kind>
             <string>///torch attributes
 
-torchLife = room_speed * 60 * 3;
+torchLife = room_speed * 60;
 isOn = false;
 
-lightRadius = 80;
+lightRadius = 60;
+lightPrecision = 80;
 
-triangle_One_XPoints[3] = 0;
-triangle_One_YPoints[3] = 0;
-
-triangle_Two_XPoints[3] = 0;
-triangle_Two_YPoints[3] = 0;
-
+lightArc = 30;
 </string>
           </argument>
         </arguments>
@@ -60,6 +56,33 @@ triangle_Two_YPoints[3] = 0;
             <kind>1</kind>
             <string>///define light surface
 global.light = surface_create(room_width, room_height);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///define triangle points
+triangle_One_XPoints[3] = 0;
+triangle_One_YPoints[3] = 0;
+
+triangle_Two_XPoints[3] = 0;
+triangle_Two_YPoints[3] = 0;
+
 </string>
           </argument>
         </arguments>
@@ -113,37 +136,34 @@ if (mouse_check_button(mb_left))    {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///calculate triangle points
-X = object_Player_1_Stub.x;
-Y = object_Player_1_Stub.y;
-dist = point_distance(X,Y, mouse_x, mouse_y);
-angle = point_direction(X,Y, mouse_x, mouse_y);
-arc = 0;
+            <string>///find third point of triangle
+var X = object_Player_1_Stub.x;
+var Y = object_Player_1_Stub.y;
+var dist = point_distance(X,Y, mouse_x, mouse_y);
+var angle = point_direction(X,Y, mouse_x, mouse_y);
+var arc = 0;
+
 if(dist &gt; lightRadius)
     arc = arcsin(lightRadius/dist);
-dir1 = angle - radtodeg(arc);
-dir2 = angle + radtodeg(arc);
-tangentdist = dist*cos(arc);
-
+    
+var dir1 = angle - radtodeg(arc);
+var dir2 = angle + radtodeg(arc);
+var tangentdist = dist*cos(arc);
 
 triangle_One_XPoints[0] = X;
 triangle_One_XPoints[1] = mouse_x;
-//triangle_One_XPoints[2] = ((lightRadius)*(Y- torch_YPos)/sqrt(sqr(Y-torch_YPos)+sqr(X - torch_XPos))) + torch_XPos;
 triangle_One_XPoints[2] = X + lengthdir_x(tangentdist, dir1);
 
 triangle_One_YPoints[0] = Y;
 triangle_One_YPoints[1] = mouse_y;
-//triangle_One_YPoints[2] = (-(lightRadius)*(X- torch_XPos)/sqrt(sqr(Y-torch_YPos)+sqr(X - torch_XPos))) + torch_YPos;
 triangle_One_YPoints[2] = Y + lengthdir_y(tangentdist, dir1);
 
 triangle_Two_XPoints[0] = X;
 triangle_Two_XPoints[1] = mouse_x;
-//triangle_Two_XPoints[2] = (-(lightRadius)*(Y- torch_YPos)/sqrt(sqr(Y-torch_YPos)+sqr(X - torch_XPos))) + torch_XPos;
 triangle_Two_XPoints[2] = X + lengthdir_x(tangentdist, dir2);
 
 triangle_Two_YPoints[0] = Y;
 triangle_Two_YPoints[1] = mouse_y;
-//triangle_Two_YPoints[2] = ((lightRadius)*(X- torch_XPos)/sqrt(sqr(Y-torch_YPos)+sqr(X - torch_XPos))) + torch_YPos;
 triangle_Two_YPoints[2] = Y + lengthdir_y(tangentdist, dir2);
 </string>
           </argument>
@@ -245,15 +265,21 @@ if (torchLife &lt;= 0) {
           <argument>
             <kind>1</kind>
             <string>///draw light surface
+
+var i = 0;
 surface_set_target(global.light);
 
-draw_clear_alpha(c_black, 0.85);
+draw_clear_alpha(c_black, 0.98);
 draw_set_blend_mode(bm_subtract);
 
-draw_set_alpha(1);
+draw_set_alpha((1/lightPrecision));
 
 if (isOn)   {
-    draw_circle(mouse_x, mouse_y, lightRadius, false);
+    for (i=0; i&lt;=lightPrecision; i+=1) {
+        draw_circle(mouse_x, mouse_y, (lightRadius - (lightRadius/lightPrecision*i)), false);
+    }
+    
+    
     draw_triangle(triangle_One_XPoints[0], triangle_One_YPoints[0], triangle_One_XPoints[1], triangle_One_YPoints[1], triangle_One_XPoints[2], triangle_One_YPoints[2], false);
     draw_triangle(triangle_Two_XPoints[0], triangle_Two_YPoints[0], triangle_Two_XPoints[1], triangle_Two_YPoints[1], triangle_Two_XPoints[2], triangle_Two_YPoints[2], false);
 }

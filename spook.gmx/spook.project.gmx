@@ -22,6 +22,10 @@
     <sprites name="sprite_others">
       <sprite>sprites\sprite_Solid</sprite>
     </sprites>
+    <sprites name="sprite_items">
+      <sprite>sprites\sprite_Coin</sprite>
+      <sprite>sprites\sprite_Ectoplasm</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\tileTypeOne</background>
@@ -30,6 +34,7 @@
   <scripts name="scripts">
     <script>scripts\spawnTile.gml</script>
     <script>scripts\initializeGame.gml</script>
+    <script>scripts\createRandomDrop.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="controller">
@@ -43,11 +48,14 @@
       <objects name="mob">
         <object>objects\object_CommonEnemyTraits</object>
         <object>objects\object_CommonWrongEnemyTraits</object>
+        <object>objects\object_CommonSpawnerTraits</object>
         <objects name="stationary">
           <object>objects\object_Enemy_Stationary_Type1</object>
           <object>objects\object_Enemy_Stationary_Wrong_Type1</object>
         </objects>
-        <object>objects\object_CommonSpawnerTraits</object>
+        <objects name="moving">
+          <object>objects\object_Enemy_Moving_Type1</object>
+        </objects>
       </objects>
     </objects>
     <objects name="non_living_objects">
@@ -62,6 +70,11 @@
       </objects>
       <objects name="player_items">
         <object>objects\object_Torch</object>
+      </objects>
+      <objects name="game_items">
+        <object>objects\object_CommonItemTraits</object>
+        <object>objects\object_Ectoplasm</object>
+        <object>objects\object_Coin</object>
       </objects>
     </objects>
   </objects>
