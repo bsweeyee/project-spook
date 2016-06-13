@@ -104,7 +104,7 @@ if (x &gt; room_width || x &lt; 0 || y &gt; room_height || y &lt; 0)   {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///when collide, show glowing projectiles
+            <string>///when collide, show projectiles
 image_alpha += 2/room_speed;
 </string>
           </argument>

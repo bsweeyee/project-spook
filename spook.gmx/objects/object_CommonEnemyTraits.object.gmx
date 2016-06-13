@@ -62,7 +62,7 @@ if (timeBeforeAttack &lt;= 0) {
      *  animation plays before reducing life, hence, this code is likely on player side
      */
 
-    object_Player_1_Stub.life -= damageToPlayer;
+    isDead = true;
     instance_destroy();    
 }
 </string>

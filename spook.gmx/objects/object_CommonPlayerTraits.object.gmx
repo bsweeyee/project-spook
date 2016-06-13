@@ -27,9 +27,11 @@
             <kind>1</kind>
             <string>/// initialise parameters
 
-life = 200;
+MAX_HEALTH = 200;
+life = MAX_HEALTH;
 playerSpeed = 5;
 isDead = false;
+canMove = true;
 </string>
           </argument>
         </arguments>
@@ -121,11 +123,13 @@ if(life &gt; 200)
             <kind>1</kind>
             <string>///update position
 
-if(keyboard_check(ord('D')))
-    self.x += playerSpeed;
+if (canMove)    {
+    if(keyboard_check(ord('D')))
+        self.x += playerSpeed;
 
-if(keyboard_check(ord('A')))
-    self.x += -playerSpeed;
+    if(keyboard_check(ord('A')))
+        self.x += -playerSpeed;
+}
 </string>
           </argument>
         </arguments>
