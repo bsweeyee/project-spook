@@ -84,12 +84,14 @@ with (other)    {
             <kind>1</kind>
             <string>///destroy the collided item if correct enemy
 
-with (other)    {
+if (!other.isDead)    {
+    with (other)    {
     /*
      * likely will have to do instance destroy on enemy object due to animation
      */
-     
-    isDead = true;
+        image_alpha = 1; 
+        isDead = true;
+    }
 }
 </string>
           </argument>

@@ -65,13 +65,16 @@
     <objects name="non_living_objects">
       <objects name="tiles">
         <object>objects\object_Solid</object>
+        <object>objects\object_InvisibleWall</object>
         <objects name="tile_types">
           <object>objects\object_tile_1</object>
         </objects>
       </objects>
       <objects name="hitbox">
         <object>objects\object_HitboxCircle_1</object>
-        <object>objects\object_Projectile</object>
+        <object>objects\object_Common_Projectile</object>
+        <object>objects\object_Projectile_1</object>
+        <object>objects\object_Projectile_2</object>
       </objects>
       <objects name="player_items">
         <object>objects\object_Torch</object>

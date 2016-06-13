@@ -31,6 +31,9 @@ timeBeforeAttack = 0;
 damageToPlayer = 0;
 
 isDead = false;
+
+deathCount = 0;
+image_alpha = 0;
 </string>
           </argument>
         </arguments>
@@ -53,7 +56,7 @@ isDead = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///timeBeforeAttack starts counting down. if it becomes zero, player becomes damaged and disappears
+            <string>///timeBeforeAttack starts counting down. if it becomes zero, ghost burst into projectiles
 
 timeBeforeAttack -= 1;
 
@@ -62,8 +65,7 @@ if (timeBeforeAttack &lt;= 0) {
      *  animation plays before reducing life, hence, this code is likely on player side
      */
 
-    isDead = true;
-    instance_destroy();    
+    isDead = true; 
 }
 </string>
           </argument>
@@ -85,8 +87,35 @@ if (timeBeforeAttack &lt;= 0) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///when isDead is true, spawn item
+            <string>///when isDead is true, start counting down to death
 if (isDead) {
+    deathCount -= 1;
+    image_alpha -= (1/room_speed);
+    image_xscale += (1/room_speed);
+    image_yscale += (1/room_speed);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///when deathCount is 0, destroy
+if (deathCount &lt;= 0)    {
     createRandomDrop(x, y);
     instance_destroy();
 }
