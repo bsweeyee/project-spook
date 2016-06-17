@@ -2,15 +2,23 @@
 var xPos = argument[0];
 var yPos = argument[1];
 
-var value = round(random(5));
+var value = irandom(30);
 
 switch (value)  {
-    case 0:
+    case 7:
+    case 8:
+    case 9:
     instance_create(xPos, yPos, object_Ectoplasm);
     break;
     
-    case 1:
+    case 12:
+    case 13:
+    case 14:
     instance_create(xPos, yPos, object_Coin);
+    break;
+    
+    case 20:
+    instance_create(xPos, yPos, object_Cigar_Drop);
     break;
     
     default:

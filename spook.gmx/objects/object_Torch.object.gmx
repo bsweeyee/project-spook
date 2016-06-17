@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>///torch attributes
 
-torchLife = room_speed * 60;
+torchLife = room_speed * 5;
 isOn = false;
 canOn = true;
 
@@ -147,6 +147,7 @@ if (mouse_check_button(mb_left) &amp;&amp; torchLife &gt; 0 &amp;&amp; canOn)   
          lightHitBox = instance_create(mouse_x, mouse_y, object_HitboxCircle_1);
     }
 } else  {
+    global.combo = 0;
     isOn = false
 }
 
@@ -349,6 +350,8 @@ else {
     draw_sprite(sprite_DashedCircle, 0, torch_XPos, torch_YPos);
 }
 
+draw_set_blend_mode(bm_max);
+
 var cigRadius = object_Cig.meter;
 var length = object_Cig.meter/200*20;
 
@@ -357,6 +360,7 @@ draw_set_alpha((1/object_Cig.meter));
 for(var i = 0; i&lt;(object_Cig.meter); i++)
     draw_circle(object_Cig.x+length, object_Cig.y+2.5, (cigRadius - (cigRadius/object_Cig.meter*i)), false);
 
+    
 draw_set_alpha(1);
 draw_set_blend_mode(bm_normal);
 surface_reset_target();

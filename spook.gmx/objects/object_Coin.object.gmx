@@ -27,9 +27,6 @@
             <kind>1</kind>
             <string>///initialize speeds
 event_inherited();
-hsp = 0;
-vsp = -5;
-grav = 0.2;
 </string>
           </argument>
         </arguments>

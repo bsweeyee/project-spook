@@ -32,6 +32,9 @@ playerLifeMessage = "player life: ";
 spawnerTimerMessage = "spawner timer: ";
 torchLifeMessage = "torch Life: ";
 playerScoreMessage = "score: ";
+playerCigarMessage = "cigar: ";
+playerComboMessage = "combo: ";
+
 </string>
           </argument>
         </arguments>
@@ -52,8 +55,10 @@ playerScoreMessage = "score: ";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///create global player score
+            <string>///create global player score and combo
 global.playerScore = 0;
+
+global.combo = 0;
 </string>
           </argument>
         </arguments>
@@ -129,6 +134,14 @@ if (showDebug)  {
      //draw score
     draw_text(10, 70, playerScoreMessage);
     draw_text(110, 70, global.playerScore);
+    
+    //draw combo
+    draw_text(10, 90, playerComboMessage);
+    draw_text(110, 90, global.combo);
+    
+    //draw cigar number
+    draw_text(10, 110, playerCigarMessage);
+    draw_text(110, 110, object_Player_1_Stub.cigarAmount);
 }
 </string>
           </argument>

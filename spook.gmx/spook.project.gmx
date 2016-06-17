@@ -26,6 +26,7 @@
     </sprites>
     <sprites name="sprite_others">
       <sprite>sprites\sprite_Solid</sprite>
+      <sprite>sprites\sprite_Fog</sprite>
     </sprites>
     <sprites name="sprite_items">
       <sprite>sprites\sprite_Coin</sprite>
@@ -45,6 +46,7 @@
   <objects name="objects">
     <objects name="controller">
       <object>objects\object_Controller</object>
+      <object>objects\object_Fog_Controller</object>
     </objects>
     <objects name="characters">
       <objects name="player">
@@ -73,6 +75,7 @@
       </objects>
       <objects name="hitbox">
         <object>objects\object_HitboxCircle_1</object>
+        <object>objects\object_HitboxCircle_2</object>
         <object>objects\object_Common_Projectile</object>
         <object>objects\object_Projectile_1</object>
         <object>objects\object_Projectile_2</object>
@@ -83,10 +86,12 @@
       </objects>
       <objects name="game_items">
         <object>objects\object_CommonItemTraits</object>
+        <object>objects\object_Cigar_Drop</object>
         <object>objects\object_Ectoplasm</object>
         <object>objects\object_Coin</object>
       </objects>
       <object>objects\object_Cigar_minigame</object>
+      <object>objects\object_Fog</object>
     </objects>
   </objects>
   <rooms name="rooms">

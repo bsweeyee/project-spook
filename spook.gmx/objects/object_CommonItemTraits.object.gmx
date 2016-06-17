@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>///initialize speeds
 hsp = 0;
-vsp = 0;
+vsp = -5;
 grav = 0.2;
 </string>
           </argument>

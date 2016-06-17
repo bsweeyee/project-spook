@@ -33,7 +33,7 @@ offsetY = -8;
 self.x = object_CommonPlayerTraits.x;
 self.y = object_CommonPlayerTraits.y;
 
-hitboxInstance = instance_create(x+32, y, object_HitboxCircle_1);
+hitboxInstance = instance_create(x+32, y, object_HitboxCircle_2);
 hitboxInstance.image_xscale = (1/130) * (meter*2);
 hitboxInstance.image_yscale = (1/130) * (meter*2); 
 </string>
