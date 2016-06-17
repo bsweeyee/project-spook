@@ -27,7 +27,6 @@
             <kind>1</kind>
             <string>///initialize traits
 timeBeforeAttack = room_speed * 5 * 0.5;
-damageToPlayer = 1;
 
 isDead = false;
 
@@ -55,10 +54,8 @@ image_alpha = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///when spawning and image_alpha = 0, increase alpha
-if (image_alpha &lt; 1 &amp;&amp; !isDead)    {
-    image_alpha += (1/room_speed);
-}
+            <string>///run parent code
+event_inherited();
 </string>
           </argument>
         </arguments>
@@ -115,8 +112,41 @@ if (deathCount == (3*room_speed)/4) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///run parent code
-event_inherited();
+            <string>///when spawning and image_alpha = 0, increase alpha
+if (image_alpha &lt; 1 &amp;&amp; !isDead)    {
+    image_alpha += (1/room_speed);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///timeBeforeAttack starts counting down. if it becomes zero, ghost burst into projectiles
+
+timeBeforeAttack -= 1;
+
+if (timeBeforeAttack &lt;= 0) {
+    /*
+     *  animation plays before reducing life, hence, this code is likely on player side
+     */
+
+    isDead = true; 
+}
 </string>
           </argument>
         </arguments>

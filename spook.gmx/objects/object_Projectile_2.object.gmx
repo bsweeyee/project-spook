@@ -72,8 +72,8 @@ event_inherited();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///when image_alpha = 0, destroy
-if (image_alpha == 0)   {
+            <string>///when image_alpha &lt;= 0.1, destroy
+if (image_alpha &lt;= 0.1)   {
     instance_destroy();
 }
 </string>
@@ -99,7 +99,7 @@ if (image_alpha == 0)   {
           <argument>
             <kind>1</kind>
             <string>///when collide with hitbox, image_alpha decrease
-image_alpha -= (1/(room_speed*2));
+image_alpha -= (1/(room_speed));
 </string>
           </argument>
         </arguments>

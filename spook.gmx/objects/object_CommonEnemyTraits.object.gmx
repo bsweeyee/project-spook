@@ -28,7 +28,6 @@
             <string>///initialize common traits
 
 timeBeforeAttack = 0;
-damageToPlayer = 0;
 
 isDead = false;
 
@@ -40,37 +39,6 @@ image_alpha = 0;
       </action>
     </event>
     <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///timeBeforeAttack starts counting down. if it becomes zero, ghost burst into projectiles
-
-timeBeforeAttack -= 1;
-
-if (timeBeforeAttack &lt;= 0) {
-    /*
-     *  animation plays before reducing life, hence, this code is likely on player side
-     */
-
-    isDead = true; 
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
       <action>
         <libid>1</libid>
         <id>603</id>

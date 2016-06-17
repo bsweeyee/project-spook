@@ -9,6 +9,8 @@
     <sprites name="sprite_enemy">
       <sprite>sprites\sprite_Enemy_Type_1</sprite>
       <sprite>sprites\sprite_Enemy_Wrong_Type_1</sprite>
+      <sprite>sprites\sprite_Enemy_Moving</sprite>
+      <sprite>sprites\sprite_Enemy_Moving_2</sprite>
     </sprites>
     <sprites name="sprite_hit_objects">
       <sprite>sprites\spriteHitBoxCircle_1</sprite>
@@ -51,14 +53,13 @@
       </objects>
       <objects name="mob">
         <object>objects\object_CommonEnemyTraits</object>
-        <object>objects\object_CommonWrongEnemyTraits</object>
         <object>objects\object_CommonSpawnerTraits</object>
         <objects name="stationary">
           <object>objects\object_Enemy_Stationary_Type1</object>
-          <object>objects\object_Enemy_Stationary_Wrong_Type1</object>
         </objects>
         <objects name="moving">
           <object>objects\object_Enemy_Moving_Type1</object>
+          <object>objects\object_Enemy_Moving_Type2</object>
         </objects>
       </objects>
     </objects>
