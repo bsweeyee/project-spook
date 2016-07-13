@@ -8,6 +8,7 @@
   <sprites name="sprites">
     <sprites name="sprite_enemy">
       <sprite>sprites\sprite_Enemy_Type_1</sprite>
+      <sprite>sprites\sprite_Enemy_Herring_1</sprite>
       <sprite>sprites\sprite_Enemy_Shadow_1</sprite>
       <sprite>sprites\sprite_Enemy_Wrong_Type_1</sprite>
       <sprite>sprites\sprite_Enemy_Moving</sprite>
@@ -45,6 +46,7 @@
     <script>scripts\initializeGame.gml</script>
     <script>scripts\createRandomDrop.gml</script>
     <script>scripts\getStageTimer.gml</script>
+    <script>scripts\chooseEnemy.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="controller">
@@ -58,11 +60,11 @@
       </objects>
       <objects name="mob">
         <object>objects\object_CommonEnemyTraits</object>
+        <object>objects\object_CommonHerringTraits</object>
         <object>objects\object_CommonSpawnerTraits</object>
-        <objects name="stationary">
-          <object>objects\object_Enemy_Stationary_Type1</object>
-        </objects>
         <objects name="moving">
+          <object>objects\object_Enemy_Default</object>
+          <object>objects\object_Enemy_Default_Herring</object>
           <object>objects\object_Enemy_Moving_Type1</object>
           <object>objects\object_Enemy_Moving_Type2</object>
         </objects>

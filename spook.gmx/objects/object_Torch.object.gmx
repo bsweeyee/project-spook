@@ -146,7 +146,6 @@ if (mouse_check_button(mb_left) &amp;&amp; canOn)    {
          lightHitBox = instance_create(mouse_x, mouse_y, object_Hitbox_TorchDefault);
     }
 } else  {
-    global.combo = 0;
     isOn = false
 }
 

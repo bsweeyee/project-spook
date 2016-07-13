@@ -87,6 +87,9 @@ if (deathCount &lt;= 0)    {
     createRandomDrop(x, y);
     global.combo += 1;
     object_Controller.comboTimer = object_Controller.MAX_COMBO_TIMER;
+    if (global.enemyCount &gt; 0)  {
+        global.enemyCount -= 1;
+    }
     instance_destroy();
 }
 </string>
@@ -113,6 +116,30 @@ if (deathCount &lt;= 0)    {
 if (image_alpha &lt; 1 &amp;&amp; !isDead)    {
     image_alpha += (1/room_speed);
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="object_Player_1_Stub">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///when collide with player, destroy itself
+isDead = true;
 </string>
           </argument>
         </arguments>

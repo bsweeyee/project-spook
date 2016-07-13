@@ -26,12 +26,13 @@
           <argument>
             <kind>1</kind>
             <string>/// initialise parameters
+global.enemyCount = 0;
+
 maxenemies = 5;
 spawnrate = 1;
 timer = spawnrate;
 dt = 0.02;
 isSpawn = false;
-mob = object_Enemy_Stationary_Type1;
 spawnAreaWidth = room_width;
 spawnAreaHeight = 600;
 spawnAreaPosX = 0;
@@ -61,8 +62,10 @@ spawnAreaPosY = 0;
             <string>///spawn mobs
 X = random(spawnAreaPosX + spawnAreaWidth);
 Y = random(spawnAreaPosY + spawnAreaHeight);
-if(isSpawn &amp;&amp; instance_number(mob) &lt; maxenemies)
-    instance_create(X, Y, mob);
+if(isSpawn &amp;&amp; global.enemyCount &lt;= maxenemies)  {
+    instance_create(X, Y, chooseEnemy());
+    global.enemyCount += 1;
+}
 isSpawn = false;
 </string>
           </argument>

@@ -25,86 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///adjust size and alpha
-image_xscale = 1.2;
-image_yscale = 1.2;
-
-image_alpha = 0;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>///initialize movement variables
 
-alarm[0] = room_speed;
-isMoveRight = true;
+isMoveDown = false;
+isMoveRight = false;
 isMoveLeft = false;
-hsp = 1;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///create stage timer
-timeLimit = getStageTimer(room);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///when timer is up, change direction
-isMoveRight = !isMoveRight;
-isMoveLeft  = !isMoveLeft;
-
-alarm[0] = room_speed;
 </string>
           </argument>
         </arguments>
@@ -127,38 +52,19 @@ alarm[0] = room_speed;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///make mist move left and right
-if (isMoveRight)    {
-    x += hsp;
-} else if (isMoveLeft)  {
-    x -= hsp;
+            <string>///check where mist is spawned at
+if (isMoveDown) {
+    vspeed = 0.1;
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///spawn mist and keep it at alpha 0.4
 
-if (image_alpha &lt; 0.6)  {
-    image_alpha += 0.01;
-} else if (image_alpha &gt;= 0.6) {
-    image_alpha = 0.6;
+if (isMoveRight)    {
+    image_angle = 90;
+    hspeed = 0.1;
+}
+
+if (isMoveLeft) {
+    image_angle = 270;
+    hspeed = -0.1;
 }
 </string>
           </argument>

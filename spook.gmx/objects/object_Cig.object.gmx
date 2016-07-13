@@ -87,10 +87,10 @@ self.y = object_CommonPlayerTraits.y + offsetY;
             <kind>1</kind>
             <string>///make sure hit box on cig is constantly updated
 
-hitboxInstance.x = x+32;
+hitboxInstance.x = x+16;
 hitboxInstance.y = y;
-hitboxInstance.image_xscale = (1/130) * (meter*2);
-hitboxInstance.image_yscale = (1/130) * (meter*2); 
+hitboxInstance.image_xscale = (1/130) * (meter*1.7);
+hitboxInstance.image_yscale = (1/130) * (meter*1.7); 
 </string>
           </argument>
         </arguments>
