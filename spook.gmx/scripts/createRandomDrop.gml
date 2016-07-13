@@ -5,12 +5,6 @@ var yPos = argument[1];
 var value = irandom(30);
 
 switch (value)  {
-    case 7:
-    case 8:
-    case 9:
-    instance_create(xPos, yPos, object_Ectoplasm);
-    break;
-    
     case 12:
     case 13:
     case 14:

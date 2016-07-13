@@ -26,9 +26,11 @@
           <argument>
             <kind>1</kind>
             <string>///initialize traits
-timeBeforeAttack = room_speed * 5 * 0.5;
+
+MAX_HP = room_speed;
 
 isDead = false;
+hp = MAX_HP;
 
 deathCount = room_speed;
 image_alpha = 0;
@@ -79,73 +81,39 @@ event_inherited();
             <string>///when dead, create projectiles
 if (deathCount == (3*room_speed)/4) {
     for (var i=0; i&lt;6;i++)  {
-        var inst = instance_create(x, y, object_Projectile_1);
+        var inst = instance_create(x, y, object_Projectile_Default);
         inst.direction = 60*(i+1);
         inst.speed = 2; 
     }
-    
-    if (timeBeforeAttack &lt;= 0)  {
-            for (var i=0; i&lt;6;i++)  {
-            var inst = instance_create(x, y, object_Projectile_1);
-            inst.direction = 60*(i+1) + 30;
-            inst.speed = 4; 
-        }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///checks if colliding with light hitbox, if so, show enemy, else show shadow
+if (place_meeting(x, y, object_Hitbox_TorchDefault))  {
+    sprite_index = sprite_Enemy_Type_1;
+} else  {
+    sprite_index = sprite_Enemy_Shadow_1;
+    if (hp &lt; MAX_HP &amp;&amp; !isDead)    {
+        hp += 1;
     }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///when spawning and image_alpha = 0, increase alpha
-if (image_alpha &lt; 1 &amp;&amp; !isDead)    {
-    image_alpha += (1/room_speed);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///timeBeforeAttack starts counting down. if it becomes zero, ghost burst into projectiles
-
-timeBeforeAttack -= 1;
-
-if (timeBeforeAttack &lt;= 0) {
-    /*
-     *  animation plays before reducing life, hence, this code is likely on player side
-     */
-
-    isDead = true; 
 }
 </string>
           </argument>

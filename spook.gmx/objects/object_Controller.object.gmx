@@ -55,10 +55,14 @@ playerComboMessage = "combo: ";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///create global player score and combo
+            <string>///create global player score, combo and comboTimer
+MAX_COMBO_TIMER = room_speed * 2.5;
+
 global.playerScore = 0;
 
 global.combo = 0;
+
+comboTimer = MAX_COMBO_TIMER;
 </string>
           </argument>
         </arguments>
@@ -91,6 +95,32 @@ if (showDebug)  {
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///checks if 5 seconds have passed and resets combo if so
+if (comboTimer &lt;= 0)    {
+    global.combo = 0;
+} else  {
+    comboTimer -= 1;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="8" enumb="0">
       <action>
@@ -116,7 +146,7 @@ if (showDebug)  {
     for (var i=0; i &lt; instance_number(object_CommonEnemyTraits); i++)   {
         draw_set_color(c_white);
         var inst = instance_find(object_CommonEnemyTraits, i);
-        draw_text(inst.x, inst.y - 50, inst.timeBeforeAttack);
+        draw_text(inst.x, inst.y - 50, inst.hp);
     }
     
     ///draw life of player
@@ -126,10 +156,6 @@ if (showDebug)  {
     //draw spawn timer
     draw_text(10, 30, spawnerTimerMessage);
     draw_text(140, 30, object_CommonSpawnerTraits.timer);
-    
-    //draw torch life
-    draw_text(10, 50, torchLifeMessage);
-    draw_text(110, 50, object_Torch.torchLife);
     
      //draw score
     draw_text(10, 70, playerScoreMessage);

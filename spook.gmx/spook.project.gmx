@@ -8,6 +8,7 @@
   <sprites name="sprites">
     <sprites name="sprite_enemy">
       <sprite>sprites\sprite_Enemy_Type_1</sprite>
+      <sprite>sprites\sprite_Enemy_Shadow_1</sprite>
       <sprite>sprites\sprite_Enemy_Wrong_Type_1</sprite>
       <sprite>sprites\sprite_Enemy_Moving</sprite>
       <sprite>sprites\sprite_Enemy_Moving_2</sprite>
@@ -76,11 +77,14 @@
         </objects>
       </objects>
       <objects name="hitbox">
-        <object>objects\object_HitboxCircle_1</object>
-        <object>objects\object_HitboxCircle_2</object>
-        <object>objects\object_Common_Projectile</object>
-        <object>objects\object_Projectile_1</object>
-        <object>objects\object_Projectile_2</object>
+        <object>objects\object_Hitbox_TorchCommon</object>
+        <object>objects\object_Hitbox_TorchDefault</object>
+        <object>objects\object_Hitbox_CigarLight</object>
+        <objects name="Projectiles">
+          <object>objects\object_Common_Projectile</object>
+          <object>objects\object_Projectile_Default</object>
+          <object>objects\object_Projectile_Fire</object>
+        </objects>
       </objects>
       <objects name="player_items">
         <object>objects\object_Torch</object>

@@ -187,7 +187,7 @@ if (isDead) {
 
 if (deathCount &lt;= 0)    {
     for (var i = 0; i&lt;12; i++)  {
-        var inst_projectile = instance_create(x, y, object_Projectile_2);
+        var inst_projectile = instance_create(x, y, object_Projectile_Fire);
         inst_projectile.direction = 30 * i;
         inst_projectile.speed = 5;
     }

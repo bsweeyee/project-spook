@@ -27,7 +27,6 @@
             <kind>1</kind>
             <string>///torch attributes
 
-torchLife = room_speed * 5;
 isOn = false;
 canOn = true;
 
@@ -139,12 +138,12 @@ lightHitBox = noone;
           <argument>
             <kind>1</kind>
             <string>///check if mouse left pressed
-if (mouse_check_button(mb_left) &amp;&amp; torchLife &gt; 0 &amp;&amp; canOn)    {
+if (mouse_check_button(mb_left) &amp;&amp; canOn)    {
     isOn = true;
     
     //when isOn is true, assign x and y position of mouse
     if (isOn &amp;&amp; lightHitBox == noone)   {
-         lightHitBox = instance_create(mouse_x, mouse_y, object_HitboxCircle_1);
+         lightHitBox = instance_create(mouse_x, mouse_y, object_Hitbox_TorchDefault);
     }
 } else  {
     global.combo = 0;
@@ -255,55 +254,6 @@ if (!isOn)  {
         instance_destroy();
     }
     lightHitBox = noone;   
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///when light is on, reduce battery life
-if (isOn)   {
-    torchLife -= 1;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///when battery life is 0, is on will always be false
-if (torchLife &lt;= 0) {
-    torchLife = 0;
-    isOn = false;
 }
 </string>
           </argument>

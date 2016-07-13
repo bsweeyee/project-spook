@@ -80,7 +80,7 @@ isTeleporting = false;
             <string>///when dead, create projectiles
 if (deathCount == (3*room_speed)/4) {
     for (var i=0; i&lt;6;i++)  {
-        var inst = instance_create(x, y, object_Projectile_2);
+        var inst = instance_create(x, y, object_Projectile_Fire);
         inst.direction = 60*(i+1);
         inst.speed = 5; 
     }

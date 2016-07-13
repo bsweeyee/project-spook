@@ -85,7 +85,7 @@ if (image_alpha &lt;= 0)   {
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="object_HitboxCircle_2">
+    <event eventtype="4" ename="object_Hitbox_CigarLight">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -109,7 +109,7 @@ image_alpha += 2/room_speed;
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="object_HitboxCircle_1">
+    <event eventtype="4" ename="object_Hitbox_TorchDefault">
       <action>
         <libid>1</libid>
         <id>603</id>
