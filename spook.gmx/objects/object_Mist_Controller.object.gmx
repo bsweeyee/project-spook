@@ -25,15 +25,67 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///debug messages
-showDebug = true;
+            <string>///mist attributes
+MAX_RADIUS = 1200;
+MIN_RADIUS = 10;
+MAX_HEIGHT = (room_height/2)+(MAX_RADIUS*0.4);
 
-playerLifeMessage = "player life: ";
-spawnerTimerMessage = "spawner timer: ";
-torchLifeMessage = "torch Life: ";
-playerScoreMessage = "score: ";
-playerCigarMessage = "cigar: ";
-playerComboMessage = "combo: ";
+mistRadius = MAX_RADIUS;
+mistPrecision = 250;
+mistAlpha = 0.8;
+
+circleHeight = MAX_HEIGHT;
+
+shrinkRadius = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///define mist surface
+global.mist = surface_create(room_width, room_height);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///define variables for moving towards or away from player
+TIME_BEFORE_MOVE = room_speed * 3;
+alarm[0] = TIME_BEFORE_MOVE;
+
+isMoveTowardsPlayer = true;
+isMoveAwayPlayer = false;
+
 
 </string>
           </argument>
@@ -55,18 +107,14 @@ playerComboMessage = "combo: ";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///create global player score, combo and comboTimer
-MAX_COMBO_TIMER = room_speed * 2.5;
-
-global.playerScore = 0;
-
-global.combo = 0;
-
-comboTimer = MAX_COMBO_TIMER;
+            <string>///create mist hitbox
+mist_hitbox = instance_create(room_width/2, circleHeight, object_Hitbox_Mist);
 </string>
           </argument>
         </arguments>
       </action>
+    </event>
+    <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -83,14 +131,9 @@ comboTimer = MAX_COMBO_TIMER;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///create 3 mist objects
-mist_1 = instance_create(room_width/2, -96, object_Mist);
-mist_2 = instance_create(-96, room_height*0.7155, object_Mist);
-mist_3 = instance_create(room_width+96, room_height*0.7155, object_Mist);
-
-mist_1.isMoveDown = true;
-mist_2.isMoveRight = true;
-mist_3.isMoveLeft = true;
+            <string>///if within time period no enemy kill, start increasing radius
+isMoveTowardsPlayer = true;
+isMoveAwayPlayer = false;
 </string>
           </argument>
         </arguments>
@@ -113,11 +156,13 @@ mist_3.isMoveLeft = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///press "r" to restart
-if (showDebug)  {
-    if (keyboard_check_pressed(ord('R')))   {
-        game_restart();
-    }   
+            <string>///check whether if at max radius and min radius, if so, stop increasing/reducing radius
+if (mistRadius &gt;= MAX_RADIUS) {
+    isMoveAwayPlayer = false;
+}
+
+if (mistRadius &lt;= MIN_RADIUS)   {
+    isMoveTowardsPlayer = false;
 }
 </string>
           </argument>
@@ -139,11 +184,18 @@ if (showDebug)  {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///checks if 5 seconds have passed and resets combo if so
-if (comboTimer &lt;= 0)    {
-    global.combo = 0;
-} else  {
-    comboTimer -= 1;
+            <string>///shrink/expand mist circle
+
+if (isMoveTowardsPlayer)    {
+    mistRadius -= shrinkRadius;
+    mist_hitbox.image_xscale -= 1/65;
+    mist_hitbox.image_yscale -= 1/65;
+}
+
+if (isMoveAwayPlayer)   {
+    mistRadius += shrinkRadius;
+    mist_hitbox.image_xscale += 1/65;
+    mist_hitbox.image_yscale += 1/65;
 }
 </string>
           </argument>
@@ -167,39 +219,29 @@ if (comboTimer &lt;= 0)    {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///draw debug message
-if (showDebug)  {
-    //for all enemies on the field, draw their death timers above them
-    
-    for (var i=0; i &lt; instance_number(object_CommonEnemyTraits); i++)   {
-        draw_set_color(c_white);
-        var inst = instance_find(object_CommonEnemyTraits, i);
-        draw_text(inst.x, inst.y - 50, inst.hp);
-    }
-    
-    ///draw life of player
-    draw_text(10, 10, playerLifeMessage);
-    draw_text(110, 10, object_Player_1_Stub.life); 
-    
-    //draw spawn timer
-    draw_text(10, 30, spawnerTimerMessage);
-    draw_text(140, 30, object_CommonSpawnerTraits.timer);
-    
-    //draw mist alarm
-    draw_text(10, 50, "mist alarm");
-    draw_text(110, 50, object_Mist_Controller.alarm[0]);
-    
-     //draw score
-    draw_text(10, 70, playerScoreMessage);
-    draw_text(110, 70, global.playerScore);
-    
-    //draw combo
-    draw_text(10, 90, playerComboMessage);
-    draw_text(110, 90, global.combo);
-    
-    //draw cigar number
-    draw_text(10, 110, playerCigarMessage);
-    draw_text(110, 110, object_Player_1_Stub.cigarAmount);
+            <string>///draw mist surface
+
+surface_set_target(global.mist);
+
+draw_clear_alpha(c_white, mistAlpha);
+draw_set_blend_mode(bm_subtract);
+
+draw_set_alpha(0.25);
+draw_set_circle_precision(128);
+
+for (var i=0;i&lt;mistPrecision;i++)   {
+    draw_circle_color(room_width/2, circleHeight, (mistRadius/mistPrecision)*i, c_black, c_black, false);
+}
+//draw_sprite_ext(sprite_Mist_2, -1, room_width/2, room_height/2, 2, 2, 0, c_white, 1); 
+
+draw_set_alpha(1);
+draw_set_blend_mode(bm_normal);
+surface_reset_target();
+
+if (surface_exists(global.mist)) {
+    draw_surface(global.mist,0,0);
+} else {
+    global.light=surface_create(room_width,room_height);
 }
 </string>
           </argument>

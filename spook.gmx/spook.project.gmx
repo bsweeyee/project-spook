@@ -30,6 +30,7 @@
       <sprite>sprites\sprite_Solid</sprite>
       <sprite>sprites\sprite_Fog</sprite>
       <sprite>sprites\sprite_Mist</sprite>
+      <sprite>sprites\sprite_Mist_2</sprite>
     </sprites>
     <sprites name="sprite_items">
       <sprite>sprites\sprite_Coin</sprite>
@@ -52,6 +53,7 @@
     <objects name="controller">
       <object>objects\object_Controller</object>
       <object>objects\object_Fog_Controller</object>
+      <object>objects\object_Mist_Controller</object>
     </objects>
     <objects name="characters">
       <objects name="player">
@@ -82,6 +84,7 @@
         <object>objects\object_Hitbox_TorchCommon</object>
         <object>objects\object_Hitbox_TorchDefault</object>
         <object>objects\object_Hitbox_CigarLight</object>
+        <object>objects\object_Hitbox_Mist</object>
         <objects name="Projectiles">
           <object>objects\object_Common_Projectile</object>
           <object>objects\object_Projectile_Default</object>
