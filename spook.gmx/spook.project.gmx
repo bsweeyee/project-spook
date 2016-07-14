@@ -10,6 +10,7 @@
       <sprite>sprites\sprite_Enemy_Type_1</sprite>
       <sprite>sprites\sprite_Enemy_Herring_1</sprite>
       <sprite>sprites\sprite_Enemy_Shadow_1</sprite>
+      <sprite>sprites\sprite_Enemy_Type_2</sprite>
       <sprite>sprites\sprite_Enemy_Wrong_Type_1</sprite>
       <sprite>sprites\sprite_Enemy_Moving</sprite>
       <sprite>sprites\sprite_Enemy_Moving_2</sprite>
@@ -67,6 +68,7 @@
         <objects name="moving">
           <object>objects\object_Enemy_Default</object>
           <object>objects\object_Enemy_Default_Herring</object>
+          <object>objects\object_Enemy_spookyHands</object>
           <object>objects\object_Enemy_Moving_Type1</object>
           <object>objects\object_Enemy_Moving_Type2</object>
         </objects>

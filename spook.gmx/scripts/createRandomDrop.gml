@@ -2,7 +2,7 @@
 var xPos = argument[0];
 var yPos = argument[1];
 
-var value = irandom(15);
+var value = irandom(10);
 
 switch (value)  {
     case 4:

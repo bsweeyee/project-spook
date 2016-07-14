@@ -12,6 +12,10 @@ switch (enemyType)  {
     enemy = object_Enemy_Default_Herring;
     break;
     
+    case 2:
+    enemy = object_Enemy_spookyHands;
+    break;
+    
     default:
     enemy = object_Enemy_Default_Herring;
     break;

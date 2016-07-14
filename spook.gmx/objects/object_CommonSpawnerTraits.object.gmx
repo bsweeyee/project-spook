@@ -34,7 +34,7 @@ timer = spawnrate;
 dt = 0.02;
 isSpawn = false;
 spawnAreaWidth = room_width;
-spawnAreaHeight = 600;
+spawnAreaHeight = room_height - 300;
 spawnAreaPosX = 0;
 spawnAreaPosY = 0;
 </string>
