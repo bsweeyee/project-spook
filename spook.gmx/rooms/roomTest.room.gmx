@@ -52,13 +52,9 @@
   </views>
   <instances>
     <instance objName="object_tile_1" x="0" y="736" name="inst_99D6F105" locked="0" code="" scaleX="40" scaleY="4" colour="4294967295" rotation="0"/>
-    <instance objName="object_Enemy_Default" x="160" y="448" name="inst_8546C87D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="object_Enemy_Default" x="768" y="320" name="inst_D2496203" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="object_Enemy_Default" x="864" y="448" name="inst_DB90CC47" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="object_CommonSpawnerTraits" x="0" y="0" name="inst_8FCFE5EB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="object_InvisibleWall" x="0" y="864" name="inst_8CAA93D5" locked="0" code="" scaleX="40" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="object_InvisibleWall" x="0" y="704" name="inst_6BDB6C5B" locked="0" code="" scaleX="40" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="object_Enemy_Default" x="512" y="352" name="inst_B0B20B9A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

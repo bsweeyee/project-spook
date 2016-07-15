@@ -11,7 +11,8 @@
       <sprite>sprites\sprite_Enemy_Herring_1</sprite>
       <sprite>sprites\sprite_Enemy_Shadow_1</sprite>
       <sprite>sprites\sprite_Enemy_Type_2</sprite>
-      <sprite>sprites\sprite_Enemy_Wrong_Type_1</sprite>
+      <sprite>sprites\sprite_Enemy_Type_3</sprite>
+      <sprite>sprites\sprite_Enemy_Shadow_3</sprite>
       <sprite>sprites\sprite_Enemy_Moving</sprite>
       <sprite>sprites\sprite_Enemy_Moving_2</sprite>
     </sprites>
@@ -19,6 +20,7 @@
       <sprite>sprites\spriteHitBoxCircle_1</sprite>
       <sprite>sprites\sprite_DashedCircle</sprite>
       <sprite>sprites\sprite_Projectile_1</sprite>
+      <sprite>sprites\sprite_Projectile_1_Destroyed</sprite>
       <sprite>sprites\sprite_Projectile_2</sprite>
     </sprites>
     <sprites name="sprite_player">
@@ -69,6 +71,8 @@
           <object>objects\object_Enemy_Default</object>
           <object>objects\object_Enemy_Default_Herring</object>
           <object>objects\object_Enemy_spookyHands</object>
+          <object>objects\object_Enemy_Split</object>
+          <object>objects\object_Enemy_Mini</object>
           <object>objects\object_Enemy_Moving_Type1</object>
           <object>objects\object_Enemy_Moving_Type2</object>
         </objects>
@@ -90,6 +94,7 @@
         <objects name="Projectiles">
           <object>objects\object_Common_Projectile</object>
           <object>objects\object_Projectile_Default</object>
+          <object>objects\object_Projectile_Default_Destroy</object>
           <object>objects\object_Projectile_Fire</object>
         </objects>
       </objects>

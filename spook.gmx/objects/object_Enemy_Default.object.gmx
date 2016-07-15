@@ -86,6 +86,29 @@ timeBeforeAttack = MAX_TIMER;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///variable to create projectile
+hasCreatedProjectile = false;
+isCreateProjectile = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
@@ -127,12 +150,13 @@ event_inherited();
           <argument>
             <kind>1</kind>
             <string>///when dead, create projectiles
-if (deathCount == (3*room_speed)/4) {
+if (isCreateProjectile) {
     for (var i=0; i&lt;6;i++)  {
         var inst = instance_create(x, y, object_Projectile_Default);
         inst.direction = 60*(i+1);
         inst.speed = 2; 
     }
+    isCreateProjectile = false;
 }
 </string>
           </argument>
@@ -245,9 +269,14 @@ if (timeBeforeAttack &lt;= 0 &amp;&amp; !isDead)  {
             <kind>1</kind>
             <string>///when dead, do death animation
 if (isDead) {
+    speed = 0;
     image_alpha -= (1/room_speed);
     image_xscale += (1/room_speed);
     image_yscale += (1/room_speed);
+    if (!hasCreatedProjectile)  {
+        isCreateProjectile = true;
+        hasCreatedProjectile = true;
+    }
 }
 </string>
           </argument>

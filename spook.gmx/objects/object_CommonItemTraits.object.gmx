@@ -29,6 +29,8 @@
 hsp = 0;
 vsp = -5;
 grav = 0.2;
+
+ground = 800;
 </string>
           </argument>
         </arguments>

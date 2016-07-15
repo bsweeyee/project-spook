@@ -200,6 +200,7 @@ if (showDebug)  {
     //draw cigar number
     draw_text(10, 110, playerCigarMessage);
     draw_text(110, 110, object_Player_1_Stub.cigarAmount);
+    
 }
 </string>
           </argument>

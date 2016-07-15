@@ -28,6 +28,8 @@
             <string>///initialize common attribute
 image_alpha = 0;
 damage = 5;
+
+destroyedProjectile = object_Projectile_Default_Destroy;
 </string>
           </argument>
         </arguments>
