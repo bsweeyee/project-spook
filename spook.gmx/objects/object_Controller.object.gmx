@@ -185,10 +185,10 @@ if (showDebug)  {
     draw_text(10, 30, spawnerTimerMessage);
     draw_text(140, 30, object_CommonSpawnerTraits.timer);
     
-    //draw mist alarm
+    /*/draw mist alarm
     draw_text(10, 50, "mist alarm");
     draw_text(110, 50, object_Mist_Controller.alarm[0]);
-    
+    */
      //draw score
     draw_text(10, 70, playerScoreMessage);
     draw_text(110, 70, global.playerScore);
