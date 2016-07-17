@@ -27,18 +27,20 @@
             <kind>1</kind>
             <string>///initialise re-light minigame variables
 
-currentLighterPosition = random(x);
+currentLighterPosition = random(512);
 lighterSpeed = 20;
 moveRight = true;
 moveLeft = false;
 
 drawMessage = false;
 
-startXPosition = (room_width/4);
+startXPosition = ((room_width/2) - 256);
 startYPosition = (y + 96); 
 
 image_xscale = 4;
 image_yscale = 4;
+
+isStopped = false;
 </string>
           </argument>
         </arguments>
@@ -93,9 +95,9 @@ message_0 = "ye treating this seriously, boy?";
 object_Player_1_Stub.canMove = true;
 object_Torch.canOn = true;
 
-if (currentLighterPosition &gt; x || currentLighterPosition &lt; 0) {
+if (currentLighterPosition &gt; 512 || currentLighterPosition &lt; 0) {
 } else  {
-    object_Player_1_Stub.life = (currentLighterPosition/x) * object_Player_1_Stub.MAX_HEALTH;   
+    object_Player_1_Stub.life = (currentLighterPosition/512) * object_Player_1_Stub.MAX_HEALTH;   
 }
 
 instance_destroy();
@@ -121,10 +123,16 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///make lighter move at random speeds
-//lighterSpeed = random(50);
-
-
+            <string>///check if lighter needs to move right or left
+if (!isStopped)  {
+if (currentLighterPosition &lt; 0) {
+    moveRight = true;
+    moveLeft = false;
+} else if (currentLighterPosition &gt; 512) {
+    moveLeft = true;
+    moveRight = false;
+}
+}
 </string>
           </argument>
         </arguments>
@@ -145,13 +153,12 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///check if lighter needs to move right or left
-if (currentLighterPosition &lt; -64)    {
-    moveRight = true;
-    moveLeft = false;
-} else if (currentLighterPosition &gt; x + 64)  {
-    moveLeft = true;
-    moveRight = false;
+            <string>///when E is pressed, stop lighter at current position
+if (keyboard_check_pressed(ord('E')))   {
+    isStopped = true;
+    lighterSpeed = 0;
+    drawMessage = true;
+    alarm[0] = room_speed;
 }
 </string>
           </argument>
@@ -181,33 +188,6 @@ if (moveRight)  {
 if (moveLeft)   {
     currentLighterPosition -= lighterSpeed;
 }   
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///when E is pressed, stop lighter at current position
-if (keyboard_check_pressed(ord('E')))   {
-    moveRight = false;
-    moveLeft = false;
-    drawMessage = true;
-    alarm[0] = room_speed;
-}
 </string>
           </argument>
         </arguments>
@@ -257,10 +237,12 @@ draw_rectangle(startXPosition + currentLighterPosition, startYPosition, startXPo
             <string>///draw message
 if (drawMessage)    {
 
-if (currentLighterPosition &gt; x || currentLighterPosition &lt; 0)   {
+if (currentLighterPosition &gt; 512 || currentLighterPosition &lt; 0)   {
     draw_text(x-32, y-96, message_0);
 } else  {
     var messageType = currentLighterPosition/128;
+    
+    
     
     switch(round(messageType))  {
         case 0:
@@ -281,6 +263,9 @@ if (currentLighterPosition &gt; x || currentLighterPosition &lt; 0)   {
         
         case 4:
         draw_text(x-32, y-96, message_5);
+        break;
+        
+        default:
         break;
     }
     }

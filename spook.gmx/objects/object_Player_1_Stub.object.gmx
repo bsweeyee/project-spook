@@ -70,7 +70,7 @@ instance_create(self.x, self.y, object_Cig);
           <argument>
             <kind>1</kind>
             <string>///initialize cigar number
-cigarAmount = 0;
+cigarAmount = 5;
 </string>
           </argument>
         </arguments>
