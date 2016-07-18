@@ -8,7 +8,7 @@ switch (value)  {
     case 4:
     case 5:
     case 6:
-    instance_create(xPos, yPos, object_Coin);
+    //instance_create(xPos, yPos, object_Coin);
     break;
     
     case 10:

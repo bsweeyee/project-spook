@@ -108,7 +108,7 @@ isMoveAwayPlayer = false;
             <string>///check to move towards or away player
 if (isMoveTowardsPlayer)   {
     hspeed = image_xscale * mistSpeed;
-}
+} 
 
 if (isMoveAwayPlayer)    {
     hspeed = -image_xscale * mistSpeed * 3;
@@ -134,9 +134,11 @@ if (isMoveAwayPlayer)    {
           <argument>
             <kind>1</kind>
             <string>///if mist is outside of screen, stop moving
-if ((x+(sprite_Mist_2.sprite_width/2)) &lt; 0 || (x-sprite_Mist_2.sprite_width/2) &gt; room_width) {
+if (!isMoveTowardsPlayer)   {
+if ((x+(sprite_Mist_2.sprite_width/2)) &lt; 0 || ((x-sprite_Mist_2.sprite_width/2)) &gt; room_width) {
     isMoveAwayPlayer = false;
     hspeed = 0;
+}
 }
 </string>
           </argument>

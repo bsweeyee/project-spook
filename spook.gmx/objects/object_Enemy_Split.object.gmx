@@ -48,13 +48,17 @@ event_inherited();
           <argument>
             <kind>1</kind>
             <string>///initialize variables
-MAX_HP = room_speed * 1.5;
+
+//overwrite some variables
+MAX_HP *= 1.5;
 
 hp = MAX_HP;
-isDead = false;
 
-deathCount = room_speed * 0.5;
-image_alpha = 0;
+deathCount *= 0.5;
+
+BASE_SCORE = 0;
+
+scoreValue = BASE_SCORE;
 
 speed = irandom(2) + 2;
 direction = irandom(360);

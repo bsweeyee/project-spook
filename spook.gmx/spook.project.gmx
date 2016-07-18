@@ -51,6 +51,9 @@
     <script>scripts\getStageTimer.gml</script>
     <script>scripts\chooseEnemy.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\font_BettyNoir</font>
+  </fonts>
   <objects name="objects">
     <objects name="controller">
       <object>objects\object_Controller</object>

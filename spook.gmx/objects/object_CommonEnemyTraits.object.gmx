@@ -27,18 +27,23 @@
             <kind>1</kind>
             <string>///initialize common traits
 
-hp = 0;
+MAX_HP = room_speed;
+BASE_SCORE = MAX_HP * 50;
+
+hp = MAX_HP;
 
 isDead = false;
 
-deathCount = 0;
 image_alpha = 0;
+
+scoreValue = BASE_SCORE;
+
+deathCount = room_speed;
+
 </string>
           </argument>
         </arguments>
       </action>
-    </event>
-    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -55,14 +60,37 @@ image_alpha = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///when isDead is true, start counting down to death
-if (isDead) {
-    deathCount -= 1;
-}
+            <string>///position of text
+text_X = x;
+text_Y = y;
 </string>
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>  ///text for score
+scoreText = "";
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -97,6 +125,9 @@ if (deathCount &lt;= 0)    {
         }
     }
     
+    //add score
+    global.playerScore += scoreValue * (global.combo+1);
+    
     instance_destroy();
 }
 </string>
@@ -127,6 +158,72 @@ if (image_alpha &lt; 1 &amp;&amp; !isDead)    {
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///when dead, reduce death count
+if (isDead) {
+    image_alpha -= (1/room_speed);
+    deathCount -= 1;
+    text_Y -= 2;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="object_Hitbox_TorchCommon">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///destroy the collided item if correct enemy
+
+if (!isDead)    {
+    image_alpha = 1;
+        
+    if (hp &lt;= 0)    {
+        text_X = x;
+        text_Y = y;
+        
+        if (scoreValue &gt; 0) { 
+            scoreText = "+" + string(scoreValue * (global.combo+1));
+        }
+        isDead = true;
+    } else  {
+        hp -= 1;
+    }
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="4" ename="object_Player_1_Stub">
       <action>
@@ -145,8 +242,41 @@ if (image_alpha &lt; 1 &amp;&amp; !isDead)    {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///when collide with player, destroy itself
-isDead = true;
+            <string>///when collide with player, set itself to dying
+if (!isDead)    {
+    isDead = true;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///draw score received from destroying ghosts
+
+draw_self();
+
+if (isDead) {
+    draw_set_color(c_white);
+    draw_set_font(font_BettyNoir);
+    draw_text(text_X, text_Y, scoreText);
+}
 </string>
           </argument>
         </arguments>

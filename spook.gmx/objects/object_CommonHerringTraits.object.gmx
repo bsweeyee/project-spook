@@ -27,12 +27,15 @@
             <kind>1</kind>
             <string>///initialize common traits
 
-hp = 0;
+MAX_HP = room_speed;
+
+hp = MAX_HP;
 
 isDead = false;
 
-deathCount = 0;
 image_alpha = 0;
+
+deathCount = room_speed;
 </string>
           </argument>
         </arguments>
@@ -57,7 +60,7 @@ image_alpha = 0;
             <kind>1</kind>
             <string>///when deathCount is 0, reduce enemy count and destroy
 if (deathCount &lt;= 0)    {
-    global.combo = 1;
+    global.combo = 0;
     if (global.enemyCount &gt; 0)  {
         global.enemyCount -= 1;
     }

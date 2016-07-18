@@ -142,6 +142,7 @@ if (comboTimer &lt;= 0)    {
             <string>///draw debug message
 if (showDebug)  {
     //for all enemies on the field, draw their death timers above them
+    draw_set_font(-1);
     
     for (var i=0; i &lt; instance_number(object_CommonEnemyTraits); i++)   {
         draw_set_color(c_white);
@@ -157,9 +158,9 @@ if (showDebug)  {
     draw_text(10, 30, spawnerTimerMessage);
     draw_text(140, 30, object_CommonSpawnerTraits.timer);
     
-    //draw mist alarm
-    draw_text(10, 50, "mist");
-    draw_text(110, 50, object_Mist.x);
+    //draw enemy count
+    draw_text(10, 50, "enemy");
+    draw_text(110, 50, global.enemyCount);
     
      //draw score
     draw_text(10, 70, playerScoreMessage);

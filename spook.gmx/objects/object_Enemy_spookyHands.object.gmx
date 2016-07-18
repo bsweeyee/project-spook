@@ -25,16 +25,40 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>///inherited parent code
+event_inherited();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>///initialize traits
-MAX_HP = room_speed * 1;
+MAX_HP *= 1;
 
-isDead = false;
 hp = MAX_HP;
 
 deathCount = room_speed;
-image_alpha = 0;
 
 damage = 60;
+
+BASE_SCORE = MAX_HP * 3;
+
+scoreValue = BASE_SCORE;
 </string>
           </argument>
         </arguments>
@@ -64,6 +88,28 @@ direction = point_direction(x, y, object_Player_1_Stub.x, object_Player_1_Stub.y
       </action>
     </event>
     <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///inherited parent code
+event_inherited();
+</string>
+          </argument>
+        </arguments>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -147,28 +193,6 @@ if (isDead) {
     speed = 0;
     image_alpha -= (1/room_speed);
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///inherited parent code
-event_inherited();
 </string>
           </argument>
         </arguments>
