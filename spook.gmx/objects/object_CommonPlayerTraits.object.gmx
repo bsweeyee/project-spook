@@ -32,6 +32,7 @@ life = MAX_HEALTH;
 playerSpeed = 5;
 isDead = false;
 canMove = true;
+isMoving = false;
 vsp = 0;
 
 image_xscale = 0.5;
@@ -158,11 +159,13 @@ if(life &gt; 200)
             <string>///update position
 
 if (canMove)    {
-    if(keyboard_check(ord('D')))
-        self.x += playerSpeed;
-
-    if(keyboard_check(ord('A')))
-        self.x += -playerSpeed;
+    if(keyboard_check(ord('D')))    {
+        x += playerSpeed;
+    }
+    
+    if(keyboard_check(ord('A')))    {
+        x -= playerSpeed;
+    }
         
     if(keyboard_check(ord('S')))    {
         vsp = playerSpeed;

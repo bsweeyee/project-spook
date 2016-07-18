@@ -90,7 +90,7 @@ if (deathCount &lt;= 0)    {
     //reduce global enemy count, reset alarm timer
     if (global.enemyCount &gt; 0)  {
         global.enemyCount -= 1;
-        with (object_Mist_Controller)    {
+        with (object_Mist)    {
            isMoveTowardsPlayer = false;
            isMoveAwayPlayer = true;
            alarm[0] = TIME_BEFORE_MOVE;

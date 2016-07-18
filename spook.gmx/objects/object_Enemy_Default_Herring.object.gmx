@@ -55,10 +55,16 @@ image_alpha = 0;
           <argument>
             <kind>1</kind>
             <string>///initialize random direction and fixed speed
-var randomDirection = irandom(2);
+var randomDirection = irandom(1);
 
 direction = randomDirection * 180;
 speed = irandom(4) + 1;
+
+if (direction ==0)  {
+    image_xscale = 1;
+} else if (direction == 180)    {
+    image_xscale = -1;
+}
 </string>
           </argument>
         </arguments>
@@ -103,10 +109,10 @@ event_inherited();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///when collide with outside, change direction
+            <string>   ///when collide with outside, remove from game
 if (x &gt; room_width || x &lt; 0) {
     global.enemyCount -= 1;
-    instance_destroy();
+    isDead = true;
 }
 </string>
           </argument>
@@ -137,6 +143,32 @@ if (place_meeting(x, y, object_Hitbox_TorchDefault) ||
     if (hp &lt; MAX_HP &amp;&amp; !isDead)    {
         hp += 1;
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///when isDead is true, start counting down to death
+if (isDead) {
+    deathCount -= 1;
+    //image_alpha -= (1/room_speed);
+    speed = 30;
 }
 </string>
           </argument>

@@ -55,10 +55,16 @@ image_alpha = 0;
           <argument>
             <kind>1</kind>
             <string>///initialize random direction and fixed speed
-var randomDirection = irandom(2);
+var randomDirection = irandom(1);
 
 direction = randomDirection * 180;
 speed = irandom(4) + 1;
+
+if (direction ==0)  {
+    image_xscale = 1;
+} else if (direction == 180)    {
+    image_xscale = -1;
+}
 </string>
           </argument>
         </arguments>
@@ -211,8 +217,10 @@ if (place_meeting(x, y, object_Hitbox_TorchCommon) ||
             <string>///when collide with outside, change direction
 if (x &gt; room_width) {
     direction = 180;
+    image_xscale *= -1;
 } else if (x &lt; 0)   {
     direction = 0;
+    image_xscale *= -1;
 }
 
 </string>
@@ -271,7 +279,7 @@ if (timeBeforeAttack &lt;= 0 &amp;&amp; !isDead)  {
 if (isDead) {
     speed = 0;
     image_alpha -= (1/room_speed);
-    image_xscale += (1/room_speed);
+    image_xscale += image_xscale * (1/room_speed);
     image_yscale += (1/room_speed);
     if (!hasCreatedProjectile)  {
         isCreateProjectile = true;

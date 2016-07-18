@@ -32,7 +32,6 @@
     <sprites name="sprite_others">
       <sprite>sprites\sprite_Solid</sprite>
       <sprite>sprites\sprite_Fog</sprite>
-      <sprite>sprites\sprite_Mist</sprite>
       <sprite>sprites\sprite_Mist_2</sprite>
     </sprites>
     <sprites name="sprite_items">
