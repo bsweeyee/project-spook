@@ -8,7 +8,7 @@ high: Must include in game or cannot be considered finished
       - Things that make the game look/feels good (eg. should the movement have slight acceleration or pure linear speed?)
       
       Should not be included:
-      - Optimizations (Unless game runs ridiculously poorly on COMMON platforms (eg. Framerates consistently <60 on Windows 7))
+      -Optimizations (Unless game runs ridiculously poorly on COMMON platforms (eg. Framerates consistently <60 on Windows 7))
       
 medium: Will include in game if we decide it will add additional value + takes <1 day to implement + does not detract from high priority         tasks for the day/week
       May be included:
