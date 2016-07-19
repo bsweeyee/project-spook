@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>///debug messages
-showDebug = true;
+showDebug = false;
 
 playerLifeMessage = "player life: ";
 spawnerTimerMessage = "spawner timer: ";
@@ -67,6 +67,62 @@ comboTimer = MAX_COMBO_TIMER;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///create array to store positions of rail objects
+
+global.railing_pos[instance_number(object_Railing), 2] = 0;
+for (var i=0;i&lt;instance_number(object_Railing);i++) {
+    var inst = instance_find(object_Railing, i);
+    global.railing_pos[i, 0] = inst.x;
+    global.railing_pos[i, 1] = inst.y;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///create variables to control shadows and projectiles
+MAX_TIME = room_speed * 2;
+
+global.showShadows = true;
+global.showProjectiles = false;
+
+shadowTimer = MAX_TIME;
+projectileTimer = MAX_TIME;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
@@ -86,11 +142,11 @@ comboTimer = MAX_COMBO_TIMER;
           <argument>
             <kind>1</kind>
             <string>///press "r" to restart
-if (showDebug)  {
+//if (showDebug)  {
     if (keyboard_check_pressed(ord('R')))   {
         game_restart();
     }   
-}
+//}
 </string>
           </argument>
         </arguments>
@@ -116,6 +172,35 @@ if (comboTimer &lt;= 0)    {
     global.combo = 0;
 } else  {
     comboTimer -= 1;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///make shadows show themselves for X seconds
+if (!global.showShadows) {
+    if (shadowTimer &gt; 0)    {
+        shadowTimer -= 1;
+    } else {
+        shadowTimer = MAX_TIME;
+        global.showShadows = true;
+    }
 }
 </string>
           </argument>
@@ -174,6 +259,33 @@ if (showDebug)  {
     draw_text(10, 110, playerCigarMessage);
     draw_text(110, 110, object_Player_1_Stub.cigarAmount);
     
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>  ///if shadow is gone, draw translucent yellow overlay
+if (!global.showShadows) {
+    draw_set_color(c_yellow);
+    draw_set_alpha(0.05);
+    draw_rectangle(0, 0, room_width, room_height, false);
+    draw_set_alpha(1);
 }
 </string>
           </argument>

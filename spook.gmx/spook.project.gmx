@@ -33,11 +33,13 @@
       <sprite>sprites\sprite_Solid</sprite>
       <sprite>sprites\sprite_Fog</sprite>
       <sprite>sprites\sprite_Mist_2</sprite>
+      <sprite>sprites\sprite_Railing</sprite>
     </sprites>
     <sprites name="sprite_items">
       <sprite>sprites\sprite_Coin</sprite>
       <sprite>sprites\sprite_Ectoplasm</sprite>
       <sprite>sprites\sprite_Cigar</sprite>
+      <sprite>sprites\sprite_Power_1_Reveal_Enemies</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -50,6 +52,7 @@
     <script>scripts\createRandomDrop.gml</script>
     <script>scripts\getStageTimer.gml</script>
     <script>scripts\chooseEnemy.gml</script>
+    <script>scripts\chooseSpawnLocation.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_BettyNoir</font>
@@ -109,10 +112,12 @@
         <object>objects\object_Cigar_Drop</object>
         <object>objects\object_Ectoplasm</object>
         <object>objects\object_Coin</object>
+        <object>objects\object_Power_1_Reveal_Enemies</object>
       </objects>
       <objects name="environmental">
         <object>objects\object_Fog</object>
         <object>objects\object_Mist</object>
+        <object>objects\object_Railing</object>
       </objects>
       <object>objects\object_Cigar_minigame</object>
     </objects>

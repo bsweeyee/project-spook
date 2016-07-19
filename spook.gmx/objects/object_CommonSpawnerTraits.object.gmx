@@ -29,14 +29,14 @@
 global.enemyCount = 0;
 
 maxenemies = 5;
-spawnrate = 1;
+spawnrate = room_speed;
 timer = spawnrate;
-dt = 0.02;
+dt = 1;
 isSpawn = false;
 spawnAreaWidth = room_width;
 spawnAreaHeight = room_height - 300;
-spawnAreaPosX = 0;
-spawnAreaPosY = 0;
+spawnAreaX = 0;
+spawnAreaY = 0;
 </string>
           </argument>
         </arguments>
@@ -60,10 +60,16 @@ spawnAreaPosY = 0;
           <argument>
             <kind>1</kind>
             <string>///spawn mobs
-X = random(spawnAreaPosX + spawnAreaWidth);
-Y = random(spawnAreaPosY + spawnAreaHeight);
+
+//1. picks an enemy
+//2. picks a spawn location based on what enemy
+var enemy = chooseEnemy();
+location[2] = chooseSpawnLocation(enemy, spawnAreaX, spawnAreaY, spawnAreaWidth, spawnAreaHeight);
+
+//X = random(spawnAreaPosX + spawnAreaWidth);
+//Y = random(spawnAreaPosY + spawnAreaHeight);
 if(isSpawn &amp;&amp; global.enemyCount &lt;= maxenemies)  {
-    instance_create(X, Y, chooseEnemy());
+    instance_create(location[0], location[1], enemy);
     global.enemyCount += 1;
 }
 isSpawn = false;

@@ -40,6 +40,8 @@ scoreValue = BASE_SCORE;
 
 deathCount = room_speed;
 
+spriteExposed = noone;
+spriteShadow = noone;
 </string>
           </argument>
         </arguments>
@@ -83,7 +85,7 @@ text_Y = y;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>  ///text for score
+            <string>///text for score
 scoreText = "";
 </string>
           </argument>
@@ -184,6 +186,40 @@ if (isDead) {
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///checks if colliding with light hitbox, if so, show enemy, else show shadow
+if (place_meeting(x, y, object_Hitbox_TorchCommon) || 
+    place_meeting(x, y, object_Hitbox_CigarLight))  {
+    sprite_index = spriteExposed;
+} else  {
+    if (global.showShadows) {
+        sprite_index = spriteShadow;
+    } else if (!global.showShadows) {
+        sprite_index = spriteExposed;
+    }
+    if (hp &lt; MAX_HP &amp;&amp; !isDead)    {
+        hp += 1;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="4" ename="object_Hitbox_TorchCommon">
       <action>
@@ -269,7 +305,6 @@ if (!isDead)    {
           <argument>
             <kind>1</kind>
             <string>///draw score received from destroying ghosts
-
 draw_self();
 
 if (isDead) {

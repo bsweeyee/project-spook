@@ -47,7 +47,7 @@ event_inherited();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///initialize variables
+            <string>///overwrite initial variables
 
 //overwrite some variables
 MAX_HP *= 1.5;
@@ -59,6 +59,9 @@ deathCount *= 0.5;
 BASE_SCORE = 0;
 
 scoreValue = BASE_SCORE;
+
+spriteExposed = sprite_Enemy_Type_3;
+spriteShadow = sprite_Enemy_Shadow_3;
 
 speed = irandom(2) + 2;
 direction = irandom(360);
@@ -197,36 +200,6 @@ if (x &gt; room_width || x &lt; 0)    {
 
 if (y &gt; room_height || y &lt; 0)   {
     direction = 2*180 - phi;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///checks if colliding with light hitbox, if so, show enemy, else show shadow
-if (place_meeting(x, y, object_Hitbox_TorchCommon) || 
-    place_meeting(x, y, object_Hitbox_CigarLight))  {
-    sprite_index = sprite_Enemy_Type_3;
-} else  {
-    sprite_index = sprite_Enemy_Shadow_3;
-    if (hp &lt; MAX_HP &amp;&amp; !isDead)    {
-        hp += 1;
-    }
 }
 </string>
           </argument>

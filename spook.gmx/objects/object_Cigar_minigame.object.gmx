@@ -62,6 +62,10 @@ isStopped = false;
           <argument>
             <kind>1</kind>
             <string>///message type
+
+message_X = x-64;
+message_Y = y-128;
+
 message_5 = "nailed it, bub";
 message_4 = "no flame, no game";
 message_3 = "mediocre";
@@ -212,6 +216,7 @@ if (moveLeft)   {
             <kind>1</kind>
             <string>///draw lighter and cigar
 draw_self();
+draw_set_color(c_white);
 draw_rectangle(startXPosition + currentLighterPosition, startYPosition, startXPosition + currentLighterPosition + 32, startYPosition + 96, false);
 
 </string>
@@ -237,8 +242,11 @@ draw_rectangle(startXPosition + currentLighterPosition, startYPosition, startXPo
             <string>///draw message
 if (drawMessage)    {
 
+draw_set_font(font_BettyNoir);
+draw_set_color(c_white);
+
 if (currentLighterPosition &gt; 512 || currentLighterPosition &lt; 0)   {
-    draw_text(x-32, y-96, message_0);
+    draw_text(message_X, message_Y, message_0);
 } else  {
     var messageType = currentLighterPosition/128;
     
@@ -246,23 +254,23 @@ if (currentLighterPosition &gt; 512 || currentLighterPosition &lt; 0)   {
     
     switch(round(messageType))  {
         case 0:
-        draw_text(x-32, y-96, message_1);
+        draw_text(message_X, message_Y, message_1);
         break;
         
         case 1:
-        draw_text(x-32, y-96, message_2);
+        draw_text(message_X, message_Y, message_2);
         break;
         
         case 2:
-        draw_text(x-32, y-96, message_3);
+        draw_text(message_X, message_Y, message_3);
         break;
         
         case 3:
-        draw_text(x-32, y-96, message_4);
+        draw_text(message_X, message_Y, message_4);
         break;
         
         case 4:
-        draw_text(x-32, y-96, message_5);
+        draw_text(message_X, message_Y, message_5);
         break;
         
         default:
