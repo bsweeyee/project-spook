@@ -308,7 +308,7 @@ if (!isDead)    {
 draw_self();
 
 if (isDead) {
-    draw_set_color(c_white);
+    draw_set_color(c_red);
     draw_set_font(font_BettyNoir);
     draw_text(text_X, text_Y, scoreText);
 }

@@ -22,6 +22,7 @@
       <sprite>sprites\sprite_Projectile_1</sprite>
       <sprite>sprites\sprite_Projectile_1_Destroyed</sprite>
       <sprite>sprites\sprite_Projectile_2</sprite>
+      <sprite>sprites\spriteHitBoxRectangle_1</sprite>
     </sprites>
     <sprites name="sprite_player">
       <sprite>sprites\spr_playerStub</sprite>
@@ -30,20 +31,22 @@
       <sprite>sprites\sprite_logo</sprite>
     </sprites>
     <sprites name="sprite_others">
-      <sprite>sprites\sprite_Solid</sprite>
       <sprite>sprites\sprite_Fog</sprite>
-      <sprite>sprites\sprite_Mist_2</sprite>
+      <sprite>sprites\sprite_Solid</sprite>
       <sprite>sprites\sprite_Railing</sprite>
+      <sprite>sprites\sprite_Mist_2</sprite>
     </sprites>
     <sprites name="sprite_items">
       <sprite>sprites\sprite_Coin</sprite>
       <sprite>sprites\sprite_Ectoplasm</sprite>
       <sprite>sprites\sprite_Cigar</sprite>
       <sprite>sprites\sprite_Power_1_Reveal_Enemies</sprite>
+      <sprite>sprites\sprite_Power_2_Reveal_Projectiles</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\tileTypeOne</background>
+    <background>background\background_map_1</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -56,9 +59,12 @@
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_BettyNoir</font>
+    <font>fonts\font_Bigger_BettyNoir</font>
   </fonts>
   <objects name="objects">
     <objects name="controller">
+      <object>objects\object_Controller_start</object>
+      <object>objects\object_Controller_start_2</object>
       <object>objects\object_Controller</object>
       <object>objects\object_Fog_Controller</object>
       <object>objects\object_Mist_Controller</object>
@@ -113,6 +119,7 @@
         <object>objects\object_Ectoplasm</object>
         <object>objects\object_Coin</object>
         <object>objects\object_Power_1_Reveal_Enemies</object>
+        <object>objects\object_Power_2_Reveal_Projectiles</object>
       </objects>
       <objects name="environmental">
         <object>objects\object_Fog</object>
@@ -120,9 +127,18 @@
         <object>objects\object_Railing</object>
       </objects>
       <object>objects\object_Cigar_minigame</object>
+      <objects name="buttons">
+        <object>objects\object_Start_Button</object>
+        <object>objects\object_Quit_Button</object>
+      </objects>
     </objects>
+    <object>objects\object_Title</object>
   </objects>
+  <timelines name="timelines">
+    <timeline>timelines\timeline_start</timeline>
+  </timelines>
   <rooms name="rooms">
+    <room>rooms\startRoom</room>
     <room>rooms\roomTest</room>
   </rooms>
   <help>

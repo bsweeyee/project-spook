@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>///debug messages
-showDebug = false;
+showDebug = true;
 
 playerLifeMessage = "player life: ";
 spawnerTimerMessage = "spawner timer: ";
@@ -123,6 +123,28 @@ projectileTimer = MAX_TIME;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///control background alpha
+background_alpha[0] = 0.3;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
@@ -206,6 +228,35 @@ if (!global.showShadows) {
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///make projectiles show themselves for X seconds
+if (global.showProjectiles) {
+    if (projectileTimer &gt; 0)    {
+        projectileTimer -= 1;
+    } else {
+        projectileTimer = MAX_TIME;
+        global.showProjectiles = false;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="8" enumb="0">
       <action>
@@ -259,6 +310,9 @@ if (showDebug)  {
     draw_text(10, 110, playerCigarMessage);
     draw_text(110, 110, object_Player_1_Stub.cigarAmount);
     
+    //draw current cpu frames
+    draw_text(10, 130, "FPS = " + string(fps_real));
+    
 }
 </string>
           </argument>
@@ -280,9 +334,36 @@ if (showDebug)  {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>  ///if shadow is gone, draw translucent yellow overlay
+            <string>///if shadow is gone, draw translucent yellow overlay
 if (!global.showShadows) {
     draw_set_color(c_yellow);
+    draw_set_alpha(0.05);
+    draw_rectangle(0, 0, room_width, room_height, false);
+    draw_set_alpha(1);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///when showing projectile, create a layer of blue-ish tint
+if (global.showProjectiles) {
+    draw_set_color(c_aqua);
     draw_set_alpha(0.05);
     draw_rectangle(0, 0, room_width, room_height, false);
     draw_set_alpha(1);

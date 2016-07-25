@@ -137,10 +137,9 @@ lightHitBox = noone;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///check if mouse left pressed
-//if (mouse_check_button(mb_left) &amp;&amp; canOn)    {
+            <string>///check if mouse left or space is pressed
 
-if (keyboard_check(vk_space) &amp;&amp; canOn)    {
+if ((keyboard_check(vk_space) || mouse_check_button(mb_left)) &amp;&amp; canOn)    {
     isOn = true;
     
     //when isOn is true, assign x and y position of mouse
@@ -201,6 +200,7 @@ if (instance_exists(lightHitBox))   {
           <argument>
             <kind>1</kind>
             <string>///find third point of triangle
+if (instance_exists(object_Player_1_Stub))  {
 var X = object_Player_1_Stub.x;
 var Y = object_Player_1_Stub.y;
 var dist = point_distance(X,Y, mouse_x, mouse_y);
@@ -229,6 +229,7 @@ triangle_Two_XPoints[2] = X + lengthdir_x(tangentdist, dir2);
 triangle_Two_YPoints[0] = Y;
 triangle_Two_YPoints[1] = mouse_y;
 triangle_Two_YPoints[2] = Y + lengthdir_y(tangentdist, dir2);
+}
 </string>
           </argument>
         </arguments>
@@ -293,14 +294,18 @@ if (isOn)   {
         draw_circle(mouse_x, mouse_y, (lightRadius - (lightRadius/lightPrecision*i)), false);
     }
     
-    
-    draw_triangle(triangle_One_XPoints[0], triangle_One_YPoints[0], triangle_One_XPoints[1], triangle_One_YPoints[1], triangle_One_XPoints[2], triangle_One_YPoints[2], false);
-    draw_triangle(triangle_Two_XPoints[0], triangle_Two_YPoints[0], triangle_Two_XPoints[1], triangle_Two_YPoints[1], triangle_Two_XPoints[2], triangle_Two_YPoints[2], false);
+    if (instance_exists(object_Player_1_Stub))   {
+        draw_triangle(triangle_One_XPoints[0], triangle_One_YPoints[0], triangle_One_XPoints[1], triangle_One_YPoints[1], triangle_One_XPoints[2], triangle_One_YPoints[2], false);
+        draw_triangle(triangle_Two_XPoints[0], triangle_Two_YPoints[0], triangle_Two_XPoints[1], triangle_Two_YPoints[1], triangle_Two_XPoints[2], triangle_Two_YPoints[2], false);
+    }
 }
 else {
+    draw_set_alpha(0.1);
     draw_sprite(sprite_DashedCircle, 0, torch_XPos, torch_YPos);
 }
 
+if (instance_exists(object_Cig))    {
+draw_set_alpha((1/lightPrecision));
 draw_set_blend_mode(bm_max);
 
 var cigRadius = object_Cig.meter;
@@ -308,10 +313,12 @@ var length = object_Cig.meter/200*20;
 
 draw_set_alpha((1/object_Cig.meter));
 
-for(var i = 0; i&lt;(object_Cig.meter); i++)
+for(var i = 0; i&lt;(object_Cig.meter); i++)   {
     draw_circle(object_Cig.x+length, object_Cig.y+2.5, (cigRadius - (cigRadius/object_Cig.meter*i)), false);
+}
 
-    
+}
+
 draw_set_alpha(1);
 draw_set_blend_mode(bm_normal);
 surface_reset_target();

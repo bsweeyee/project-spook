@@ -187,6 +187,10 @@ if (isCreateProjectile) {
     for (var i=0; i&lt;6;i++)  {
         var inst = instance_create(x, y, object_Projectile_Default);
         inst.direction = 60*(i+1);
+        inst.image_angle = direction + 90;
+        if (inst.image_angle &gt; 270)  {
+            inst.image_xscale *= -1;
+        }
         inst.speed = 2; 
     }
     isCreateProjectile = false;
@@ -245,10 +249,7 @@ timeBeforeAttack -= 1;
 
 if (timeBeforeAttack &lt;= 0 &amp;&amp; !isDead)  {
     //create projectile with direction towards player position
-    var currPlayerXPos = object_Player_1_Stub.x;
-    var currPlayerYPos = object_Player_1_Stub.y;
     var projInst = instance_create(x, y, object_Projectile_Default);
-    projInst.direction = point_direction(x, y, currPlayerXPos, currPlayerYPos);
     projInst.speed = 3;
     timeBeforeAttack = MAX_TIMER;
 }

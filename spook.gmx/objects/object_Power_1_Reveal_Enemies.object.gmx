@@ -49,6 +49,9 @@ event_inherited();
             <kind>1</kind>
             <string>///initialize individual variables
 image_speed = 0;
+
+image_xscale = 2;
+image_yscale = 2;
 </string>
           </argument>
         </arguments>

@@ -26,7 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>///spawn tiles at designated location in room
-spawnTile(id, tileTypeOne);
+//spawnTile(id, tileTypeOne);
+image_alpha = 0;
 </string>
           </argument>
         </arguments>
