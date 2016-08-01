@@ -50,10 +50,20 @@
       <sprite>sprites\sprite_Power_1_Reveal_Enemies</sprite>
       <sprite>sprites\sprite_Power_2_Reveal_Projectiles</sprite>
     </sprites>
+    <sprites name="sprite_bg">
+      <sprite>sprites\sprite_bg_lamppost</sprite>
+      <sprite>sprites\sprite_bg_trashbag</sprite>
+      <sprite>sprites\sprite_bg_trashbin</sprite>
+      <sprite>sprites\sprite_bg_railings</sprite>
+      <sprite>sprites\sprite_bg_fireextinguisher</sprite>
+      <sprite>sprites\sprite_bg_crate</sprite>
+      <sprite>sprites\sprite_bg_lamppostsign</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\tileTypeOne</background>
     <background>background\background_map_1</background>
+    <background>background\background_foreground</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -142,6 +152,9 @@
       <objects name="buttons">
         <object>objects\object_Start_Button</object>
         <object>objects\object_Quit_Button</object>
+      </objects>
+      <objects name="bg_foreground">
+        <object>objects\railings</object>
       </objects>
     </objects>
     <object>objects\object_Title</object>
