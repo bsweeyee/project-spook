@@ -59,7 +59,57 @@ if (!other.isDead)    {
         image_alpha = 1;
         
         if (hp &lt;= 0)    { 
+            isKilledByPlayer = true;
             isDead = true;
+        } else  {
+            hp -= 1;
+        }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="object_CommonEnemyTraits">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///destroy the collided item if correct enemy
+
+if (!other.isDead)    {
+    with (other)    {
+    /*
+     * likely will have to do instance destroy on enemy object due to animation
+     */
+        image_alpha = 1;
+        
+        if (hp &lt;= 0)    { 
+            isDead = true;
+            isKilledByTorch = true;
+            
+            scoreValue *= (global.combo+1);
+            
+            if (scoreValue &gt; 0) {
+                scoreText += "+" + string(scoreValue);
+            }
+            
+            with (object_Controller)    {
+                comboTimer = MAX_COMBO_TIMER;
+            }
         } else  {
             hp -= 1;
         }

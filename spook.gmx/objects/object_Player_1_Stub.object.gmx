@@ -69,8 +69,10 @@ instance_create(self.x, self.y, object_Cig);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///initialize cigar number
+            <string>///initialize cigar amount, lsd amount and alcoholAmount
 cigarAmount = 5;
+lsdAmount = 0;
+alcoholAmount = 0;
 </string>
           </argument>
         </arguments>
@@ -93,12 +95,67 @@ cigarAmount = 5;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///when E is pressed, (mini game) relight cig
-if (keyboard_check_pressed(ord('E')) &amp;&amp; canMove &amp;&amp; object_Torch.canOn &amp;&amp; cigarAmount &gt; 0)   {
+            <string>///when E is pressed, (mini game) relight cig (inactive)
+
+/*if (keyboard_check_pressed(ord('E')) &amp;&amp; canMove &amp;&amp; object_Torch.canOn &amp;&amp; cigarAmount &gt; 0)   {
     canMove = false;
     object_Torch.canOn = false;
     instance_create(room_width/2, room_height/2, object_Cigar_minigame);
     cigarAmount -= 1;
+}*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///when numbers are pressed, use items
+
+if (keyboard_check_pressed(ord('1')))    {
+    if (cigarAmount &gt; 0)   {
+        cigarAmount -= 1;
+        life = MAX_HEALTH;
+    }
+}
+
+if (keyboard_check_pressed(ord('2')))   {
+    if (lsdAmount &gt; 0)  {
+        lsdAmount -= 1;
+        if (global.showShadows)   {
+            global.showShadows = false;
+        } else if (!global.showShadows) {
+        with (object_Controller)    {
+                shadowTimer = MAX_TIME;
+            }
+        }
+    }
+}
+
+if (keyboard_check_pressed(ord('3')))   {
+    if (alcoholAmount &gt; 0)  {
+        alcoholAmount -= 1;
+    if (!global.showProjectiles)   {
+        global.showProjectiles = true;
+    } else if (global.showProjectiles) {
+        with (object_Controller)    {
+            projectileTimer = MAX_TIME;
+        }
+    }
+    }
 }
 </string>
           </argument>

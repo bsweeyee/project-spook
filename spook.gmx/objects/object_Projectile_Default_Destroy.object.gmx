@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>///initialize speed of image
 image_speed = 0.2;
+image_xscale = 1.5;
+image_yscale = 1.5;
 </string>
           </argument>
         </arguments>
@@ -49,7 +51,8 @@ image_speed = 0.2;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy();
+            <string>///destroy itself when animation ends
+instance_destroy();
 </string>
           </argument>
         </arguments>

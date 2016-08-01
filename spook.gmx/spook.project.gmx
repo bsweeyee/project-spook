@@ -12,7 +12,11 @@
       <sprite>sprites\sprite_Enemy_Shadow_1</sprite>
       <sprite>sprites\sprite_Enemy_Type_2</sprite>
       <sprite>sprites\sprite_Enemy_Type_3</sprite>
+      <sprite>sprites\sprite_Enemy_Type_3_Death</sprite>
       <sprite>sprites\sprite_Enemy_Shadow_3</sprite>
+      <sprite>sprites\sprite_Enemy_3_Mini</sprite>
+      <sprite>sprites\sprite_Enemy_3_Mini_Attack</sprite>
+      <sprite>sprites\sprite_Enemy_3_Mini_Shadow</sprite>
       <sprite>sprites\sprite_Enemy_Moving</sprite>
       <sprite>sprites\sprite_Enemy_Moving_2</sprite>
     </sprites>
@@ -26,15 +30,18 @@
     </sprites>
     <sprites name="sprite_player">
       <sprite>sprites\spr_playerStub</sprite>
+      <sprite>sprites\sprite_player_shadow</sprite>
     </sprites>
     <sprites name="sprite_game_text_art">
       <sprite>sprites\sprite_logo</sprite>
     </sprites>
     <sprites name="sprite_others">
       <sprite>sprites\sprite_Fog</sprite>
+      <sprite>sprites\spirte_Fog_2</sprite>
       <sprite>sprites\sprite_Solid</sprite>
       <sprite>sprites\sprite_Railing</sprite>
       <sprite>sprites\sprite_Mist_2</sprite>
+      <sprite>sprites\sprite_cigar_sign</sprite>
     </sprites>
     <sprites name="sprite_items">
       <sprite>sprites\sprite_Coin</sprite>
@@ -60,19 +67,21 @@
   <fonts name="fonts">
     <font>fonts\font_BettyNoir</font>
     <font>fonts\font_Bigger_BettyNoir</font>
+    <font>fonts\font_NeonPixel</font>
   </fonts>
   <objects name="objects">
     <objects name="controller">
       <object>objects\object_Controller_start</object>
-      <object>objects\object_Controller_start_2</object>
       <object>objects\object_Controller</object>
       <object>objects\object_Fog_Controller</object>
       <object>objects\object_Mist_Controller</object>
+      <object>objects\object_UI_Controller</object>
     </objects>
     <objects name="characters">
       <objects name="player">
-        <object>objects\object_Player_1_Stub</object>
         <object>objects\object_CommonPlayerTraits</object>
+        <object>objects\object_Player_1_Stub</object>
+        <object>objects\object_Player_1_Silhouette</object>
       </objects>
       <objects name="mob">
         <object>objects\object_CommonEnemyTraits</object>
@@ -83,7 +92,9 @@
           <object>objects\object_Enemy_Default_Herring</object>
           <object>objects\object_Enemy_spookyHands</object>
           <object>objects\object_Enemy_Split</object>
+          <object>objects\object_Enemy_Split_Dead</object>
           <object>objects\object_Enemy_Mini</object>
+          <object>objects\object_Enemy_Mini_Attack</object>
           <object>objects\object_Enemy_Moving_Type1</object>
           <object>objects\object_Enemy_Moving_Type2</object>
         </objects>
@@ -106,27 +117,28 @@
           <object>objects\object_Common_Projectile</object>
           <object>objects\object_Projectile_Default</object>
           <object>objects\object_Projectile_Default_Destroy</object>
-          <object>objects\object_Projectile_Fire</object>
         </objects>
       </objects>
       <objects name="player_items">
         <object>objects\object_Torch</object>
         <object>objects\object_Cig</object>
+        <object>objects\object_Cigar_minigame</object>
       </objects>
       <objects name="game_items">
         <object>objects\object_CommonItemTraits</object>
-        <object>objects\object_Cigar_Drop</object>
         <object>objects\object_Ectoplasm</object>
         <object>objects\object_Coin</object>
+        <object>objects\object_Cigar_Drop</object>
         <object>objects\object_Power_1_Reveal_Enemies</object>
         <object>objects\object_Power_2_Reveal_Projectiles</object>
       </objects>
       <objects name="environmental">
-        <object>objects\object_Fog</object>
         <object>objects\object_Mist</object>
+        <object>objects\object_Fog</object>
         <object>objects\object_Railing</object>
+        <object>objects\object_Sign_Cigar</object>
+        <object>objects\object_ScreenShake</object>
       </objects>
-      <object>objects\object_Cigar_minigame</object>
       <objects name="buttons">
         <object>objects\object_Start_Button</object>
         <object>objects\object_Quit_Button</object>

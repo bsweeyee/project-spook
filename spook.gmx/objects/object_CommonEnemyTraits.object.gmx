@@ -42,6 +42,9 @@ deathCount = room_speed;
 
 spriteExposed = noone;
 spriteShadow = noone;
+enemy = noone;
+
+isKilledByTorch = false;
 </string>
           </argument>
         </arguments>
@@ -111,24 +114,22 @@ scoreText = "";
             <kind>1</kind>
             <string>///when deathCount is 0, create drop, add combo and combo timer and destroy
 if (deathCount &lt;= 0)    {
-    createRandomDrop(x, y);
-    
     //reset combo timer and increase combo count
-    global.combo += 1;
-    object_Controller.comboTimer = object_Controller.MAX_COMBO_TIMER;
+    if (isKilledByTorch)    {
+        createRandomDrop(x, y, enemy);
+        global.combo += 1;
+        object_Controller.comboTimer = object_Controller.MAX_COMBO_TIMER;
     
-    //reduce global enemy count, reset alarm timer
-    if (global.enemyCount &gt; 0)  {
-        global.enemyCount -= 1;
+        //add score
+        global.playerScore += scoreValue;
+        
+        //reset alarm timer
         with (object_Mist)    {
            isMoveTowardsPlayer = false;
            isMoveAwayPlayer = true;
            alarm[0] = TIME_BEFORE_MOVE;
         }
     }
-    
-    //add score
-    global.playerScore += scoreValue * (global.combo+1);
     
     instance_destroy();
 }
@@ -220,8 +221,6 @@ if (place_meeting(x, y, object_Hitbox_TorchCommon) ||
           </argument>
         </arguments>
       </action>
-    </event>
-    <event eventtype="4" ename="object_Hitbox_TorchCommon">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -238,24 +237,11 @@ if (place_meeting(x, y, object_Hitbox_TorchCommon) ||
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///destroy the collided item if correct enemy
-
+            <string>///update text position
 if (!isDead)    {
-    image_alpha = 1;
-        
-    if (hp &lt;= 0)    {
-        text_X = x;
-        text_Y = y;
-        
-        if (scoreValue &gt; 0) { 
-            scoreText = "+" + string(scoreValue * (global.combo+1));
-        }
-        isDead = true;
-    } else  {
-        hp -= 1;
-    }
+    text_X = x;
+    text_Y = y;
 }
-
 </string>
           </argument>
         </arguments>
@@ -281,6 +267,7 @@ if (!isDead)    {
             <string>///when collide with player, set itself to dying
 if (!isDead)    {
     isDead = true;
+    isKilledByTorch = false;
 }
 </string>
           </argument>
@@ -307,8 +294,8 @@ if (!isDead)    {
             <string>///draw score received from destroying ghosts
 draw_self();
 
-if (isDead) {
-    draw_set_color(c_red);
+if (isDead &amp;&amp; isKilledByTorch) {
+    draw_set_color(c_white);
     draw_set_font(font_BettyNoir);
     draw_text(text_X, text_Y, scoreText);
 }

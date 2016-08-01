@@ -55,10 +55,11 @@ playerComboMessage = "combo: ";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///create global player score, combo and comboTimer
-MAX_COMBO_TIMER = room_speed * 2.5;
+            <string>///create global player score, combo, enemyHerringKilled and comboTimer
+MAX_COMBO_TIMER = room_speed * 3;
 
 global.playerScore = 0;
+global.enemyCount = 0;
 
 global.combo = 0;
 
@@ -145,6 +146,57 @@ background_alpha[0] = 0.3;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///make cursor invisible
+window_set_cursor(cr_none);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///create all starting objects before player spawn
+instance_create(0, 0, object_Fog_Controller);
+instance_create(room_width/2, room_height/2, object_Player_1_Silhouette);
+var inst_1 = instance_create(-sprite_get_width(sprite_Mist_2)*5/2, room_height*(14/16), object_Mist);
+var inst_2 = instance_create(room_width+sprite_get_width(sprite_Mist_2)*5/2, room_height*(14/16), object_Mist);
+inst_1.image_xscale *= 1;
+inst_2.image_xscale *= -1;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
@@ -192,6 +244,10 @@ background_alpha[0] = 0.3;
             <string>///checks if 5 seconds have passed and resets combo if so
 if (comboTimer &lt;= 0)    {
     global.combo = 0;
+    comboTimer = MAX_COMBO_TIMER;
+    with (object_CommonEnemyTraits) {
+        scoreValue = BASE_SCORE;
+    }
 } else  {
     comboTimer -= 1;
 }
@@ -279,6 +335,7 @@ if (global.showProjectiles) {
 if (showDebug)  {
     //for all enemies on the field, draw their death timers above them
     draw_set_font(-1);
+    draw_set_color(c_white);
     
     for (var i=0; i &lt; instance_number(object_CommonEnemyTraits); i++)   {
         draw_set_color(c_white);
@@ -286,33 +343,26 @@ if (showDebug)  {
         draw_text(inst.x, inst.y - 50, inst.hp);
     }
     
-    ///draw life of player
-    draw_text(10, 10, playerLifeMessage);
-    draw_text(110, 10, object_Player_1_Stub.life); 
+    //draw spawn rate
+    if (instance_exists(object_CommonSpawnerTraits))    
+    draw_text(10, 10, "spawnrate = " + string(object_CommonSpawnerTraits.spawnrate));
     
     //draw spawn timer
+    if (instance_exists(object_CommonSpawnerTraits))    {
     draw_text(10, 30, spawnerTimerMessage);
     draw_text(140, 30, object_CommonSpawnerTraits.timer);
+    }
     
     //draw enemy count
     draw_text(10, 50, "enemy");
     draw_text(110, 50, global.enemyCount);
     
-     //draw score
-    draw_text(10, 70, playerScoreMessage);
-    draw_text(110, 70, global.playerScore);
-    
-    //draw combo
-    draw_text(10, 90, playerComboMessage);
-    draw_text(110, 90, global.combo);
-    
-    //draw cigar number
-    draw_text(10, 110, playerCigarMessage);
-    draw_text(110, 110, object_Player_1_Stub.cigarAmount);
+    //draw max enemies
+    if (instance_exists(object_CommonSpawnerTraits))    
+    draw_text(10, 70, "maxenemies = " + string(object_CommonSpawnerTraits.maxenemies));
     
     //draw current cpu frames
-    draw_text(10, 130, "FPS = " + string(fps_real));
-    
+    draw_text(10, 90, "FPS = " + string(fps_real));
 }
 </string>
           </argument>

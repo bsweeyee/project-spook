@@ -62,6 +62,8 @@ scoreValue = BASE_SCORE;
 
 spriteExposed = sprite_Enemy_Type_2;
 spriteShadow = sprite_Enemy_Type_2;
+
+enemy = object_Enemy_spookyHands;
 </string>
           </argument>
         </arguments>
@@ -91,6 +93,33 @@ direction = point_direction(x, y, object_Player_1_Stub.x, object_Player_1_Stub.y
       </action>
     </event>
     <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///reduce global enemy count when instance destroys
+if (deathCount &lt;= 0)    {
+    if (global.enemyCount &gt; 0)  {
+        global.enemyCount -= 1;
+        
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>

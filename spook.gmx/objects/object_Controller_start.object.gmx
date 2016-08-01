@@ -38,6 +38,7 @@ background_alpha[0] = 0.3;
 showButtons = false;
 
 gameStart = false;
+totalMistOut = 0;
 
 
 //isGrowing = true;
@@ -46,6 +47,8 @@ gameStart = false;
 instance_create(room_width * (1/2), room_height*(1/4), object_Title);
 instance_create(room_width * (12/32), room_height*(3/4), object_Start_Button);
 instance_create(room_width * (10/16), room_height*(3/4), object_Quit_Button);
+
+window_set_cursor(cr_none);
 
 </string>
           </argument>
@@ -135,35 +138,6 @@ moveDown = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///if mist lands outside of screen, teleport it back to other side of screen
-
-for (var i =0;i&lt;2;i++)  {
-    if (mist[i].x &gt; (room_width + mist[i].sprite_width/2)) {
-        mist[i].x = -(mist[i].sprite_width)/2;
-    } else if ((mist[i].x + (mist[i].sprite_width)/2)&lt; 0)    {
-        mist[i].x = room_width + (mist[i].sprite_width/2);
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>///make stationary mist bounce
 if (!gameStart) {
 if (mist[0].vspeed &lt;= -MAX_VSPEED)   {
@@ -205,14 +179,13 @@ if (moveDown) {
 if (gameStart)  {
     for (var i=0;i&lt;NUM_OF_MISTS;i++)    {
         
-        mist[i].vspeed = 0;
-        mist[i].mistSpeed = 25;
-        
-        mist[i].image_alpha -= 1/(2*room_speed);
-        
+       
         if (mist[i].image_alpha &lt;= 0)   {
             room_goto(roomTest);
         }
+        mist[i].image_alpha -= 1/(2*room_speed);
+        mist[i].vspeed = 0;
+        mist[i].mistSpeed = 0;
         
     }
     
@@ -245,6 +218,45 @@ if (gameStart)  {
     }
     
     
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///if mist lands outside of screen, teleport it back to other side of screen
+
+if (!gameStart) {
+for (var i =0;i&lt;NUM_OF_MISTS;i++)  {
+    if (mist[i].x &gt; (room_width + (sprite_get_width(sprite_Mist_2)*MIST_SCALE)/2)) {
+        mist[i].x = -sprite_get_width(sprite_Mist_2)*MIST_SCALE/2;
+    } else if ((mist[i].x)&lt; -(sprite_get_width(sprite_Mist_2)*MIST_SCALE)/2)    {
+        mist[i].x = room_width + (sprite_get_width(sprite_Mist_2)*MIST_SCALE)/2;
+    }
+}
+} else  {
+for (var i =0;i&lt;NUM_OF_MISTS;i++)  {
+    if (mist[i].x &gt; (room_width + (sprite_get_width(sprite_Mist_2)*MIST_SCALE)/2)) {
+        mist[i].mistSpeed = 0;
+    } else if ((mist[i].x)&lt; -(sprite_get_width(sprite_Mist_2)*MIST_SCALE)/2)    {
+        mist[i].mistSpeed = 0;;
+    }
+}
 }
 </string>
           </argument>

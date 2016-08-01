@@ -61,6 +61,8 @@ scoreValue = BASE_SCORE;
 
 spriteExposed = sprite_Enemy_Type_1;
 spriteShadow = sprite_Enemy_Shadow_1;
+
+enemy = object_Enemy_Default;
 </string>
           </argument>
         </arguments>
@@ -160,6 +162,33 @@ isCreateProjectile = false;
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>///reduce global enemy count when instance destroys
+if (deathCount &lt;= 0)    {
+    if (global.enemyCount &gt; 0)  {
+        global.enemyCount -= 1;
+        
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>///run parent code
 event_inherited();
 </string>
@@ -182,19 +211,17 @@ event_inherited();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///when dead, create projectiles
-if (isCreateProjectile) {
+            <string>///when dead, create projectilesm(inactive)
+
+/*if (isCreateProjectile) {
     for (var i=0; i&lt;6;i++)  {
         var inst = instance_create(x, y, object_Projectile_Default);
         inst.direction = 60*(i+1);
-        inst.image_angle = direction + 90;
-        if (inst.image_angle &gt; 270)  {
-            inst.image_xscale *= -1;
-        }
+        inst.image_angle = direction;
         inst.speed = 2; 
     }
     isCreateProjectile = false;
-}
+}*/
 </string>
           </argument>
         </arguments>

@@ -30,7 +30,7 @@
 isMoveTowardsPlayer = true;
 isMoveAwayPlayer = false;
 
-mistSpeed = 0.1;
+mistSpeed = 0.6;
 
 image_xscale = 5;
 image_yscale = 5;
@@ -135,7 +135,7 @@ if (isMoveAwayPlayer)    {
             <kind>1</kind>
             <string>///if mist is outside of screen, stop moving
 if (!isMoveTowardsPlayer)   {
-if ((x+(sprite_Mist_2.sprite_width/2)) &lt; 0 || ((x-sprite_Mist_2.sprite_width/2)) &gt; room_width) {
+if ((x+((sprite_get_width(sprite_Mist_2)*image_xscale)/2)) &lt; 0 || (x &gt; room_width+(sprite_get_width(sprite_Mist_2)*abs(image_xscale)/2))) {
     isMoveAwayPlayer = false;
     hspeed = 0;
 }

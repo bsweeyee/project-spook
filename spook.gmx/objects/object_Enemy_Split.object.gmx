@@ -66,8 +66,8 @@ spriteShadow = sprite_Enemy_Shadow_3;
 speed = irandom(2) + 2;
 direction = irandom(360);
 
-image_xscale = 0.8;
-image_yscale = 0.8;
+image_xscale = 2;
+image_yscale = 2;
 </string>
           </argument>
         </arguments>
@@ -120,9 +120,10 @@ alarm[0] = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///create variables for dividing into smaller enemies
-hasCreatedMiniGhosts = false;
-isCreateMiniGhosts = false;
+            <string>///create animation and rotation variables
+image_speed = 0.1;
+
+randomRotation = random(1) + 0.1;
 </string>
           </argument>
         </arguments>
@@ -223,15 +224,7 @@ if (y &gt; room_height || y &lt; 0)   {
             <kind>1</kind>
             <string>///when dead, do death animation
 if (isDead) {
-    speed = 0;
-    image_alpha -= (4/room_speed);
-    image_xscale += (1/room_speed);
-    image_yscale += (1/room_speed);
-    
-    if (!hasCreatedMiniGhosts)   {
-        hasCreatedMiniGhosts = true;
-        isCreateMiniGhosts = true;
-    }
+    instance_change(object_Enemy_Split_Dead, true);
 }
 </string>
           </argument>
@@ -253,18 +246,8 @@ if (isDead) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///spawn smaller enemies
-if (isCreateMiniGhosts)   {
-    for (var i=0;i&lt;5;i++)   {
-        var inst = instance_create(x, y, object_Enemy_Mini);
-        inst.image_alpha = 1;
-        inst.image_xscale = 0.5;
-        inst.image_yscale = 0.5;
-        inst.direction = 72*(i+1);
-        inst.speed = irandom(3) + 5;
-    }
-    isCreateMiniGhosts = false;
-}
+            <string>///rotate enemy in a direction
+image_angle += randomRotation;
 </string>
           </argument>
         </arguments>

@@ -32,11 +32,7 @@ damage = 5;
 destroyedProjectile = object_Projectile_Default_Destroy;
 
 direction = point_direction(x, y, object_Player_1_Stub.x, object_Player_1_Stub.y);
-image_angle = direction + 90;
-
-if (image_angle &gt; 270)  {
-    image_xscale *= -1;
-}
+image_angle = direction;
 </string>
           </argument>
         </arguments>
@@ -58,9 +54,34 @@ if (image_angle &gt; 270)  {
           <argument>
             <kind>1</kind>
             <string>///set image speed and size
+isShowProjectile = false;
+
 image_speed = 0.2;
-image_xscale = 1.5;
-image_yscale = 1.5;
+image_xscale = 1/room_speed;
+image_yscale = 1/room_speed;
+MAX_SCALE = 0.7;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Initialize amount of rotations
+rotationAmount = random(1) + 0.1;
 </string>
           </argument>
         </arguments>
@@ -105,13 +126,51 @@ event_inherited();
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>///when collide with torch light or cigar light reveal projectile
+
+if (place_meeting(x, y, object_Hitbox_TorchDefault) || place_meeting(x, y, object_Hitbox_CigarLight))    {
+    isShowProjectile = true;
+} else  {
+    isShowProjectile = false;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>///when not colliding, image_alpha decreases
+if (!isShowProjectile)   {
 if (image_alpha &gt; 0)    {
     image_alpha -= 1/room_speed;
 }
 
 if (image_alpha &lt;= 0)   {
     image_alpha = 0;
+}
+}
+
+if (isShowProjectile){
+    if (image_alpha &lt; 1)    {
+        image_alpha += 1/room_speed;
+    } else if (image_alpha &gt;= 1) {
+        image_alpha = 1;
+    }
+    
 }
 </string>
           </argument>
@@ -160,9 +219,10 @@ if (global.showProjectiles) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///make projectile play correct animation
-if (image_index &lt; 2)    {
-    image_index = 2;
+            <string>///make projectile grow when spawned
+if (image_xscale &lt; MAX_SCALE &amp;&amp; image_yscale &lt; MAX_SCALE)    {
+    image_yscale += 1/room_speed;
+    image_xscale += 1/room_speed;
 }
 </string>
           </argument>
@@ -184,59 +244,10 @@ if (image_index &lt; 2)    {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///make projectile point in direction
+            <string>///make projectile rotate in a direction
 
-var angle = direction + 90
-image_angle = angle;
+image_angle += rotationAmount;
 
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="object_Hitbox_CigarLight">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///when collide, show projectiles
-image_alpha += 2/room_speed;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="object_Hitbox_TorchDefault">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///when collide, show projectiles
-image_alpha += 2/room_speed;
 </string>
           </argument>
         </arguments>
