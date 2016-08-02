@@ -440,7 +440,7 @@ if (showDebug)  {
             <string>///if shadow is gone, draw translucent yellow overlay
 if (!global.showShadows) {
     draw_set_color(c_yellow);
-    draw_set_alpha(0.05);
+    draw_set_alpha(0.01);
     draw_rectangle(0, 0, room_width, room_height, false);
     draw_set_alpha(1);
 }
@@ -467,7 +467,7 @@ if (!global.showShadows) {
             <string>///when showing projectile, create a layer of blue-ish tint
 if (global.showProjectiles) {
     draw_set_color(c_aqua);
-    draw_set_alpha(0.05);
+    draw_set_alpha(0.01);
     draw_rectangle(0, 0, room_width, room_height, false);
     draw_set_alpha(1);
 }
