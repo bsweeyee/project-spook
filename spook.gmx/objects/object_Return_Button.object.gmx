@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>///INHERIT PARENT VARIABLES
+
 event_inherited();
 </string>
           </argument>
@@ -48,9 +49,8 @@ event_inherited();
           <argument>
             <kind>1</kind>
             <string>///OVERWRITE TEXT VARIABLES
-
-text = "START";
-color_text = c_black;
+text = "RETURN TO GAME";
+color_text = c_white;
 font_text = font_Limelight_25;
 </string>
           </argument>
@@ -72,8 +72,30 @@ font_text = font_Limelight_25;
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>///OVERWRITE ACTIVATE VARIABLE
+isActivate = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>///INITIALIZE HITBOX RESIZE VARIABLES
-image_xscale = 0.8;
+image_xscale = 2;
 image_yscale = 0.4;
 </string>
           </argument>
@@ -97,39 +119,13 @@ image_yscale = 0.4;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///CHECKS IF TITLE EXISTS AND IS FULLY VISIBLE
-///IF SO, ACTIVATE HITBOX
-
-if (instance_exists(object_Title))  {
-    if (object_Title.image_alpha &gt;= object_Title.MAX_ALPHA) {
-        isActivate = true;
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///WHEN COLLIDE WITH HITBOX, START GAME
+            <string>///WHEN COLLIDE WITH HITBOX, RETURN TO GAME
 
 if (isActivate) {
     if (place_meeting(x, y, object_Hitbox_TorchCommon))  {
-        object_Controller_start.gameStart = true;
+        //go to instruction
+        keyboard_key_press(vk_escape);
+        keyboard_key_press(vk_escape);
     }    
 }
 </string>
@@ -157,10 +153,11 @@ if (isActivate) {
             <string>///DRAW TEXT
 
 if (isActivate) {
-    //draw_self();
     draw_set_color(color_text);
     draw_set_font(font_text);
-    draw_text(x-54, y-20, text);
+    draw_text(x-152, y-20, text);  
+    
+    //draw_self(); 
 }
 </string>
           </argument>

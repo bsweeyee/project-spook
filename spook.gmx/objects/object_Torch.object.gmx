@@ -64,8 +64,10 @@ lightArc = 30;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///define light surface
+            <string>///define light surface attributes
 global.light = surface_create(room_width, room_height);
+
+surfaceAlpha = 0.9;
 </string>
           </argument>
         </arguments>
@@ -285,7 +287,7 @@ var i = 0;
 surface_set_target(global.light);
 draw_set_color(c_white);
 
-draw_clear_alpha(c_black, 0.9);
+draw_clear_alpha(c_black, surfaceAlpha);
 draw_set_blend_mode(bm_subtract);
 
 draw_set_alpha((1/lightPrecision));

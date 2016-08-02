@@ -112,34 +112,6 @@ for (var i=0;i&lt;instance_number(object_Railing);i++) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///create variables to control shadows and projectiles
-MAX_TIME = room_speed * 2;
-
-global.showShadows = true;
-global.showProjectiles = false;
-
-shadowTimer = MAX_TIME;
-projectileTimer = MAX_TIME;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>///control background alpha
 background_alpha[0] = 0.3;
 </string>
@@ -264,14 +236,25 @@ inst_2.image_xscale *= -1;
           <argument>
             <kind>1</kind>
             <string>///when escape is pressed, pause the game
-if (keyboard_check_pressed(vk_escape))  {
+if (keyboard_check_pressed(vk_escape) &amp;&amp; global.inst_Torch.canOn)  {
     pauseScreen = !pauseScreen;
     if (pauseScreen)    {
         instance_deactivate_all(true);
         instance_activate_object(object_Torch);
-        instance_create(room_width/2, room_height/2, object_Quit_Button);
+        instance_create(room_width*0.51, room_height*0.75, object_Quit_Button);
+        instance_create(room_width *0.51, room_height*0.60, object_Control_Button);
+        instance_create(room_width *0.51, room_height*0.45, object_Return_Button);
     } else if (!pauseScreen)    {
         instance_activate_all();
+        with (object_Quit_Button)   {
+            instance_destroy();
+        }
+        with (object_Control_Button)    {
+            instance_destroy();
+        }
+         with (object_Return_Button)    {
+            instance_destroy();
+        }
     }
 }
 </string>
@@ -303,64 +286,6 @@ if (comboTimer &lt;= 0)    {
     }
 } else  {
     comboTimer -= 1;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///make shadows show themselves for X seconds
-if (!global.showShadows) {
-    if (shadowTimer &gt; 0)    {
-        shadowTimer -= 1;
-    } else {
-        shadowTimer = MAX_TIME;
-        global.showShadows = true;
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///make projectiles show themselves for X seconds
-if (global.showProjectiles) {
-    if (projectileTimer &gt; 0)    {
-        projectileTimer -= 1;
-    } else {
-        projectileTimer = MAX_TIME;
-        global.showProjectiles = false;
-    }
 }
 </string>
           </argument>
@@ -416,6 +341,10 @@ if (showDebug)  {
     
     //draw current cpu frames
     draw_text(10, 90, "FPS = " + string(fps_real));
+    
+    //draw if it is paused
+    draw_text(10, 110, pauseScreen);
+    
 }
 </string>
           </argument>
@@ -437,63 +366,11 @@ if (showDebug)  {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///if shadow is gone, draw translucent yellow overlay
-if (!global.showShadows) {
-    draw_set_color(c_yellow);
-    draw_set_alpha(0.01);
-    draw_rectangle(0, 0, room_width, room_height, false);
-    draw_set_alpha(1);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///when showing projectile, create a layer of blue-ish tint
-if (global.showProjectiles) {
-    draw_set_color(c_aqua);
-    draw_set_alpha(0.01);
-    draw_rectangle(0, 0, room_width, room_height, false);
-    draw_set_alpha(1);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///draw blank screen when pause screen is true
+            <string>///when pause menu, draw pause text
 if (pauseScreen)    {
-   
+    draw_set_font(font_Limelight_30);
+    draw_set_color(c_white);
+    draw_text(room_width*0.47, room_height*0.15, "PAUSED");
 }
 </string>
           </argument>

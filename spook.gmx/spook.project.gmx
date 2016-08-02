@@ -137,7 +137,7 @@
   <backgrounds name="background">
     <background>background\tileTypeOne</background>
     <background>background\background_map_1</background>
-    <background>background\background_foreground</background>
+    <background>background\background_fore</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -201,11 +201,15 @@
     <font>fonts\font_BettyNoir</font>
     <font>fonts\font_Bigger_BettyNoir</font>
     <font>fonts\font_NeonPixel</font>
+    <font>fonts\font_Limelight_30</font>
+    <font>fonts\font_Limelight_25</font>
   </fonts>
   <objects name="objects">
     <objects name="controller">
       <object>objects\object_Controller_start</object>
+      <object>objects\object_Controller_Intructions</object>
       <object>objects\object_Controller</object>
+      <object>objects\object_PowerUp_Controller</object>
       <object>objects\object_Fog_Controller</object>
       <object>objects\object_Mist_Controller</object>
       <object>objects\object_UI_Controller</object>
@@ -272,15 +276,21 @@
         <object>objects\object_Sign_Cigar</object>
         <object>objects\object_ScreenShake</object>
       </objects>
-      <objects name="buttons">
-        <object>objects\object_Start_Button</object>
-        <object>objects\object_Quit_Button</object>
+      <objects name="screen_objects">
+        <objects name="SimpleMenus">
+          <object>objects\object_Parent_Button</object>
+          <object>objects\object_Start_Button</object>
+          <object>objects\object_Quit_Button</object>
+          <object>objects\object_Back_Button</object>
+          <object>objects\object_Control_Button</object>
+          <object>objects\object_Return_Button</object>
+        </objects>
+        <object>objects\object_Title</object>
       </objects>
       <objects name="bg_foreground">
         <object>objects\railings</object>
       </objects>
     </objects>
-    <object>objects\object_Title</object>
     <objects name="TweenGMS">
       <object>objects\obj_SharedTweener</object>
     </objects>
@@ -289,8 +299,9 @@
     <timeline>timelines\timeline_start</timeline>
   </timelines>
   <rooms name="rooms">
-    <room>rooms\startRoom</room>
-    <room>rooms\roomTest</room>
+    <room>rooms\room_Start_Screen</room>
+    <room>rooms\room_Stage_1</room>
+    <room>rooms\room_Instructions</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

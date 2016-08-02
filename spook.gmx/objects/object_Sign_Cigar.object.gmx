@@ -28,10 +28,14 @@
             <string>///draw cigar text
 
 draw_self();
-draw_set_font(font_Bigger_BettyNoir);
+draw_set_font(font_Limelight_30);
 draw_set_color($414141);
 if (instance_exists(object_Player_1_Stub))  {
     draw_text(x-64, y+32, string(object_Player_1_Stub.cigarAmount) + " LEFT");
+}
+
+if (room == room_Instructions &amp;&amp; instance_exists(object_Controller_Intructions))  {
+    draw_text(x-64, y+32, string(object_Controller_Intructions.cigarAmount) + " LEFT");
 }
 </string>
           </argument>

@@ -138,7 +138,7 @@ if (keyboard_check_pressed(ord('2')))   {
         if (global.showShadows)   {
             global.showShadows = false;
         } else if (!global.showShadows) {
-        with (object_Controller)    {
+        with (object_PowerUp_Controller)    {
                 shadowTimer = MAX_TIME;
             }
         }
@@ -151,7 +151,7 @@ if (keyboard_check_pressed(ord('3')))   {
     if (!global.showProjectiles)   {
         global.showProjectiles = true;
     } else if (global.showProjectiles) {
-        with (object_Controller)    {
+        with (object_PowerUp_Controller)    {
             projectileTimer = MAX_TIME;
         }
     }

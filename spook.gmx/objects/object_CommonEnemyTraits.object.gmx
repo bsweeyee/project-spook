@@ -115,6 +115,7 @@ scoreText = "";
             <string>///when deathCount is 0, create drop, add combo and combo timer and destroy
 if (deathCount &lt;= 0)    {
     //reset combo timer and increase combo count
+    if (instance_exists(object_Controller)) {
     if (isKilledByTorch)    {
         createRandomDrop(x, y, enemy);
         global.combo += 1;
@@ -129,6 +130,7 @@ if (deathCount &lt;= 0)    {
            isMoveAwayPlayer = true;
            alarm[0] = TIME_BEFORE_MOVE;
         }
+    }
     }
     
     instance_destroy();
@@ -204,6 +206,8 @@ if (isDead) {
           <argument>
             <kind>1</kind>
             <string>///checks if colliding with light hitbox, if so, show enemy, else show shadow
+
+if (instance_exists(object_PowerUp_Controller)) {
 if (place_meeting(x, y, object_Hitbox_TorchCommon) || 
     place_meeting(x, y, object_Hitbox_CigarLight))  {
     sprite_index = spriteExposed;
@@ -216,6 +220,7 @@ if (place_meeting(x, y, object_Hitbox_TorchCommon) ||
     if (hp &lt; MAX_HP &amp;&amp; !isDead)    {
         hp += 1;
     }
+}
 }
 </string>
           </argument>
@@ -296,7 +301,7 @@ draw_self();
 
 if (isDead &amp;&amp; isKilledByTorch) {
     draw_set_color(c_white);
-    draw_set_font(font_BettyNoir);
+    draw_set_font(font_Limelight_25);
     draw_text(text_X, text_Y, scoreText);
 }
 </string>
