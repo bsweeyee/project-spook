@@ -250,6 +250,7 @@
         <object>objects\object_Hitbox_TorchDefault</object>
         <object>objects\object_Hitbox_CigarLight</object>
         <object>objects\object_Hitbox_Mist</object>
+        <object>objects\object_Hitbox_Dashed_Circle</object>
         <objects name="Projectiles">
           <object>objects\object_Common_Projectile</object>
           <object>objects\object_Projectile_Default</object>

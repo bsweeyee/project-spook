@@ -290,12 +290,14 @@ for (var i =0;i&lt;NUM_OF_MISTS;i++)  {
             <kind>1</kind>
             <string>///draw debug messages
 
+/*
 draw_set_font(-1);
 draw_text(10, 10, "FPS = " + string(fps_real));
 draw_text(10, 30, instance_number(object_Mist));
 draw_text(10, 50, instance_exists(mist[0]));
 draw_text(10, 70, instance_exists(mist[1]));
 draw_text(10, 90, instance_exists(mist[2]));
+*/
 </string>
           </argument>
         </arguments>
