@@ -3,21 +3,21 @@
   <type>0</type>
   <xorig>200</xorig>
   <yorigin>100</yorigin>
-  <colkind>0</colkind>
+  <colkind>1</colkind>
   <coltolerance>0</coltolerance>
-  <sepmasks>-1</sepmasks>
+  <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>35</bbox_left>
-  <bbox_right>379</bbox_right>
-  <bbox_top>16</bbox_top>
-  <bbox_bottom>172</bbox_bottom>
+  <bbox_left>54</bbox_left>
+  <bbox_right>994</bbox_right>
+  <bbox_top>13</bbox_top>
+  <bbox_bottom>187</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>400</width>
+  <width>995</width>
   <height>200</height>
   <frames>
     <frame index="0">images\sprite_Enemy_Type_2_0.png</frame>
