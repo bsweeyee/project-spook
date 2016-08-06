@@ -84,9 +84,9 @@ direction = randomDirection * 180;
 speed = irandom(4) + 1;
 
 if (direction ==0)  {
-    image_xscale = 1;
-} else if (direction == 180)    {
     image_xscale = -1;
+} else if (direction == 180)    {
+    image_xscale = 1;
 }
 </string>
           </argument>

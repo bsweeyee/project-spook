@@ -89,8 +89,14 @@
       <sprite>sprites\sprite_Enemy_Type_3_Death</sprite>
       <sprite>sprites\sprite_Enemy_Shadow_3</sprite>
       <sprite>sprites\sprite_Enemy_3_Mini</sprite>
+      <sprite>sprites\sprite_Enemy_3_Mini2</sprite>
+      <sprite>sprites\sprite_Enemy_3_Mini3</sprite>
       <sprite>sprites\sprite_Enemy_3_Mini_Attack</sprite>
+      <sprite>sprites\sprite_Enemy_3_Mini2_Attack</sprite>
+      <sprite>sprites\sprite_Enemy_3_Mini3_Attack</sprite>
       <sprite>sprites\sprite_Enemy_3_Mini_Shadow</sprite>
+      <sprite>sprites\sprite_Enemy_3_Mini2_Shadow</sprite>
+      <sprite>sprites\sprite_Enemy_3_Mini3_Shadow</sprite>
       <sprite>sprites\sprite_Enemy_Moving</sprite>
       <sprite>sprites\sprite_Enemy_Moving_2</sprite>
     </sprites>
