@@ -59,9 +59,20 @@ BASE_SCORE = MAX_HP;
 scoreValue = BASE_SCORE;
 
 damage = 10;
-
-spriteExposed = sprite_Enemy_3_Mini;
-spriteShadow = sprite_Enemy_3_Mini_Shadow;
+switch (irandom(2)) {
+   case 0:
+    spriteExposed = sprite_Enemy_3_Mini;
+    spriteShadow = sprite_Enemy_3_Mini_Shadow;   
+    break;
+   case 1:
+    spriteExposed = sprite_Enemy_3_Mini2;
+    spriteShadow = sprite_Enemy_3_Mini2_Shadow;   
+    break;
+   case 2:
+    spriteExposed = sprite_Enemy_3_Mini3;
+    spriteShadow = sprite_Enemy_3_Mini3_Shadow;   
+    break;      
+}
 
 enemy = object_Enemy_Mini;
 </string>
