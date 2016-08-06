@@ -242,6 +242,7 @@ if (keyboard_check_pressed(vk_escape) &amp;&amp; global.inst_Torch.canOn)  {
         instance_deactivate_all(true);
         instance_activate_object(object_Torch);
         instance_activate_object(object_Hitbox_Dashed_Circle);
+        instance_activate_object(object_Sign_Cigar);
         instance_create(room_width*0.51, room_height*0.75, object_Quit_Button);
         instance_create(room_width *0.51, room_height*0.60, object_Control_Button);
         instance_create(room_width *0.51, room_height*0.45, object_Return_Button);

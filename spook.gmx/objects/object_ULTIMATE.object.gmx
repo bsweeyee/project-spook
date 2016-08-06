@@ -25,18 +25,49 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// initialise parameters
+            <string>///initialize variables for ultimate
 
-MAX_HEALTH = 200;
-life = MAX_HEALTH;
-playerSpeed = 5;
-isDead = false;
-canMove = true;
-isMoving = false;
-vsp = 0;
+MAX_ROLL_CHANCE = 1024;
+TOTAL_PERCENT = 100;
 
-image_xscale = 0.8;
-image_yscale = 0.8;
+
+negative_neutral_constant = 0.05;
+neutral_positive_constant = 0.8;
+
+neutral_postive_constant_20 = 0.04;
+
+negative_percent = 0;
+neutral_percent = 0;
+positive_percent = 0;
+
+alarm[0] = room_speed;
+canActivate = false;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///controls when ultimate can activate
+canActivate = true;
+alarm[0] = room_speed;
 </string>
           </argument>
         </arguments>
@@ -59,125 +90,32 @@ image_yscale = 0.8;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///when out of room, prevent out of room
+            <string>///when right click is pressed, based on current combo level, perform combo action
 
-if (x &gt; room_width)   {
-    x = room_width;
+if (instance_exists(object_Player_1_Stub))  {
+if (mouse_check_button_pressed(mb_right) &amp;&amp; canActivate)   {
+     
+     if (global.combo &lt;= 20) {
+        neutral_percent = TOTAL_PERCENT * global.combo * negative_neutral_constant;
+        negative_percent = 100 - neutral_percent;
+        positive_percent = neutral_percent - (neutral_percent * neutral_positive_constant);
+        neutral_percent *= neutral_positive_constant;
+     } else if (global.combo &gt; 20) {
+        var tempCombo = global.combo - 20;
+        negative_percent = 0;
+        neutral_percent = 80 - ((TOTAL_PERCENT) * tempCombo *  neutral_positive_constant_20);
+        positive_percent = 20 + ((TOTAL_PERCENT) * tempCombo *  neutral_positive_constant_20);
+     } else if (global.combo &gt; 40)  {
+        negative_percent = 0;
+        neutral_percent = 0;
+        positive_percent = 100;
+     }
+     
+     var ultimateType = chooseUltimateType(negative_percent, neutral_percent, positive_percent);
+     activateUltimate(ultimateType);
+     
+     canActivate = false;
 }
-
-if (x &lt; 0)    {
-    x = 0;
-}
-
-if (y+1 &gt; room_height)  {
-    y = room_height-1;
-}
-
-if (y-1 &lt; 0)    {
-    y = 0;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///when collide with invisible wall, prevent movement
-
-// Vertical
-repeat(abs(vsp)) {
-    if (!place_meeting(x, y + sign(vsp), object_InvisibleWall))  {
-        y += sign(vsp); 
-    } else {
-        vsp = 0;
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///update health
-//(cig burns out slowly on its own)
-
-life += -0.01;
-if(life &lt; 0){
-    life = 0;
-    isDead = true;
-}
-if(life &gt; 200)
-    life = 200;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///update position
-
-if (canMove)    {
-    if(keyboard_check(ord('D')))    {
-        x += playerSpeed;
-    }
-    
-    if(keyboard_check(ord('A')))    {
-        x -= playerSpeed;
-    }
-        
-    if(keyboard_check(ord('S')))    {
-        vsp = playerSpeed;
-    } else if (keyboard_check_released(ord('S')))   {
-        vsp = 0;
-    }
-
-    if(keyboard_check(ord('W')))    {
-        vsp = -playerSpeed;
-    } else if (keyboard_check_released(ord('W')))   {
-        vsp = 0
-    }
 }
 </string>
           </argument>

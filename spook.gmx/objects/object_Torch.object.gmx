@@ -306,7 +306,7 @@ if (!isOn)  {
 if (isOn)   {
     dashCircle.image_alpha = 0;
 } else  {
-    dashCircle.image_alpha = 1;
+    dashCircle.image_alpha = 0.5;
 }
 </string>
           </argument>

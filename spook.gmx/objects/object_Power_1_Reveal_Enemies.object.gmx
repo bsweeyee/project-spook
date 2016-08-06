@@ -96,12 +96,12 @@ event_inherited();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///when collide with player, create yellow-ish tint
+            <string>///when collide with player, pickup
 //destroy all shadows and destroy itself
 
-if (place_meeting(x, y, object_Player_1_Stub))  {
+if (place_meeting(x, y, object_Player_1_Stub) &amp;&amp; !isPicked)  {
     object_Player_1_Stub.lsdAmount += 1;
-    instance_destroy();
+    isPicked = true;
 }
 </string>
           </argument>

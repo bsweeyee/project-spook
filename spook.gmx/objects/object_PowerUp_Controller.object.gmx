@@ -33,6 +33,12 @@ global.showProjectiles = false;
 
 shadowTimer = MAX_TIME;
 projectileTimer = MAX_TIME;
+
+reveal_scale = 1;
+reveal_alpha = 1;
+
+projectile_scale = 1;
+projectile_alpha = 1;
 </string>
           </argument>
         </arguments>
@@ -63,6 +69,12 @@ if (!global.showShadows) {
         shadowTimer = MAX_TIME;
         global.showShadows = true;
     }
+    
+    reveal_scale += 10/room_speed;
+    reveal_alpha -= 2/room_speed;
+} else  {
+    reveal_scale = 1;
+    reveal_alpha = 1;
 }
 </string>
           </argument>
@@ -92,6 +104,12 @@ if (global.showProjectiles) {
         projectileTimer = MAX_TIME;
         global.showProjectiles = false;
     }
+    
+    projectile_scale += 10/room_speed;
+    projectile_alpha -= 2/room_speed;
+}  else  {
+    projectile_scale = 1;
+    projectile_alpha = 1;
 }
 </string>
           </argument>
@@ -120,6 +138,8 @@ if (!global.showShadows) {
     draw_set_color(c_yellow);
     draw_set_alpha(0.01);
     draw_rectangle(0, 0, room_width, room_height, false);
+    
+    draw_sprite_ext(sprite_Power_1_Reveal_Enemies, 0, room_width/2, room_height/2, reveal_scale, reveal_scale, 0, c_white, reveal_alpha);
     draw_set_alpha(1);
 }
 </string>
@@ -147,6 +167,8 @@ if (global.showProjectiles) {
     draw_set_color(c_aqua);
     draw_set_alpha(0.01);
     draw_rectangle(0, 0, room_width, room_height, false);
+    
+    draw_sprite_ext(sprite_Power_2_Reveal_Projectiles, 0, room_width/2, room_height/2, projectile_scale, projectile_scale, 0, c_white, projectile_alpha);
     draw_set_alpha(1);
 }
 </string>

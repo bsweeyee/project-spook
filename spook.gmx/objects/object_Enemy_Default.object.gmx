@@ -144,6 +144,37 @@ isCreateProjectile = false;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///create collision grid check (inactive)
+
+/*
+collisionGrid = ds_grid_create(sprite_width/32, sprite_height/32);
+
+for (var i=0;i&lt;sprite_width/32;i++) {
+    for (var j=0;j&lt;sprite_height/32;j++)    {
+        ds_grid_set(collisionGrid, i, j, 0);
+    }
+}
+*/
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
@@ -311,6 +342,35 @@ if (isDead) {
         hasCreatedProjectile = true;
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///when colliding with hitbox, mark points which collide with hitbox to be true (inactive)
+
+/*
+for (var i=0;i&lt;sprite_width/32;i++) {
+    for (var j=0;j&lt;sprite_height/32;j++)    {
+       
+    }
+}
+*/
 </string>
           </argument>
         </arguments>

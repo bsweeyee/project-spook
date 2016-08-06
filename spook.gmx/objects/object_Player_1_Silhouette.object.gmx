@@ -55,6 +55,7 @@ if (y &gt;= room_height*(14/16))   {
     instance_create(0, 0, object_CommonSpawnerTraits);
     instance_create(0, 0, object_UI_Controller);
     instance_create(0, 0, object_PowerUp_Controller);
+    instance_create(0, 0, object_ULTIMATE);
     global.inst_Torch.canOn = true;
     instance_destroy();
 } 

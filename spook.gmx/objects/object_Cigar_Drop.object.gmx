@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///initialize speed
+            <string>///inherit parent
 event_inherited();
 </string>
           </argument>
@@ -78,8 +78,6 @@ event_inherited();
           </argument>
         </arguments>
       </action>
-    </event>
-    <event eventtype="4" ename="object_Player_1_Stub">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -96,9 +94,13 @@ event_inherited();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///increase number of cigar on player
-object_Player_1_Stub.cigarAmount += 1;
-instance_destroy();
+            <string>///when collide with player, pickup
+//destroy all shadows and destroy itself
+
+if (place_meeting(x, y, object_Player_1_Stub) &amp;&amp; !isPicked)  {
+    object_Player_1_Stub.cigarAmount += 1;
+    isPicked = true;
+}
 </string>
           </argument>
         </arguments>
