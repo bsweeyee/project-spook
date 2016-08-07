@@ -272,7 +272,6 @@
         <object>objects\object_Torch</object>
         <object>objects\object_Cig</object>
         <object>objects\object_Cigar_minigame</object>
-        <object>objects\object_ULTIMATE</object>
       </objects>
       <objects name="game_items">
         <object>objects\object_CommonItemTraits</object>
@@ -302,6 +301,12 @@
       <objects name="bg_foreground">
         <object>objects\object_railings</object>
         <object>objects\object_Sign_Cigar</object>
+      </objects>
+      <objects name="ULTIMATES">
+        <object>objects\object_ULTIMATE</object>
+        <object>objects\object_showDebug</object>
+        <object>objects\object_SlowDown</object>
+        <object>objects\object_disco</object>
       </objects>
     </objects>
     <objects name="TweenGMS">

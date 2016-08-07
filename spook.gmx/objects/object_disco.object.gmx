@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-2</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,24 +25,53 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// initialise parameters
+            <string>///create alarm and isActivated variable
+alarm[0] = room_speed * 3;
+isActivated = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///initialize circle variables
+TOTAL_CIRCLES = 7;
+circle_radius[TOTAL_CIRCLES] = 0;
+circle_X[TOTAL_CIRCLES] = 0;
+circle_Y[TOTAL_CIRCLES] = 0;
+alarm[1] = 10;
 
-MAX_HEALTH = 200;
-life = MAX_HEALTH;
-playerSpeed = 6;
-isDead = false;
-canMove = true;
-isMoving = false;
-vsp = 0;
+for (var i=0; i&lt;TOTAL_CIRCLES; i++) {
+    circle_radius[i] = irandom_range(60, 100) + 1;
+    circle_X[i] = irandom(room_width);
+    circle_Y[i] = irandom(room_height);
+}
 
-image_xscale = 0.8;
-image_yscale = 0.8;
+colorList = ds_list_create();
+ds_list_add(colorList, c_green, c_maroon, c_navy);
+ds_list_shuffle(colorList);
+
+color = ds_list_find_value(colorList, 0);
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="2" enumb="1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -59,126 +88,77 @@ image_yscale = 0.8;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///when out of room, prevent out of room
+            <string>///create circles every few steps
 
-if (x &gt; room_width)   {
-    x = room_width;
+
+for (var i=0; i&lt;TOTAL_CIRCLES; i++) {
+    circle_radius[i] = irandom_range(60, 100) + 1;
+    circle_X[i] = irandom(room_width);
+    circle_Y[i] = irandom(room_height);
 }
-
-if (x &lt; 0)    {
-    x = 0;
-}
-
-if (y+1 &gt; room_height)  {
-    y = room_height-1;
-}
-
-if (y-1 &lt; 0)    {
-    y = 0;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///when collide with invisible wall, prevent movement
-
-// Vertical
-repeat(abs(vsp)) {
-    if (!place_meeting(x, y + sign(vsp), object_InvisibleWall))  {
-        y += sign(vsp); 
-    } else {
-        vsp = 0;
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///update health
-//(cig burns out slowly on its own)
-
-life += -0.01;
-if(life &lt; 0){
-    life = 0;
-    isDead = true;
-}
-if(life &gt; 200)
-    life = 200;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///update position
-
-if (canMove)    {
-    if(keyboard_check(ord('D')))    {
-        x += playerSpeed;
-    }
     
-    if(keyboard_check(ord('A')))    {
-        x -= playerSpeed;
-    }
-        
-    if(keyboard_check(ord('S')))    {
-        vsp = playerSpeed;
-    } else if (keyboard_check_released(ord('S')))   {
-        vsp = 0;
-    }
+    
+    ds_list_shuffle(colorList);
+    color = ds_list_find_value(colorList, 0);
+ 
+alarm[1] = 10;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///when alarm is up, destroy object off debug
 
-    if(keyboard_check(ord('W')))    {
-        vsp = -playerSpeed;
-    } else if (keyboard_check_released(ord('W')))   {
-        vsp = 0
-    }
+instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///draw colored circles
+
+draw_set_alpha(0.2);
+
+for (var i=0; i&lt;TOTAL_CIRCLES; i++) {
+    draw_set_color(color);
+    draw_circle(circle_X[i], circle_Y[i], circle_radius[i], false);
 }
+
+draw_set_alpha(1);
 </string>
           </argument>
         </arguments>

@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-3</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -27,22 +27,123 @@
             <kind>1</kind>
             <string>///initialize variables for ultimate
 
-MAX_ROLL_CHANCE = 1024;
 TOTAL_PERCENT = 100;
 
 
 negative_neutral_constant = 0.05;
 neutral_positive_constant = 0.8;
 
-neutral_postive_constant_20 = 0.04;
+neutral_positive_constant_20 = 0.04;
 
 negative_percent = 0;
 neutral_percent = 0;
 positive_percent = 0;
 
-alarm[0] = room_speed;
+alarm[0] = room_speed * 5;
 canActivate = false;
 
+messageNum = 15;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///initialize all power up message
+
+isShowMessage = false;
+isPlayMessage = false;
+
+textPos_X = room_width/2;
+textPos_Y = room_height*0.4;
+textAlpha = 0;
+
+powerUpMessage[0] = "Slow and steady wins the race (or does it?)";
+powerUpMessage[1] = "More friends!";
+powerUpMessage[2] = "";
+powerUpMessage[3] = "";
+powerUpMessage[4] = "";
+powerUpMessage[5] = "Up up down down left right left right B A";
+powerUpMessage[6] = "DISCO PARTY!!!";
+powerUpMessage[7] = "";
+powerUpMessage[8] = "";
+powerUpMessage[9] = "";
+powerUpMessage[10] = "No friends!";
+powerUpMessage[11] = "";
+powerUpMessage[12] = "";
+powerUpMessage[13] = "";
+powerUpMessage[14] = "";
+powerUpMessage[15] = "Magikarp used Splash!";
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///initialize variables for ULTIMATE VISUAL INDICATION
+scale_X = 1;
+scale_Y = 1;
+alpha = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///when alarm 1 is off, turn off show message
+isShowMessage = false;
+textAlpha = 0;
+textPos_Y = room_height * 0.4;
+alpha = 1;
+scale_X = 1;
+scale_Y = 1;
 </string>
           </argument>
         </arguments>
@@ -67,7 +168,7 @@ canActivate = false;
             <kind>1</kind>
             <string>///controls when ultimate can activate
 canActivate = true;
-alarm[0] = room_speed;
+alarm[0] = room_speed * 5;
 </string>
           </argument>
         </arguments>
@@ -112,10 +213,111 @@ if (mouse_check_button_pressed(mb_right) &amp;&amp; canActivate)   {
      }
      
      var ultimateType = chooseUltimateType(negative_percent, neutral_percent, positive_percent);
-     activateUltimate(ultimateType);
+     messageNum = activateUltimate(ultimateType);
      
      canActivate = false;
+     isShowMessage = true;
+     isPlayMessage = true;
 }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///slowly increase text y pos and alpha
+
+if (isPlayMessage)  {
+if (textPos_Y &gt; (room_height * 0.15))   {
+    textPos_Y -= 1;
+} else if (textPos_Y &lt;= (room_height * 0.15))   {
+    textPos_Y = room_height * 0.15;
+}
+    
+if (textAlpha &lt; 1) {
+    textAlpha += (1/room_speed);
+} else if (textAlpha &gt;= 1)  {
+    alarm[1] = room_speed;
+    isPlayMessage = false;
+}
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///when message is showing, continue make the scale and alpha expand, else reset it
+if (isShowMessage)  {
+    alpha -= 1/room_speed;
+    scale_X += sign(image_xscale) * (1/room_speed);
+    scale_Y += sign(image_yscale) * (1/room_speed);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///draw powerup message
+
+if (isShowMessage)   {
+    draw_set_halign(fa_center);
+    draw_set_font(font_NeonPixel);
+    draw_set_color(c_white);
+    draw_set_alpha(textAlpha);
+    draw_text(textPos_X, textPos_Y, powerUpMessage[messageNum]);
+    
+    draw_set_font(-1);
+    draw_set_alpha(1);
+    draw_set_halign(fa_left);
+    
+    draw_sprite_ext(spr_playerStub, 0, object_Player_1_Stub.x, object_Player_1_Stub.y, scale_X, scale_Y, 0, c_white, alpha);
 }
 </string>
           </argument>

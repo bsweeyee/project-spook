@@ -106,9 +106,7 @@ if (!hasCreatedMiniGhosts)   {
 if (isCreateMiniGhosts)   {
     for (var i=0;i&lt;5;i++)   {
         var inst = instance_create(x, y, object_Enemy_Mini);
-        inst.image_alpha = 1;
-        inst.image_xscale = 0.5;
-        inst.image_yscale = 0.5;
+        //inst.image_alpha = 1;
         inst.direction = 72*(i+1);
         inst.speed = irandom(3) + 5;
     }

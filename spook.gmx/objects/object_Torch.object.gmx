@@ -67,7 +67,7 @@ lightArc = 30;
             <string>///define light surface attributes
 global.light = surface_create(room_width, room_height);
 
-surfaceAlpha = 0.5;
+surfaceAlpha = 0.7;
 </string>
           </argument>
         </arguments>

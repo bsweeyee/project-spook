@@ -31,3 +31,5 @@ switch (enemy)  {
     default:
     break;
 }
+
+return location;
