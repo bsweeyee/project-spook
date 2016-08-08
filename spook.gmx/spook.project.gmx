@@ -110,6 +110,7 @@
     </sprites>
     <sprites name="sprite_player">
       <sprite>sprites\spr_playerStub</sprite>
+      <sprite>sprites\sprite_torch</sprite>
       <sprite>sprites\sprite_player_shadow</sprite>
     </sprites>
     <sprites name="sprite_game_text_art">
@@ -143,7 +144,6 @@
   <backgrounds name="background">
     <background>background\tileTypeOne</background>
     <background>background\background_map_1</background>
-    <background>background\background_fore</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
