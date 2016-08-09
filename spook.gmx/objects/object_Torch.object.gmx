@@ -30,8 +30,9 @@
 isOn = false;
 canOn = true;
 
-//lightRadius = 60;
-lightPrecision = 80;
+lightRadius = 60;
+lightPrecision = 10;
+
 torch_XPos = 0;
 torch_YPos = 0;
 

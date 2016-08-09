@@ -124,6 +124,7 @@
       <sprite>sprites\sprite_Railing</sprite>
       <sprite>sprites\sprite_Mist_2</sprite>
       <sprite>sprites\sprite_cigar_sign</sprite>
+      <sprite>sprites\sprite_HUD</sprite>
     </sprites>
     <sprites name="sprite_items">
       <sprite>sprites\sprite_Coin</sprite>
