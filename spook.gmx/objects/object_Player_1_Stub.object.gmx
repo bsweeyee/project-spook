@@ -47,8 +47,9 @@ event_inherited();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///create cigarette
+            <string>///create cigarette and arm
 instance_create(self.x, self.y, object_Cig);
+instance_create(self.x, self.y, object_playerarm);
 </string>
           </argument>
         </arguments>
