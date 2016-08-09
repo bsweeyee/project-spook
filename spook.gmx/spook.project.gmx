@@ -84,6 +84,7 @@
       <sprite>sprites\sprite_Enemy_Type_1</sprite>
       <sprite>sprites\sprite_Enemy_Herring_1</sprite>
       <sprite>sprites\sprite_Enemy_Shadow_1</sprite>
+      <sprite>sprites\sprite_Enemy_Shadow_Herring_1</sprite>
       <sprite>sprites\sprite_Enemy_Type_2</sprite>
       <sprite>sprites\sprite_Enemy_Type_3</sprite>
       <sprite>sprites\sprite_Enemy_Type_3_Death</sprite>
@@ -305,7 +306,7 @@
       <objects name="ULTIMATES">
         <object>objects\object_ULTIMATE</object>
         <object>objects\object_showDebug</object>
-        <object>objects\object_SlowDown</object>
+        <object>objects\object_Reverse</object>
         <object>objects\object_disco</object>
       </objects>
     </objects>

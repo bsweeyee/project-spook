@@ -27,13 +27,12 @@
             <kind>1</kind>
             <string>///initialize variables for ultimate
 
-TOTAL_PERCENT = 100;
+TOTAL_PERCENT = 1;
 
-
-negative_neutral_constant = 0.05;
-neutral_positive_constant = 0.8;
-
-neutral_positive_constant_20 = 0.04;
+//percentage distribution
+constant[0] = 0.05;
+constant[1] = 0.03;
+constant[2] = 0.02;
 
 negative_percent = 0;
 neutral_percent = 0;
@@ -75,20 +74,11 @@ textAlpha = 0;
 
 powerUpMessage[0] = "Slow and steady wins the race (or does it?)";
 powerUpMessage[1] = "More friends!";
-powerUpMessage[2] = "";
-powerUpMessage[3] = "";
-powerUpMessage[4] = "";
-powerUpMessage[5] = "Up up down down left right left right B A";
-powerUpMessage[6] = "DISCO PARTY!!!";
-powerUpMessage[7] = "";
-powerUpMessage[8] = "";
-powerUpMessage[9] = "";
-powerUpMessage[10] = "No friends!";
-powerUpMessage[11] = "";
-powerUpMessage[12] = "";
-powerUpMessage[13] = "";
-powerUpMessage[14] = "";
-powerUpMessage[15] = "Magikarp used Splash!";
+powerUpMessage[2] = "Up up down down left right left right B A";
+powerUpMessage[3] = "DISCO PARTY!!!";
+powerUpMessage[4] = "No friends!";
+powerUpMessage[5] = "empty";
+powerUpMessage[6] = "Magikarp used Splash!";
 
 
 </string>
@@ -197,16 +187,14 @@ if (instance_exists(object_Player_1_Stub))  {
 if (mouse_check_button_pressed(mb_right) &amp;&amp; canActivate)   {
      
      if (global.combo &lt;= 20) {
-        neutral_percent = TOTAL_PERCENT * global.combo * negative_neutral_constant;
-        negative_percent = 100 - neutral_percent;
-        positive_percent = neutral_percent - (neutral_percent * neutral_positive_constant);
-        neutral_percent *= neutral_positive_constant;
-     } else if (global.combo &gt; 20) {
-        var tempCombo = global.combo - 20;
+        negative_percent = TOTAL_PERCENT - (global.combo * constant[0]);
+        neutral_percent = global.combo * constant[1];
+        positive_percent = global.combo * constant[2];
+     } else if (global.combo &gt; 20 &amp;&amp; global.combo &lt;= 32) {
         negative_percent = 0;
-        neutral_percent = 80 - ((TOTAL_PERCENT) * tempCombo *  neutral_positive_constant_20);
-        positive_percent = 20 + ((TOTAL_PERCENT) * tempCombo *  neutral_positive_constant_20);
-     } else if (global.combo &gt; 40)  {
+        neutral_percent = (global.combo * constant[1]) - (global.combo * constant[0]);
+        positive_percent = global.combo * constant[2] + (global.combo * constant[0]);
+     } else if (global.combo &gt; 32)  {
         negative_percent = 0;
         neutral_percent = 0;
         positive_percent = 100;
@@ -319,6 +307,8 @@ if (isShowMessage)   {
     
     draw_sprite_ext(spr_playerStub, 0, object_Player_1_Stub.x, object_Player_1_Stub.y, scale_X, scale_Y, 0, c_white, alpha);
 }
+
+//draw_text(10, 200, alarm[0]);
 </string>
           </argument>
         </arguments>

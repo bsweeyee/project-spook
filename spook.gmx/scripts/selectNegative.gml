@@ -1,11 +1,12 @@
 //selectNegative(randomNumber)
 
 var randomNumber = argument[0];
-var messageNum = 15;
+var messageNum = 6;
 
 switch (randomNumber)   {
+    //slows player down
     case 0:
-    instance_create(10, 10, object_SlowDown);
+    instance_create(10, 10, object_Reverse);
     messageNum = 0;
     break;
     
@@ -21,23 +22,6 @@ switch (randomNumber)   {
     }    
     messageNum = 1;
     break;
-    
-    case 2:
-    //bigger than you
-    
-    messageNum = 2;
-    break;
-    
-    case 3:
-    //create lotsa fog
-    
-    messageNum = 3;
-    break;
-    
-    case 4:
-    
-    messageNum = 4;
-    break;   
 }
 
 return messageNum;

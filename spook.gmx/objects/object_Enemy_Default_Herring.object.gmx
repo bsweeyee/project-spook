@@ -56,7 +56,7 @@ hp = MAX_HP;
 deathCount = room_speed;
 
 spriteExposed = sprite_Enemy_Herring_1;
-spriteShadow = sprite_Enemy_Shadow_1;
+spriteShadow = sprite_Enemy_Shadow_Herring_1;
 </string>
           </argument>
         </arguments>
@@ -109,7 +109,32 @@ if (direction ==0)  {
           <argument>
             <kind>1</kind>
             <string>///create animation variables
-image_speed = 0.1;
+image_speed = 0.3;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///initialize hat properties
+hat_PosX = x;
+hat_PosY = y;
+
+hatRotation = 0;
 </string>
           </argument>
         </arguments>
@@ -182,7 +207,65 @@ if (x &gt; room_width || x &lt; 0) {
 if (isDead) {
     deathCount -= 1;
     //image_alpha -= (1/room_speed);
-    speed = 6;
+    speed = 10;
+} else  {
+    //constantly update hat position
+    hat_PosX = x;
+    hat_PosY = y;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///when is killed by player, make hat fly
+if (isKilledByPlayer &amp;&amp; isDead)   {
+    hat_PosX += sign(image_xscale)* 3;
+    hat_PosY -= 1;
+    hatRotation += -sign(image_xscale)*20;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///draw hat sprite dropping and spinning when dead
+draw_self()
+
+if (isDead &amp;&amp; isKilledByPlayer) {
+    draw_sprite_ext(sprite_Enemy_Shadow_Herring_1, 0, hat_PosX, hat_PosY, 1, 1, hatRotation, c_white, 1);
 }
 </string>
           </argument>

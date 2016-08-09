@@ -1,7 +1,7 @@
 //selectPositive(randomNumber)
 
 var randomNumber = argument[0];
-var messageNum = 15;
+var messageNum = 6;
 
 switch (randomNumber)   {
     case 0:
@@ -14,27 +14,12 @@ switch (randomNumber)   {
         }
     }
     
-    messageNum = 10;
+    messageNum = 4;
     break;
     
     case 1:
     
-    messageNum = 11;
-    break;
-    
-    case 2:
-    
-    messageNum = 12;
-    break;
-    
-    case 3:
-    
-    messageNum = 13;
-    break;
-    
-    case 4:
-    
-    messageNum = 14;
+    messageNum = 5;
     break;
 }
 
