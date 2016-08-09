@@ -9,11 +9,6 @@ switch (randomNumber)   {
     instance_create(20, 20, object_showDebug);
     messageNum = 2;
     break;
-    
-    case 1:
-    //DISCO PARTY!!! RANDOMLY CREATE LIGHTS AROUND ARENA
-    messageNum = 3;
-    break;
 }
 
 return messageNum;

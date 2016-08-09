@@ -14,12 +14,13 @@ switch (randomNumber)   {
         }
     }
     
-    messageNum = 4;
+    messageNum = 3;
     break;
     
     case 1:
-    
-    messageNum = 5;
+    //make light bigger
+    instance_create(0, 0, object_BigTorch);
+    messageNum = 4;
     break;
 }
 

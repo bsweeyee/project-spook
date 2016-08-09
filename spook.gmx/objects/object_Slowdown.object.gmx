@@ -28,8 +28,30 @@
             <string>///create alarm and isActivated variable and hasScaled variable
 alarm[0] = room_speed * 3;
 isActivated = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///create variable for slowdown
 
-hasScaled = false;
+slowDown = irandom(4);
+speedDown = random(0.2)+0.1;
 </string>
           </argument>
         </arguments>
@@ -52,40 +74,13 @@ hasScaled = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///when alarm is up, set back scale
+            <string>///destroy after playerSpeed returns
 
-///reverse all hats on screens
 
-if (instance_exists(object_Enemy_Default))   {
-if (object_Enemy_Default.sprite_index == sprite_Enemy_Shadow_1)  {
-    if (!hasScaled)  {
-        object_Enemy_Default.image_xscale *= -1;
-        hasScaled = true;
-    } else if (hasScaled)   {
-    }
-} else if (object_Enemy_Default.sprite_index == sprite_Enemy_Type_1) {
-    if (!hasScaled)  {
-    } else if (hasScaled)   {
-        object_Enemy_Default.image_xscale *= -1;
-        hasScaled = false;
-    }
-}
-}
-
-if (instance_exists(object_Enemy_Default_Herring))   {
-if (object_Enemy_Default_Herring.sprite_index == sprite_Enemy_Shadow_Herring_1)  {
-    if (!hasScaled)  {
-        object_Enemy_Default_Herring.image_xscale *= -1;
-        hasScaled = true;
-    } else if (hasScaled)   {
-    }
-} else if (object_Enemy_Default_Herring.sprite_index == sprite_Enemy_Herring_1) {
-    if (!hasScaled)  {
-    } else if (hasScaled)   {
-        object_Enemy_Default_Herring.image_xscale *= -1;
-        hasScaled = false;
-    }
-}
+if (instance_exists(object_Player_1_Stub))   {
+   with (object_Player_1_Stub)  {
+    playerSpeed = 6;
+   } 
 }
 
 instance_destroy();
@@ -149,39 +144,16 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///reverse all hats on screens
+            <string>///if player speed is greater than slowdown, reduce speed
 
-if (instance_exists(object_Enemy_Default))   {
-if (object_Enemy_Default.sprite_index == sprite_Enemy_Shadow_1)  {
-    if (!hasScaled)  {
-        object_Enemy_Default.image_xscale *= -1;
-        hasScaled = true;
-    } else if (hasScaled)   {
+if (instance_exists(object_Player_1_Stub))  {
+    if (object_Player_1_Stub.playerSpeed &gt; slowDown)    {
+        object_Player_1_Stub.playerSpeed -= speedDown;
+    } else  {
+         object_Player_1_Stub.playerSpeed = slowDown;
     }
-} else if (object_Enemy_Default.sprite_index == sprite_Enemy_Type_1) {
-    if (!hasScaled)  {
-    } else if (hasScaled)   {
-        object_Enemy_Default.image_xscale *= -1;
-        hasScaled = false;
-    }
-}
 }
 
-if (instance_exists(object_Enemy_Default))   {
-if (object_Enemy_Default_Herring.sprite_index == sprite_Enemy_Shadow_Herring_1)  {
-    if (!hasScaled)  {
-        object_Enemy_Default_Herring.image_xscale *= -1;
-        hasScaled = true;
-    } else if (hasScaled)   {
-    }
-} else if (object_Enemy_Default_Herring.sprite_index == sprite_Enemy_Herring_1) {
-    if (!hasScaled)  {
-    } else if (hasScaled)   {
-        object_Enemy_Default_Herring.image_xscale *= -1;
-        hasScaled = false;
-    }
-}
-}
 </string>
           </argument>
         </arguments>

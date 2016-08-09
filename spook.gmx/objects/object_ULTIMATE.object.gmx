@@ -72,13 +72,12 @@ textPos_X = room_width/2;
 textPos_Y = room_height*0.4;
 textAlpha = 0;
 
-powerUpMessage[0] = "Slow and steady wins the race (or does it?)";
+powerUpMessage[0] = "Slow and steady wins the race.";
 powerUpMessage[1] = "More friends!";
 powerUpMessage[2] = "Up up down down left right left right B A";
-powerUpMessage[3] = "DISCO PARTY!!!";
-powerUpMessage[4] = "No friends!";
-powerUpMessage[5] = "empty";
-powerUpMessage[6] = "Magikarp used Splash!";
+powerUpMessage[3] = "No friends!!";
+powerUpMessage[4] = "MEGA TORCH";
+powerUpMessage[5] = "Magikarp used Splash!";
 
 
 </string>

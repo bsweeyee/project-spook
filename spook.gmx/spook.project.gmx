@@ -308,6 +308,8 @@
         <object>objects\object_ULTIMATE</object>
         <object>objects\object_showDebug</object>
         <object>objects\object_Reverse</object>
+        <object>objects\object_Slowdown</object>
+        <object>objects\object_BigTorch</object>
         <object>objects\object_disco</object>
       </objects>
     </objects>
@@ -319,8 +321,8 @@
     <timeline>timelines\timeline_start</timeline>
   </timelines>
   <rooms name="rooms">
-    <room>rooms\room_Start_Screen</room>
     <room>rooms\room_Stage_1</room>
+    <room>rooms\room_Start_Screen</room>
     <room>rooms\room_Instructions</room>
   </rooms>
   <help>

@@ -6,7 +6,7 @@ var messageNum = 6;
 switch (randomNumber)   {
     //slows player down
     case 0:
-    instance_create(10, 10, object_Reverse);
+    instance_create(10, 10, object_Slowdown);
     messageNum = 0;
     break;
     

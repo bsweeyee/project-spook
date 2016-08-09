@@ -50,7 +50,7 @@ isCreateMiniGhosts = false;
             <kind>1</kind>
             <string>///initialize speed variables
 speed = 0;
-image_speed = 1/room_speed;
+image_speed = 0.2;
 </string>
           </argument>
         </arguments>
@@ -74,7 +74,7 @@ image_speed = 1/room_speed;
           <argument>
             <kind>1</kind>
             <string>///when dead, do death animation
-image_alpha -= (4/room_speed);
+image_alpha -= (1/room_speed);
 image_xscale += (1/room_speed);
 image_yscale += (1/room_speed);
     

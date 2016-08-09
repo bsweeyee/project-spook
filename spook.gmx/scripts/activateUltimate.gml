@@ -10,7 +10,7 @@ switch (ultimateType)   {
     break;
     
     case 1:
-    var aRandomNeutralUltimate = irandom(1);
+    var aRandomNeutralUltimate = 0;
     messageNum = selectNeutral(aRandomNeutralUltimate);
     break;
     
