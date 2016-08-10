@@ -72,8 +72,8 @@ instance_create(self.x, self.y, object_playerarm);
             <kind>1</kind>
             <string>///initialize cigar amount, lsd amount and alcoholAmount
 cigarAmount = 5;
-lsdAmount = 0;
-alcoholAmount = 0;
+lsdAmount = 10;
+alcoholAmount = 10;
 </string>
           </argument>
         </arguments>

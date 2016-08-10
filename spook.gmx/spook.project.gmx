@@ -120,6 +120,7 @@
     <sprites name="sprite_others">
       <sprite>sprites\sprite_Fog</sprite>
       <sprite>sprites\spirte_Fog_2</sprite>
+      <sprite>sprites\spirte_Fog_3</sprite>
       <sprite>sprites\sprite_Solid</sprite>
       <sprite>sprites\sprite_Railing</sprite>
       <sprite>sprites\sprite_Mist_2</sprite>

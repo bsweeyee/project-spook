@@ -139,7 +139,7 @@ dashCircle = instance_create(mouse_x, mouse_y, object_Hitbox_Dashed_Circle);
             <string>///define light surface attributes
 global.light = surface_create(room_width, room_height);
 
-surfaceAlpha = 0.9;
+surfaceAlpha = 0.95;
 </string>
           </argument>
         </arguments>
@@ -337,28 +337,11 @@ if (isOn)   {
 
 var i = 0;
 surface_set_target(global.light);
-draw_set_color(c_white);
+//draw_set_color(c_white);
 
 draw_clear_alpha(c_black, surfaceAlpha);
-draw_set_blend_mode(bm_subtract);
 
-draw_set_alpha((1/lightPrecision));
-
-if (isOn)   {
-    for (i=0; i&lt;=lightPrecision; i+=1) {
-        draw_circle(mouse_x, mouse_y, (lightRadius - (lightRadius/lightPrecision*i)), false);
-    }
-    
-    if (instance_exists(object_Player_1_Stub))   {
-        draw_triangle(triangle_One_XPoints[0], triangle_One_YPoints[0], triangle_One_XPoints[1], triangle_One_YPoints[1], triangle_One_XPoints[2], triangle_One_YPoints[2], false);
-        draw_triangle(triangle_Two_XPoints[0], triangle_Two_YPoints[0], triangle_Two_XPoints[1], triangle_Two_YPoints[1], triangle_Two_XPoints[2], triangle_Two_YPoints[2], false);
-    }
-}
-else {
-    //draw_set_alpha(0.1);
-    //draw_sprite(sprite_DashedCircle, 0, torch_XPos, torch_YPos);
-}
-
+//draw cig glow
 if (instance_exists(object_Cig))    {
 draw_set_alpha((1/lightPrecision));
 draw_set_blend_mode(bm_max);
@@ -372,6 +355,22 @@ for(var i = 0; i&lt;(object_Cig.meter); i++)   {
     draw_circle(object_Cig.x+length, object_Cig.y+2.5, (cigRadius - (cigRadius/object_Cig.meter*i)), false);
 }
 
+}
+
+if (isOn)   {    
+    //draw beam
+    if (instance_exists(object_Player_1_Stub))   
+        draw_set_alpha((1/10));{
+        draw_set_blend_mode(bm_add);
+        draw_triangle_colour(triangle_One_XPoints[0], triangle_One_YPoints[0], triangle_One_XPoints[1], triangle_One_YPoints[1], triangle_One_XPoints[2], triangle_One_YPoints[2],c_black, c_white, c_black, false);
+        draw_triangle_colour(triangle_Two_XPoints[0], triangle_Two_YPoints[0], triangle_Two_XPoints[1], triangle_Two_YPoints[1], triangle_Two_XPoints[2], triangle_Two_YPoints[2],c_black, c_white, c_black, false);
+    }
+    //draw torch circle
+    for (i=0; i&lt;=lightPrecision; i+=1) {
+        draw_set_alpha((1/lightPrecision));
+        draw_set_blend_mode(bm_max);
+        draw_circle(mouse_x, mouse_y, (lightRadius - (lightRadius/lightPrecision*i)), false);
+    }
 }
 
 draw_set_alpha(1);
