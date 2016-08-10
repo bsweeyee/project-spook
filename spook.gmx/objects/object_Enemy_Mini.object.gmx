@@ -59,6 +59,7 @@ BASE_SCORE = MAX_HP;
 scoreValue = BASE_SCORE;
 
 damage = 10;
+
 switch (irandom(2)) {
    case 0:
     spriteExposed = sprite_Enemy_3_Mini;
