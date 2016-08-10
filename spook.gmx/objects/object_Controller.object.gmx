@@ -113,7 +113,7 @@ for (var i=0;i&lt;instance_number(object_Railing);i++) {
           <argument>
             <kind>1</kind>
             <string>///control background alpha
-background_alpha[0] = 0.3;
+background_alpha[0] = 1.0;
 </string>
           </argument>
         </arguments>

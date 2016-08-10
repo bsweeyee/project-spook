@@ -139,7 +139,7 @@ dashCircle = instance_create(mouse_x, mouse_y, object_Hitbox_Dashed_Circle);
             <string>///define light surface attributes
 global.light = surface_create(room_width, room_height);
 
-surfaceAlpha = 0.9;
+surfaceAlpha = 0.95;
 </string>
           </argument>
         </arguments>
