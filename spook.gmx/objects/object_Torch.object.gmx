@@ -362,10 +362,16 @@ if (isOn)   {
     if (instance_exists(object_Player_1_Stub))   
         draw_set_alpha((1/10));{
         draw_set_blend_mode(bm_add);
-        draw_triangle_colour(triangle_One_XPoints[0], triangle_One_YPoints[0], triangle_One_XPoints[1], triangle_One_YPoints[1], triangle_One_XPoints[2], triangle_One_YPoints[2],c_black, c_white, c_black, false);
-        draw_triangle_colour(triangle_Two_XPoints[0], triangle_Two_YPoints[0], triangle_Two_XPoints[1], triangle_Two_YPoints[1], triangle_Two_XPoints[2], triangle_Two_YPoints[2],c_black, c_white, c_black, false);
+        draw_triangle_colour(triangle_One_XPoints[0], triangle_One_YPoints[0], triangle_One_XPoints[1], triangle_One_YPoints[1], triangle_One_XPoints[2], triangle_One_YPoints[2],c_black, c_white, c_white, false);
+        draw_triangle_colour(triangle_Two_XPoints[0], triangle_Two_YPoints[0], triangle_Two_XPoints[1], triangle_Two_YPoints[1], triangle_Two_XPoints[2], triangle_Two_YPoints[2],c_black, c_white, c_white, false);
     }
+    
+
+    //draw_set_blend_mode(bm_subtract);
+    //draw_circle(mouse_x, mouse_y, lightRadius, false);
+    
     //draw torch circle
+    draw_set_colour(c_white);
     for (i=0; i&lt;=lightPrecision; i+=1) {
         draw_set_alpha((1/lightPrecision));
         draw_set_blend_mode(bm_max);
