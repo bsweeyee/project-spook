@@ -81,7 +81,7 @@ spriteShadow = sprite_Enemy_Shadow_Herring_1;
 var randomDirection = irandom(1);
 
 direction = randomDirection * 180;
-speed = irandom(4) + 1;
+speed = irandom(2) + 1;
 
 if (direction ==0)  {
     image_xscale = -1;
@@ -139,6 +139,54 @@ hatRotation = 0;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///initialize timer till disappear
+alarm[0] = room_speed*6;
+isDisappear = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///after room_speed*6, make cat disappear
+speed = 0;
+isDisappear = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
@@ -179,9 +227,12 @@ event_inherited();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///when collide with outside, remove from game
-if (x &gt; room_width || x &lt; 0) {
-    isDead = true;
+            <string>///when not in contact with railing, change direction
+
+if (!place_meeting(x, y, object_Railing) &amp;&amp; !isDead) {
+    image_xscale *= -1;
+    direction += 180;
+    //isDead = true;
 }
 </string>
           </argument>
@@ -207,7 +258,14 @@ if (x &gt; room_width || x &lt; 0) {
 if (isDead) {
     deathCount -= 1;
     //image_alpha -= (1/room_speed);
-    speed = 10;
+    
+    if (!place_meeting(x, y, object_Railing)) {
+        speed = 0;
+        image_speed = 0;
+        image_alpha -= 1/room_speed;
+    } else  {
+         speed = 10;
+    }
 } else  {
     //constantly update hat position
     hat_PosX = x;
@@ -238,6 +296,34 @@ if (isKilledByPlayer &amp;&amp; isDead)   {
     hat_PosX += sign(image_xscale)* 3;
     hat_PosY -= 1;
     hatRotation += -sign(image_xscale)*20;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///when disappear is true, make cat disappear
+if (isDisappear &amp;&amp; !isDead)    {
+    speed = 0;
+    image_alpha -= 2/room_speed;
+    if (image_alpha &lt; 0)    {
+        instance_destroy();
+    }
 }
 </string>
           </argument>

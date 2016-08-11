@@ -50,7 +50,7 @@ instance_create(room_width*0.1, room_height*0.1, object_Back_Button);
           <argument>
             <kind>1</kind>
             <string>///control background alpha
-background_alpha[0] = 0.3;
+background_alpha[0] = 1;
 </string>
           </argument>
         </arguments>
@@ -145,6 +145,8 @@ if (!instance_exists(object_Enemy_Mini)) {
     var inst = instance_create(room_width/2, room_height/2, object_Enemy_Mini);
     inst.direction = 72*(irandom(4)+1);
     inst.speed = irandom(3) + 5;
+    inst.image_xscale = 2;
+    inst.image_yscale = 2;
 }
 </string>
           </argument>

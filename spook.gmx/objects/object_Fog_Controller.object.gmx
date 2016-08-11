@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>///initialize fog variables
-fogTimer = irandom(room_speed);
+fogTimer = room_speed;
 isCreateFog = false;
 
 </string>

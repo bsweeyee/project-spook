@@ -27,15 +27,22 @@
             <kind>1</kind>
             <string>///initialize fog attributes
 
+MAX_ALPHA = random_range(0.01, 0.1);
 image_alpha = 0;
 isVanish = false;
 
-image_xscale = random(4) - 2;
-image_yscale = random(1) - 0.5;
+
+image_xscale = random_range(-2, 2);
+image_yscale = random_range(-0.5, 0.5);
 
 if (image_xscale &lt; 1 &amp;&amp; image_xscale &gt; -1)  {
-    image_xscale += 1
-} 
+    image_xscale += sign(image_xscale) * 1;
+}
+
+if (image_yscale &lt; 0.1 &amp;&amp; image_yscale &gt; -0.1)  {
+    image_yscale += sign(image_yscale) * 0.1;
+}
+ 
 
 </string>
           </argument>
@@ -116,9 +123,14 @@ if ((x-128) &lt; 0)    {
             <string>///when vanishing, make fog xscale longer, and yscale smaller and alpha lower
 
 if (isVanish)   {
-    image_xscale += sign(image_xscale) * 0.1;
-    image_yscale -= 0.02;
-    image_alpha -= 0.01;
+    if (abs(image_xscale) &gt; 0.0001)    { 
+        image_xscale += sign(image_xscale) * 0.1;
+    }
+    
+    if (abs(image_yscale) &gt; 0.0001)    { 
+        image_yscale -= sign(image_yscale) * 0.02;
+    }
+    image_alpha -= (MAX_ALPHA*0.05);
 
     if (image_alpha &lt;= 0)   {
         instance_destroy();
@@ -146,10 +158,10 @@ if (isVanish)   {
             <kind>1</kind>
             <string>///spawn fog and keep it at alpha 0.2
 
-if (image_alpha &lt; 0.2)  {
+if (image_alpha &lt; MAX_ALPHA)  {
     image_alpha += 0.001;
-} else if (image_alpha &gt;= 0.2) {
-    image_alpha = 0.2;
+} else if (image_alpha &gt;= MAX_ALPHA) {
+    image_alpha = MAX_ALPHA;
 }
 </string>
           </argument>

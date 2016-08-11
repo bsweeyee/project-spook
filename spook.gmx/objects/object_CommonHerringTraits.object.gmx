@@ -134,7 +134,7 @@ if (place_meeting(x, y, object_Hitbox_TorchDefault) ||
     place_meeting(x, y, object_Hitbox_CigarLight))  {
     sprite_index = spriteExposed;
 } else {
-    if (global.showShadows) {
+    if (global.showShadows &amp;&amp; !isDead) {
         sprite_index = spriteShadow;
     } else if (!global.showShadows) {
         sprite_index = spriteExposed;

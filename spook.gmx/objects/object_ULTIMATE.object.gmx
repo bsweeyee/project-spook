@@ -205,6 +205,8 @@ if (mouse_check_button_pressed(mb_right) &amp;&amp; canActivate)   {
      canActivate = false;
      isShowMessage = true;
      isPlayMessage = true;
+     
+     global.combo = 0;
 }
 }
 </string>

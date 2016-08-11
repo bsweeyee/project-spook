@@ -87,7 +87,7 @@ enemy = object_Enemy_Default;
 var randomDirection = irandom(1);
 
 direction = randomDirection * 180;
-speed = irandom(4) + 1;
+speed = irandom(2) + 1;
 
 if (direction ==0)  {
     image_xscale = 1;

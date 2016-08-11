@@ -14,7 +14,7 @@ switch (enemy)  {
     case object_Enemy_Default_Herring:
     //choose random x, then choose random y
     var i = irandom(instance_number(object_Railing)-1);
-    location[0] = irandom(1) * room_width;    
+    location[0] = global.railing_pos[i, 0];    
     location[1] = global.railing_pos[i, 1];
     break;
     

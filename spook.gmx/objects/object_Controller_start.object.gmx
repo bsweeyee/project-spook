@@ -34,7 +34,7 @@ MAX_SIZE = 7.5;
 MAX_VSPEED = 0.5;
 //MAX_RATE = (1/room_speed) * 0.6;
 
-background_alpha[0] = 0.3;
+background_alpha[0] = 1;
 showButtons = false;
 
 gameStart = false;
