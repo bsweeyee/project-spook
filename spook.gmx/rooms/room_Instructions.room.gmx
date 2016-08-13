@@ -52,7 +52,6 @@
   </views>
   <instances>
     <instance objName="object_Torch" x="64" y="32" name="inst_A77F72D0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="object_Sign_Cigar" x="1376" y="608" name="inst_02684902" locked="0" code="" scaleX="2.5" scaleY="2.5" colour="4294967295" rotation="0"/>
     <instance objName="object_Controller_Intructions" x="64" y="64" name="inst_87054FD4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="object_PowerUp_Controller" x="64" y="96" name="inst_2D94305D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>

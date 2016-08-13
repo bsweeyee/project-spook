@@ -77,6 +77,29 @@ cigarAmount = 9;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///initialize rightMouseText
+rightMouseText = "???";
+rightMouseClicks = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
@@ -118,6 +141,14 @@ if (keyboard_check_pressed(ord('3')))   {
         with (object_PowerUp_Controller)    {
             projectileTimer = MAX_TIME;
         }
+    }
+}
+
+if (mouse_check_button_pressed(mb_right))   {
+    rightMouseClicks += 1
+    
+    if (rightMouseClicks &gt;= 42)  {
+        rightMouseText = "PROFIT! (now play the damn game!)";
     }
 }
 </string>
@@ -175,11 +206,12 @@ if (!instance_exists(object_Enemy_Mini)) {
 draw_set_color(c_white);
 draw_set_font(font_Limelight_30);
 
-draw_text(room_width*0.25, room_height*0.35, "W/A/S/D:     Player moves up/left/down/right");
-draw_text(room_width*0.25, room_height*0.45, "Left mouse button/spacebar:   Turn on torch");
-draw_text(room_width*0.25, room_height*0.55, "Numkey 1:     Use cigar");
-draw_text(room_width*0.25, room_height*0.65, "Numkey 2:     Expose spirits");
-draw_text(room_width*0.25, room_height*0.75, "Numkey 3:     Expose projectiles");
+draw_text(room_width*0.25, room_height*0.25, "W/A/S/D:     Player moves up/left/down/right");
+draw_text(room_width*0.25, room_height*0.35, "Left mouse button/spacebar:   Turn on torch");
+draw_text(room_width*0.25, room_height*0.45, "Numkey 1:     Use cigar");
+draw_text(room_width*0.25, room_height*0.55, "Numkey 2:     Expose spirits");
+draw_text(room_width*0.25, room_height*0.65, "Numkey 3:     Expose projectiles");
+draw_text(room_width*0.25, room_height*0.75, "Right mouse button:     " + rightMouseText);
 
 draw_set_font(-1);
 

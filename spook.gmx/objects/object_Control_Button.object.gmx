@@ -203,7 +203,7 @@ switch (room)   {
     
     case room_Instructions:
     x = room_width*0.5;
-    y = room_height * 0.20;
+    y = room_height * 0.15;
     isActivate = false;
     color_text = c_white;
     break;

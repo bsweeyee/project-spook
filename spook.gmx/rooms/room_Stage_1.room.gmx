@@ -58,7 +58,6 @@
     <instance objName="object_Railing" x="1024" y="448" name="inst_D955325D" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="object_Railing" x="320" y="448" name="inst_D2F51ED3" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="object_Railing" x="1696" y="480" name="inst_8F8EF967" locked="0" code="" scaleX="1.5" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="object_Sign_Cigar" x="1376" y="608" name="inst_2664495D" locked="0" code="" scaleX="2.5" scaleY="2.5" colour="4294967295" rotation="0"/>
     <instance objName="object_Railing" x="992" y="640" name="inst_EA53F667" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
