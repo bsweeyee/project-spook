@@ -29,6 +29,7 @@
 
 isOn = false;
 canOn = true;
+isClicked = false;
 
 lightRadius = 60;
 lightPrecision = 10;
@@ -311,6 +312,35 @@ if (isOn)   {
 } else  {
     dashCircle.image_alpha = 0.5;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///play click sound
+if(isOn &amp;&amp; !isClicked){
+    audio_play_sound(sfx_click_on,1,false);
+    isClicked = true;
+    }
+else if(!isOn &amp;&amp; isClicked){
+    audio_play_sound(sfx_click_off,1,false);
+    isClicked = false;
+    }
 </string>
           </argument>
         </arguments>

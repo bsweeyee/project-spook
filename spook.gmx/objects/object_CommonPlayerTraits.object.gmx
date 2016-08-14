@@ -34,6 +34,9 @@ isDead = false;
 canMove = true;
 isMoving = false;
 vsp = 0;
+isMoving = false;
+tempX = x;
+tempY = y;
 
 </string>
           </argument>
@@ -155,7 +158,6 @@ if(life &gt; 200)
           <argument>
             <kind>1</kind>
             <string>///update position
-
 if (canMove)    {
     if(keyboard_check(ord('D')))    {
         x += playerSpeed;
@@ -177,6 +179,12 @@ if (canMove)    {
         vsp = 0
     }
 }
+if(tempX != x || tempY != y)
+    isMoving = true;
+else
+    isMoving = false;
+tempX = x;
+tempY = y;
 </string>
           </argument>
         </arguments>

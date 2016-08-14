@@ -78,7 +78,17 @@
   <NewExtensions>
     <extension index="0">extensions\TweenGMS</extension>
   </NewExtensions>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\sfx_click_off</sound>
+    <sound>sound\sfx_click_on</sound>
+    <sound>sound\sfx_footsteps_fast</sound>
+    <sound>sound\sfx_mew1</sound>
+    <sound>sound\sfx_footsteps_slow</sound>
+    <sound>sound\sfx_mew2</sound>
+    <sound>sound\sfx_mew3</sound>
+    <sound>sound\sfx_mew4</sound>
+    <sound>sound\sfx_mew5</sound>
+  </sounds>
   <sprites name="sprites">
     <sprites name="sprite_enemy">
       <sprite>sprites\sprite_Enemy_Type_1</sprite>
