@@ -197,6 +197,30 @@ image_speed = 0;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///initialize sound booleans
+
+isSoundPlayedReveal = false;
+isSoundPlayedDie = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
@@ -331,7 +355,8 @@ if (timeBeforeAttack &lt;= 0 &amp;&amp; !isDead)  {
     //create projectile with direction towards player position
     var projInst = instance_create(x, y, object_Projectile_Default);
     projInst.speed = 3;
-    timeBeforeAttack = MAX_TIMER;
+    timeBeforeAttack = MAX_TIMER;    
+    audio_play_sound(sfx_projectile_firing, 0, false);
 }
 </string>
           </argument>
@@ -393,6 +418,52 @@ for (var i=0;i&lt;sprite_width/32;i++) {
     }
 }
 */
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>other</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///play sounds
+isClicked = place_meeting(x, y, object_Hitbox_TorchCommon) || 
+    place_meeting(x, y, object_Hitbox_CigarLight);
+    
+if(!isSoundPlayedReveal &amp;&amp; isClicked){
+    audio_play_sound(
+    choose(
+    sfx_ghost_reveal_1,
+    sfx_ghost_reveal_2,
+    sfx_ghost_reveal_3,
+    sfx_ghost_reveal_4,
+    sfx_ghost_reveal_5,
+    sfx_ghost_reveal_6)
+    ,0,false);
+    isSoundPlayedReveal = true;
+}
+
+if(!isSoundPlayedDie &amp;&amp; isDead){
+    audio_play_sound(
+    choose(
+    sfx_ghost_die_1,
+    sfx_ghost_die_2,
+    sfx_ghost_die_3)
+    ,0,false);
+    isSoundPlayedDie = true;
+}
 </string>
           </argument>
         </arguments>

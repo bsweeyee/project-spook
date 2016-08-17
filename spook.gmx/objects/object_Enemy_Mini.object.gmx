@@ -128,6 +128,54 @@ dirValue = 30;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///iniitialise sound variables
+alarm[1] = room_speed*1;
+isSoundPlayedReveal = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>object_Enemy_Mini</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///reset sound timer
+isSoundPlayedReveal = false;
+alarm[1] = room_speed*1;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="2" enumb="0">
       <action>
@@ -309,6 +357,49 @@ if (x &gt; room_width/2) {
     }
 }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///play sound
+
+isClicked = place_meeting(x, y, object_Hitbox_TorchCommon) || 
+    place_meeting(x, y, object_Hitbox_CigarLight);
+
+snd = 0;
+
+if(!isSoundPlayedReveal &amp;&amp; isClicked){
+    snd = audio_play_sound(
+       choose(
+       sfx_jr_giggle1,
+       sfx_jr_giggle2,
+       sfx_jr_giggle3,
+       sfx_jr_giggle4,
+       sfx_jr_giggle5,
+        sfx_jr_giggle6,
+       ),0,false);
+    isSoundPlayedReveal = true;
+}
+
+/*if(!audio_is_playing(snd))
+    isSoundPlayedReveal = false;
+
 </string>
           </argument>
         </arguments>

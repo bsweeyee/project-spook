@@ -102,6 +102,7 @@ event_inherited();
 if (place_meeting(x, y, object_Player_1_Stub))  {
     object_Player_1_Stub.alcoholAmount += 1;
     isPicked = true;
+    audio_play_sound(sfx_pickup_powerup,0,false);
 }
 </string>
           </argument>

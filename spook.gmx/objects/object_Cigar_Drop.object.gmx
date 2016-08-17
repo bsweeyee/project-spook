@@ -100,6 +100,7 @@ event_inherited();
 if (place_meeting(x, y, object_Player_1_Stub) &amp;&amp; !isPicked)  {
     object_Player_1_Stub.cigarAmount += 1;
     isPicked = true;
+    audio_play_sound(sfx_pickup_cig,0,false);
 }
 </string>
           </argument>

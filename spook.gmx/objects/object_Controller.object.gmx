@@ -165,6 +165,28 @@ pauseScreen = false;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///initialize variables for death screen
+deathScreen = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="2" enumb="0">
       <action>
@@ -296,6 +318,41 @@ if (comboTimer &lt;= 0)    {
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///if health &lt;= 0. show death screen
+
+if(instance_exists(object_Player_1_Stub) &amp;&amp; object_Player_1_Stub.isDead){
+    deathScreen = true;
+    if (deathScreen)    {        
+        audio_stop_all();
+        instance_deactivate_all(true);
+        instance_activate_object(object_Torch);
+        instance_activate_object(object_Hitbox_Dashed_Circle);
+        //instance_activate_object(object_Sign_Cigar);
+        
+        //creates buttons at positions
+        instance_create(room_width*0.51, room_height*0.75, object_Quit_Button);
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="8" enumb="0">
       <action>
@@ -377,6 +434,34 @@ if (pauseScreen)    {
     draw_set_font(font_Limelight_30);
     draw_set_color(c_white);
     draw_text(room_width*0.47, room_height*0.15, "PAUSED");
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///when death menu, draw death text
+if (deathScreen)    {
+    draw_set_font(font_Limelight_30);
+    draw_set_color(c_white);
+    draw_text(room_width*0.47, room_height*0.15, "DEAD");
+    draw_text(room_width*0.47, room_height*0.35, global.playerScore);
+    instance_create(room_width *0.51, room_height*0.45, object_Again_Button);
 }
 </string>
           </argument>

@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="4" name="datafiles">
-    <datafiles number="4" name="TweenGMS">
+  <datafiles number="15" name="datafiles">
+    <datafiles number="15" name="TweenGMS">
       <datafile>
         <name>Required Changes.txt</name>
         <exists>-1</exists>
@@ -81,13 +81,39 @@
   <sounds name="sound">
     <sound>sound\sfx_click_off</sound>
     <sound>sound\sfx_click_on</sound>
+    <sound>sound\sfx_ding</sound>
     <sound>sound\sfx_footsteps_fast</sound>
-    <sound>sound\sfx_mew1</sound>
     <sound>sound\sfx_footsteps_slow</sound>
+    <sound>sound\sfx_ghost_die_1</sound>
+    <sound>sound\sfx_ghost_die_2</sound>
+    <sound>sound\sfx_ghost_die_3</sound>
+    <sound>sound\sfx_ghost_reveal_1</sound>
+    <sound>sound\sfx_ghost_reveal_2</sound>
+    <sound>sound\sfx_ghost_reveal_3</sound>
+    <sound>sound\sfx_ghost_reveal_4</sound>
+    <sound>sound\sfx_ghost_reveal_5</sound>
+    <sound>sound\sfx_ghost_reveal_6</sound>
+    <sound>sound\sfx_jr_attack1</sound>
+    <sound>sound\sfx_jr_giggle1</sound>
+    <sound>sound\sfx_jr_giggle2</sound>
+    <sound>sound\sfx_jr_giggle3</sound>
+    <sound>sound\sfx_jr_giggle4</sound>
+    <sound>sound\sfx_jr_giggle5</sound>
+    <sound>sound\sfx_jr_giggle6</sound>
+    <sound>sound\sfx_lumpy_burst</sound>
+    <sound>sound\sfx_lumpy_groan1</sound>
+    <sound>sound\sfx_lumpy_groan2</sound>
+    <sound>sound\sfx_lumpy_groan3</sound>
+    <sound>sound\sfx_mew1</sound>
     <sound>sound\sfx_mew2</sound>
     <sound>sound\sfx_mew3</sound>
     <sound>sound\sfx_mew4</sound>
     <sound>sound\sfx_mew5</sound>
+    <sound>sound\sfx_pickup_cig</sound>
+    <sound>sound\sfx_pickup_powerup</sound>
+    <sound>sound\sfx_projectile_firing</sound>
+    <sound>sound\sfx_projectile_hitting</sound>
+    <sound>sound\sfx_ticking</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="sprite_enemy">
@@ -153,6 +179,7 @@
       <sprite>sprites\sprite_bg_crate</sprite>
       <sprite>sprites\sprite_bg_lamppostsign</sprite>
     </sprites>
+    <sprite>sprites\_</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\tileTypeOne</background>
@@ -270,16 +297,16 @@
         </objects>
       </objects>
       <objects name="hitbox">
-        <object>objects\object_Hitbox_TorchCommon</object>
-        <object>objects\object_Hitbox_TorchDefault</object>
-        <object>objects\object_Hitbox_CigarLight</object>
-        <object>objects\object_Hitbox_Mist</object>
-        <object>objects\object_Hitbox_Dashed_Circle</object>
         <objects name="Projectiles">
           <object>objects\object_Common_Projectile</object>
           <object>objects\object_Projectile_Default</object>
           <object>objects\object_Projectile_Default_Destroy</object>
         </objects>
+        <object>objects\object_Hitbox_TorchCommon</object>
+        <object>objects\object_Hitbox_TorchDefault</object>
+        <object>objects\object_Hitbox_CigarLight</object>
+        <object>objects\object_Hitbox_Mist</object>
+        <object>objects\object_Hitbox_Dashed_Circle</object>
       </objects>
       <objects name="player_items">
         <object>objects\object_Torch</object>
@@ -309,6 +336,7 @@
           <object>objects\object_Back_Button</object>
           <object>objects\object_Control_Button</object>
           <object>objects\object_Return_Button</object>
+          <object>objects\object_Again_Button</object>
         </objects>
         <object>objects\object_Title</object>
       </objects>

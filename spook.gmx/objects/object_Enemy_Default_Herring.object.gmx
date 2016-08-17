@@ -162,6 +162,30 @@ isDisappear = false;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///initialise sound variables
+
+isMeowed = false;
+snd = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="2" enumb="0">
       <action>
@@ -325,6 +349,39 @@ if (isDisappear &amp;&amp; !isDead)    {
         instance_destroy();
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///if cat is revealed, meow.
+
+isClicked = place_meeting(x, y, object_Hitbox_TorchCommon) || 
+    place_meeting(x, y, object_Hitbox_CigarLight);
+
+if (!isMeowed &amp;&amp; isClicked &amp;&amp; isDead)  {
+    isMeowed = true
+    snd = audio_play_sound(choose(sfx_mew1, sfx_mew2, sfx_mew3, sfx_mew4, sfx_mew5), 0, false);
+}
+
+/*
+if(!audio_is_playing(snd))
+    isMeowed = false;
 </string>
           </argument>
         </arguments>
